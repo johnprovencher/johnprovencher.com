@@ -14,7 +14,7 @@ collections:
       - {label: "Info", name: "info", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Image", name: "image", widget: "image"}
-      - {label: "Image Alt", name: "imgAlt", widget: "image"}
+      - {label: "Image Alt", name: "imgAlt", widget: "string"}
       - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
 
  
