@@ -1,0 +1,142 @@
+---
+title: example
+layout: 'base.njk'
+---
+<div id="meep">
+    <div id="orb"></div>
+    <a class="block-button" id="chatter" target="_blank" href="www.example.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
+</div>
+<div id="info-container">
+    <div class="info-grid">
+        <div class="column">
+        </div>
+        <div class="column">
+            <p class="">john provencher ( b. 1991 ) is an independent designer, generative artist, educator and programmer working in brooklyn, ny ... this website is a work in progress.
+            </p>
+            <br>
+            <p class="">Aliquam elementum efficitur nisl, non interdum sem venenatis in. Curabitur vitae elit nulla. Phasellus vitae lobortis erat. Aliquam elementum efficitur nisl, non interdum sem venenatis in. Curabitur vitae elit nulla. Phasellus vitae lobortis erat.</p>
+            <br><br>
+            <p class="small">follow</p>
+            <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>instagram<abbr class="dots"></abbr></a>
+            <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>twitter<abbr class="dots"></abbr></a>
+            <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>threads<abbr class="dots"></abbr></a>
+            <br><br>
+            <p class="small">websites</p>
+            <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>johnx.work<abbr class="dots"></abbr></a>
+        </div>
+        <div class="column">
+            <p>client</p><br>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">circle(s), verse</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
+                <span class="index-right"><span class="block-color">2022</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">circle(s), verse</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
+                <span class="index-right"><span class="block-color">2022</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
+                <span class="index-right"><span class="block-color">2022</span></span>
+            </div>
+            <br><br>
+            <p>cv</p><br>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">circle(s), verse</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
+                <span class="index-right"><span class="block-color">2022</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">circle(s), verse</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
+                <span class="index-right"><span class="block-color">2022</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
+                <span class="index-right"><span class="block-color">2022</span></span>
+            </div>
+        </div>
+    </div>
+    <div id="thumbnails">
+        {%- for post in collections.post -%}
+
+        <div class="image-container">
+            <img src="{{post.data.image}}" alt="{{post.data.alt}}">
+            <br>
+            <p class="small">{{ post.data.info }}</p>
+        </div>
+        {%- endfor -%}
+
+    </div>
+    <div class="info-grid" id="footer">
+        <div class="column">
+            <p class="small grey">john provencher
+            </p>
+            <div id="dark-light" class="small">light&thinsp;/&thinsp;dark</div>
+        </div>
+        <div class="column">
+            <p class="small grey">this website is a work in progress.
+            </p>
+            <p class="small">
+                example
+                <br>example
+                <br>example
+                <br>example
+            </p>
+        </div>
+        <div class="column">
+        </div>
+    </div>
+</div>
+<div id="slide-container">
+    <div id="counter">
+    </div>
+    <div id="slideshow">
+        {%- for post in collections.post -%}
+        <div class="slide">
+            <img src="{{post.data.image}}" alt="{{post.data.alt}}">
+        </div>
+        {%- endfor -%}
+    </div>
+</div>
