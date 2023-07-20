@@ -133,11 +133,16 @@ layout: 'base.njk'
     <div id="slideshow">
         {%- for post in collections.post -%}
         <div class="slide">
+            {% if post.data.video %}
             <video controls>
                 <source src="{{post.data.video}}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            {% else %}
             <img src="{{post.data.image}}" alt="{{post.data.alt}}">
+            {% endif %}
+
+
         </div>
         {%- endfor -%}
     </div>
