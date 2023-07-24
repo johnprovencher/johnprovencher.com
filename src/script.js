@@ -7,7 +7,8 @@
          height = w.innerHeight || e.clientHeight || g.clientHeight,
          slideArr = [],
          t = -1,
-         animateType;
+         animateType,
+         currentText;
      //typewriter
      function typeWrite(text) {
 
@@ -16,6 +17,7 @@
          let charIndex = 0;
          var typingSpeed = 40;
          clearTimeout(animateType)
+
          function typeNextCharacter() {
              if (charIndex < text.length) {
                  typewriterText.textContent += text.charAt(charIndex);
@@ -25,7 +27,6 @@
          }
          typeNextCharacter();
      }
-     typeWrite("hello ...")
 
      //p tag = image width
      function styleThumb() {
@@ -111,27 +112,71 @@
          ele.style.height = sizerH + "px"
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
+         ele.style.display = 'block'
+
+         var imageElement = ele.querySelector('img');
+         var videoElement = ele.querySelector('video');
+
+         if (imageElement) {
+             var imageAltText = imageElement.getAttribute('alt');
+             console.log(imageAltText)
+             currentText = imageAltText
+             typeWrite(currentText)
+         }
+
+         if (videoElement) {
+            videoElement.controls = false;
+             videoElement.play();
+            videoElement.controls = false;
+
+             var textTracks = videoElement.textTracks;
+             var videoAltText = textTracks[0].label
+             console.log(textTracks[0].label)
+             currentText = videoAltText
+             typeWrite(currentText)
+
+         }
+
+
+
+
      }
 
      function left(ele) {
+         var videoElement = ele.querySelector('video');
+         if (videoElement) {
+             videoElement.pause();
+         }
+
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = 0 - offset + 'px'
+         ele.style.display = 'block'
+
      }
 
      function right(ele) {
+         var videoElement = ele.querySelector('video');
+         if (videoElement) {
+             videoElement.pause();
+         }
+
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
+         ele.style.display = 'block'
 
      }
 
      function leftOff(ele) {
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = "-50%"
+         ele.style.display = 'none'
+
      }
 
      function rightOff(ele) {
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = "150%"
+         ele.style.display = 'none'
      }
 
      //slider
@@ -168,6 +213,7 @@
      //top counter animation /  ticker
      function counter(clicker, toggle) {
 
+
          if (toggle === true) {
              t -= 1;
 
@@ -185,16 +231,34 @@
          }
 
          for (i = 0; i < slideDOM.length; i++) {
-             countDOM[i].style.color = "#707070"
+             countDOM[i].style.color = "#787676"
 
          }
          for (i = 0; i < (t + 1); i++) {
              countDOM[i].style.color = "#4CBB17"
          }
 
+         var percentage = ((t + 1) / (slideDOM.length)) * 100;
+         console.log(percentage)
 
-         var percentText = "(&thinsp;" + (t + 1) + "&thinsp;/&thinsp;" + slideDOM.length + "&thinsp;)"
-         document.getElementById('percent').innerHTML = percentText
+         for (i = 0; i < slideDOM.length; i++) {
+             countDOM[i].style.color = "#787676";
+         }
+
+         for (i = 0; i < t + 1; i++) {
+             if (percentage > 40) {
+
+                 countDOM[i].style.color = "#4CBB17";
+             } else {
+                 countDOM[i].style.color = "orangered";
+             }
+         }
+
+
+         const roundedPercent = Math.floor(percentage);
+
+         //var percentText = "(&thinsp;" + (t + 1) + "&thinsp;/&thinsp;" + slideDOM.length + "&thinsp;)"
+         document.getElementById('percent').innerHTML = "(&thinsp;" + roundedPercent + "%&thinsp;)"
      }
 
 
@@ -210,58 +274,92 @@
      function click(ev) {
          var isLeftHalfClick = (ev.clientX) < width / 2;
          var isIgnored = ev.target.closest("#orb");
+         var isIgnoredAgainAgain = ev.target.closest("#chatter");
          var isIgnoredAgain = ev.target.closest("#info-container");
-         if (!isIgnoredAgain) {
+         if (!isIgnoredAgainAgain) {
 
-             if (!isIgnored) {
-                 counter(ev.isTrusted, isLeftHalfClick);
-                 slider(isLeftHalfClick, false)
-             } else {
-                 if (slideContainer.style.display === "none") {
-                     slideContainer.style.display = "block";
-                     infoContainer.style.display = "none";
-                     typeWrite("hello ...")
-
-                     //document.body.style.overflow = "hidden";
+             if (!isIgnoredAgain) {
+                 if (!isIgnored) {
+                     counter(ev.isTrusted, isLeftHalfClick);
+                     slider(isLeftHalfClick, false)
 
                  } else {
-                     slideContainer.style.display = "none";
-                     infoContainer.style.display = "block";
-                     // document.body.style.overflow = "inherit";
-                     typeWrite("johnprovencher@gmail.com")
-                     if (tClick === 0) {
-                         styleThumb()
+                     if (slideContainer.style.display === "none") {
+                         slideContainer.style.display = "block";
+                         infoContainer.style.display = "none";
+                         typeWrite(currentText)
+
+                         //document.body.style.overflow = "hidden";
+
+                     } else {
+                         slideContainer.style.display = "none";
+                         infoContainer.style.display = "block";
+                         // document.body.style.overflow = "inherit";
+                         typeWrite("johnprovencher@gmail.com")
+                         if (tClick === 0) {
+                             styleThumb()
+                         }
+                         tClick += 1
                      }
-                     tClick += 1
                  }
              }
          }
 
-         ev.preventDefault();
+         // ev.preventDefault();
      }
 
 
-     //dark mode
 
+
+     //dark mode
      var toggleDark = document.getElementById("dark-light");
      var toggleOrb = document.getElementById("orb");
      var blockButton = document.getElementsByClassName("block-button");
      var blockColor = document.getElementsByClassName("block-color");
 
-     toggleDark.addEventListener("click", function() {
-         // Toggle the 'styles-toggled' class on the element
-         document.body.classList.toggle("toggle-dark");
-         toggleOrb.classList.toggle("toggle-orb");
+     const darkModePreference = localStorage.getItem('darkMode');
+     if (darkModePreference === 'dark') {
+         enableDarkMode();
+     }
 
-         for (i = 0; i < blockButton.length; i++) {
-             blockButton[i].classList.toggle("block-button-toggle");
-         }
-         for (i = 0; i < blockColor.length; i++) {
-             blockColor[i].classList.toggle("block-color-toggle");
+     const darkModeToggle = document.getElementById('darkModeToggle');
+     darkModeToggle.checked = darkModePreference === 'dark';
+
+     darkModeToggle.addEventListener('change', () => {
+         if (darkModeToggle.checked) {
+             enableDarkMode();
+             localStorage.setItem('darkMode', 'dark');
+         } else {
+             disableDarkMode();
+             localStorage.setItem('darkMode', 'light');
          }
      });
 
+     function enableDarkMode() {
 
+         document.body.classList.add("toggle-dark");
+         toggleOrb.classList.add("toggle-orb");
+
+         for (i = 0; i < blockButton.length; i++) {
+             blockButton[i].classList.add("block-button-toggle");
+         }
+         for (i = 0; i < blockColor.length; i++) {
+             blockColor[i].classList.add("block-color-toggle");
+         }
+
+
+     }
+
+     function disableDarkMode() {
+         document.body.classList.remove("toggle-dark");
+         toggleOrb.classList.remove("toggle-orb");
+         for (i = 0; i < blockButton.length; i++) {
+             blockButton[i].classList.remove("block-button-toggle");
+         }
+         for (i = 0; i < blockColor.length; i++) {
+             blockColor[i].classList.remove("block-color-toggle");
+         }
+     }
 
 
  }

@@ -1,0 +1,116 @@
+---
+title: x
+layout: 'base.njk'
+---
+<div id="meep">
+    <a href="../../index.html">
+        <div id="orb" class="idle" style="outline: 2px solid rgba(127,127,127, .25); box-shadow: none;"></div>
+    </a>
+    <a class="block-button" id="chatter" target="_blank" href="www.example.com"><abbr class="dots"></abbr> <span id="type"> {{ title }} </span> <abbr class="dots"></abbr></a>
+</div>
+<div id="post-container">
+    <div class="info-grid">
+        <div class="column">
+            <div class="image-container">
+                <img src="{{image}}" alt="{{alt}}">
+            </div>
+        </div>
+        <div class="column">
+            <p>metadata</p><br>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">title</span></span>
+                <span class="index-right"><span class="block-color">{{ title }}</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">date</span></span>
+                <span class="index-right"><span class="block-color">{{ date | postDate }}</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">src</span></span>
+                <span class="index-right"><span class="block-color">{{ image }}</span></span>
+            </div>
+            <br><br>
+            <a class="block-button" target="_blank" href="{{ image }}" download><abbr class="dots"></abbr>download<abbr class="dots"></abbr></a>
+        </div>
+    </div>
+    {% if video %}
+    <div class="info-grid">
+        <div class="column">
+            <div class="image-container">
+                <video controls="false" muted autoplay="true" loop>
+                    <source src="{{ video }}" type="video/mp4">
+                    <track label="{{imageAlt}}" label="English" default>
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        <div class="column">
+            <p>metadata</p><br>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">title</span></span>
+                <span class="index-right"><span class="block-color">{{ title }}</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">date</span></span>
+                <span class="index-right"><span class="block-color">{{ date | postDate }}</span></span>
+            </div>
+            <div class="row grey">
+                <span class="index-left"><span class="block-color">src</span></span>
+                <span class="index-right"><span class="block-color">{{ video }}</span></span>
+            </div>
+            <br><br>
+            <a class="block-button" target="_blank" href="{{ video }}" download><abbr class="dots"></abbr>download<abbr class="dots"></abbr></a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% include 'footer.njk' %}
+<script type="text/javascript">
+var toggleDark = document.getElementById("dark-light");
+var toggleOrb = document.getElementById("orb");
+var blockButton = document.getElementsByClassName("block-button");
+var blockColor = document.getElementsByClassName("block-color");
+const darkModePreference = localStorage.getItem('darkMode');
+if (darkModePreference === 'dark') {
+    enableDarkMode();
+}
+
+const darkModeToggle = document.getElementById('darkModeToggle');
+darkModeToggle.checked = darkModePreference === 'dark';
+
+darkModeToggle.addEventListener('change', () => {
+    if (darkModeToggle.checked) {
+        enableDarkMode();
+        localStorage.setItem('darkMode', 'dark');
+    } else {
+        disableDarkMode();
+        localStorage.setItem('darkMode', 'light');
+    }
+});
+
+function enableDarkMode() {
+
+    document.body.classList.add("toggle-dark");
+    toggleOrb.classList.add("toggle-orb");
+
+    for (i = 0; i < blockButton.length; i++) {
+        blockButton[i].classList.add("block-button-toggle");
+    }
+    for (i = 0; i < blockColor.length; i++) {
+        blockColor[i].classList.add("block-color-toggle");
+    }
+
+
+}
+
+function disableDarkMode() {
+    document.body.classList.remove("toggle-dark");
+    toggleOrb.classList.remove("toggle-orb");
+    for (i = 0; i < blockButton.length; i++) {
+        blockButton[i].classList.remove("block-button-toggle");
+    }
+    for (i = 0; i < blockColor.length; i++) {
+        blockColor[i].classList.remove("block-color-toggle");
+    }
+}
+</script>

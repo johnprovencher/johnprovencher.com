@@ -4,7 +4,7 @@ layout: 'base.njk'
 ---
 <div id="meep">
     <div id="orb"></div>
-    <a class="block-button" id="chatter" target="_blank" href="www.example.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
+    <a class="block-button" id="chatter" target="_blank" href="mailto:johnprovencher@gmail.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
 </div>
 <div id="info-container">
     <div class="info-grid">
@@ -17,9 +17,8 @@ layout: 'base.njk'
             <p class="">Aliquam elementum efficitur nisl, non interdum sem venenatis in. Curabitur vitae elit nulla. Phasellus vitae lobortis erat. Aliquam elementum efficitur nisl, non interdum sem venenatis in. Curabitur vitae elit nulla. Phasellus vitae lobortis erat.</p>
             <br><br>
             <p class="small">follow</p>
-            <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>instagram<abbr class="dots"></abbr></a>
-            <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>twitter<abbr class="dots"></abbr></a>
-            <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>threads<abbr class="dots"></abbr></a>
+            <a class="block-button" target="_blank" href="https://www.instagram.com/johnprovencher/"><abbr class="dots"></abbr>instagram<abbr class="dots"></abbr></a>
+            <a class="block-button" target="_blank" href="https://twitter.com/hahajohnx"><abbr class="dots"></abbr>twitter<abbr class="dots"></abbr></a>
             <br><br>
             <p class="small">websites</p>
             <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr>johnx.work<abbr class="dots"></abbr></a>
@@ -101,31 +100,15 @@ layout: 'base.njk'
     <div id="thumbnails">
         {%- for post in collections.post -%}
         <div class="image-container">
-            <img src="{{post.data.image}}" alt="{{post.data.alt}}">
-            <br>
-            <p class="small">{{ post.data.info }}</p>
+            <a href="{{ post.url }}">
+                <img src="{{post.data.image}}" alt="{{post.data.alt}}">
+                <br>
+                <p class="small">{{ post.data.info }}</p>
+            </a>
         </div>
         {%- endfor -%}
     </div>
-    <div class="info-grid" id="footer">
-        <div class="column">
-            <p class="small grey">john provencher
-            </p>
-            <div id="dark-light" class="small">light&thinsp;/&thinsp;dark</div>
-        </div>
-        <div class="column">
-            <p class="small grey">this website is a work in progress.
-            </p>
-            <p class="small">
-                example
-                <br>example
-                <br>example
-                <br>example
-            </p>
-        </div>
-        <div class="column">
-        </div>
-    </div>
+    {% include 'footer.njk' %}
 </div>
 <div id="slide-container">
     <div id="counter">
@@ -134,15 +117,14 @@ layout: 'base.njk'
         {%- for post in collections.post -%}
         <div class="slide">
             {% if post.data.video %}
-            <video controls muted autoplay loop>
-                <source src="{{post.data.video}}" type="video/mp4">
+            <video controls='false' muted autoplay="false" loop playsinline>
+                <source src="{{ post.data.video }}" type="video/mp4">
+                <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
             {% else %}
-            <img src="{{post.data.image}}" alt="{{post.data.alt}}">
+            <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
             {% endif %}
-
-
         </div>
         {%- endfor -%}
     </div>
