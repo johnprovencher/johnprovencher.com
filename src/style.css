@@ -181,12 +181,12 @@
         cursor: pointer;
         border-radius: 100%;
         transform: rotate(-20deg);
-        box-shadow: 1px 1px 25px rgba(255, 255, 255, .2);
+        box-shadow: 1px 1px 25px rgba(255, 255, 255, .3);
         transition: .1s ease;
     }
 
     #orb:hover {
-        box-shadow: 1px 1px 25px rgba(255, 255, 255, .3);
+        box-shadow: 1px 1px 25px rgba(255, 255, 255, .4);
     }
 
     #orb:after {
