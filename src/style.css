@@ -107,6 +107,8 @@
     .slide {
         position: absolute;
         transition: .2s ease;
+        transition: 0s ease;
+
         text-align: center;
 
     }
