@@ -1,6 +1,8 @@
 backend:
   name: git-gateway
   branch: main
+  token: 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
+  base_url: https://api.github.com
 media_folder: "public/assets"
 public_folder: "/assets"
 collections:
