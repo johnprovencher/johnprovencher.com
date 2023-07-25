@@ -6,7 +6,7 @@ public_folder: "/assets"
 collections:
   - name: "post"
     label: "post"
-    folder: "src"
+    folder: "src/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" 
     fields: # The fields for each document, usually in front matter
