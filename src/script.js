@@ -119,7 +119,6 @@
 
          if (imageElement) {
              var imageAltText = imageElement.getAttribute('alt');
-             console.log(imageAltText)
              currentText = imageAltText
              typeWrite(currentText)
          }
@@ -131,7 +130,6 @@
 
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
-             console.log(textTracks[0].label)
              currentText = videoAltText
              typeWrite(currentText)
 
@@ -239,7 +237,6 @@
          }
 
          var percentage = ((t + 1) / (slideDOM.length)) * 100;
-         console.log(percentage)
 
          for (i = 0; i < slideDOM.length; i++) {
              countDOM[i].style.color = "#787676";
