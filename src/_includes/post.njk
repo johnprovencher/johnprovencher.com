@@ -30,6 +30,9 @@ layout: 'base.njk'
                 <span class="index-right"><span class="block-color">{{ image }}</span></span>
             </div>
             <br><br>
+            {% if link %}
+            <a class="block-button" target="_blank" href="{{ link }}" download><abbr class="dots"></abbr>link<abbr class="dots"></abbr></a>
+            {% endif %}
             <a class="block-button" target="_blank" href="{{ image }}" download><abbr class="dots"></abbr>download<abbr class="dots"></abbr></a>
         </div>
     </div>
@@ -59,7 +62,10 @@ layout: 'base.njk'
                 <span class="index-right"><span class="block-color">{{ video }}</span></span>
             </div>
             <br><br>
-            <a class="block-button" target="_blank" href="{{ video }}" download><abbr class="dots"></abbr>download<abbr class="dots"></abbr></a>
+            {% if link %}
+            <a class="block-button" target="_blank" href="{{ link }}" download><abbr class="dots"></abbr>link<abbr class="dots"></abbr></a>
+            {% endif %}
+            <a class="block-button" target="_blank" href="{{ image }}" download><abbr class="dots"></abbr>download<abbr class="dots"></abbr></a>
         </div>
     </div>
     {% endif %}
