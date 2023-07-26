@@ -66,6 +66,7 @@
     }
 
     a {
+        color: white;
         margin: 0;
         padding: 0;
         text-decoration: none;
@@ -104,11 +105,8 @@
 
     .slide {
         position: absolute;
-        transition: .2s ease;
-        will-change: opacity;
         text-align: center;
         display: none;
-
     }
 
     .slide img {
@@ -150,7 +148,7 @@
         margin-right: 4px;
         vertical-align: middle;
         white-space: nowrap;
-        color: rgba(100,100,100, .4);
+        color: #54f408;
 
     }
 

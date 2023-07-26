@@ -110,8 +110,8 @@
 
      //slider functions
      function center(ele) {
-         ele.style.width = sizerW + "px"
-         ele.style.height = sizerH + "px"
+         ele.style.width = sizerW - (width/10) + "px"
+         ele.style.height = sizerH - (width/10) + "px"
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          ele.style.display = 'block'
@@ -237,7 +237,7 @@
 
          }
          for (i = 0; i < (t + 1); i++) {
-             countDOM[i].style.color = "#4CBB17"
+             countDOM[i].style.color = "#54f408"
          }
 
          var percentage = ((t + 1) / (slideDOM.length)) * 100;
@@ -248,11 +248,13 @@
 
          for (i = 0; i < t + 1; i++) {
              if (percentage > 40) {
-                 document.getElementById('percent').style.color = "#4CBB17"
-                 countDOM[i].style.color = "#4CBB17";
+                 //  document.getElementById('percent').style.color = "#4CBB17"
+                 countDOM[i].style.color = "#54f408";
              } else {
-                 document.getElementById('percent').style.color = "orangered"
-                 countDOM[i].style.color = "orangered";
+                 // document.getElementById('percent').style.color = "orangered"
+                 // countDOM[i].style.color = "orangered";
+                 countDOM[i].style.color = "#54f408";
+
              }
          }
 
@@ -313,6 +315,9 @@
      var toggleOrb = document.getElementById("orb");
      var blockButton = document.getElementsByClassName("block-button");
      var blockColor = document.getElementsByClassName("block-color");
+     var anchorTags = document.querySelectorAll('a:not(.block-button)');
+
+
 
      const darkModePreference = localStorage.getItem('darkMode');
      if (darkModePreference === 'dark') {
@@ -336,7 +341,9 @@
 
          document.body.classList.add("toggle-dark");
          toggleOrb.classList.add("toggle-orb");
-
+         anchorTags.forEach(function(anchor) {
+             anchor.classList.add('toggle-dark');
+         });
          for (i = 0; i < blockColor.length; i++) {
              blockColor[i].classList.add("block-color-toggle");
          }
@@ -347,6 +354,9 @@
      function disableDarkMode() {
          document.body.classList.remove("toggle-dark");
          toggleOrb.classList.remove("toggle-orb");
+         anchorTags.forEach(function(anchor) {
+             anchor.classList.remove('toggle-dark');
+         });
          for (i = 0; i < blockButton.length; i++) {
              blockButton[i].classList.remove("block-button-toggle");
          }
