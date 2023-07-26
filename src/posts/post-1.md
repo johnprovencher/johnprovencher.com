@@ -1,11 +1,13 @@
 ---
-title: project 1 title
-date: 2021-05-01
-tags: ["post", "featured"]
-image: /assets/2.png
-imageAlt: test 1
-info: Lorem ipsum
-video: /assets/x3.mov
-link: https://pbs.twimg.com/media/F10GgpKXsAQUgd4?format=jpg&name=large
+title: nike moonshot
+info: nike moonshot
+date: 2021-05-01T00:00:00.000Z
+image: /assets/screen-shot-2023-07-19-at-11.24.05-am.png
+imageAlt: nike moonshot
+tags:
+  - post
+  - featured
+video: /assets/nike.mp4
+link: 'https://pbs.twimg.com/media/F10GgpKXsAQUgd4?format=jpg&name=large'
 ---
 
