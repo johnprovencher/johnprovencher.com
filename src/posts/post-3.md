@@ -1,9 +1,12 @@
 ---
-title: project 3 title
-date: 2021-05-01
-tags: ["post", "featured"]
-image: /assets/4.png
-imageAlt: test 3
-info: Lorem ipsum
+title: alexander wang
+info: alexander wang
+date: 2021-05-01T00:00:00.000Z
+image: /assets/screen-shot-2023-07-19-at-11.24.05-am.png
+imageAlt: alexander wang
+tags:
+  - post
+  - featured
+video: /assets/wang.mp4
 ---
 
