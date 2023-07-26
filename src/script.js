@@ -9,6 +9,8 @@
          t = -1,
          animateType,
          currentText;
+
+
      //typewriter
      function typeWrite(text) {
 
@@ -124,15 +126,16 @@
          }
 
          if (videoElement) {
-            videoElement.controls = false;
+             videoElement.controls = false;
              videoElement.play();
-            videoElement.controls = false;
+             videoElement.controls = false;
 
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
              typeWrite(currentText)
-
+             document.body.style.backgroundColor = "#" + currentText;
+             document.getElementById("orb").style.backgroundColor = "#" + currentText;
          }
 
 
@@ -159,7 +162,7 @@
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-      //   ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
+         //   ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
          ele.style.display = 'none'
 
 
@@ -167,14 +170,14 @@
 
      function leftOff(ele) {
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-     //    ele.style.left = "-50%"
+         //    ele.style.left = "-50%"
          ele.style.display = 'none'
 
      }
 
      function rightOff(ele) {
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-      //   ele.style.left = "150%"
+         //   ele.style.left = "150%"
          ele.style.display = 'none'
      }
 
@@ -230,7 +233,7 @@
          }
 
          for (i = 0; i < slideDOM.length; i++) {
-             countDOM[i].style.color = "#787676"
+             countDOM[i].style.color = "rgba(100,100,100, .4)"
 
          }
          for (i = 0; i < (t + 1); i++) {
@@ -240,14 +243,15 @@
          var percentage = ((t + 1) / (slideDOM.length)) * 100;
 
          for (i = 0; i < slideDOM.length; i++) {
-             countDOM[i].style.color = "#787676";
+             countDOM[i].style.color = "rgba(100,100,100, .4)";
          }
 
          for (i = 0; i < t + 1; i++) {
              if (percentage > 40) {
-
+                 document.getElementById('percent').style.color = "#4CBB17"
                  countDOM[i].style.color = "#4CBB17";
              } else {
+                 document.getElementById('percent').style.color = "orangered"
                  countDOM[i].style.color = "orangered";
              }
          }
@@ -286,12 +290,15 @@
                          slideContainer.style.display = "block";
                          infoContainer.style.display = "none";
                          typeWrite(currentText)
-
+                         document.body.style.backgroundColor = "#" + currentText;
+                         document.getElementById("orb").style.backgroundColor = "#" + currentText;
                          //document.body.style.overflow = "hidden";
 
                      } else {
                          slideContainer.style.display = "none";
                          infoContainer.style.display = "block";
+                         document.body.style.backgroundColor = "#000";
+                         document.getElementById("orb").style.backgroundColor = "#000";
                          // document.body.style.overflow = "inherit";
                          typeWrite("johnprovencher@gmail.com")
                          if (tClick === 0) {
@@ -307,57 +314,58 @@
      }
 
 
+     // //dark mode
+     // var toggleDark = document.getElementById("dark-light");
+     // var toggleOrb = document.getElementById("orb");
+     // var blockButton = document.getElementsByClassName("block-button");
+     // var blockColor = document.getElementsByClassName("block-color");
+
+     // const darkModePreference = localStorage.getItem('darkMode');
+     // if (darkModePreference === 'dark') {
+     //     enableDarkMode();
+     // }
+
+     // const darkModeToggle = document.getElementById('darkModeToggle');
+     // darkModeToggle.checked = darkModePreference === 'dark';
+
+     // darkModeToggle.addEventListener('change', () => {
+     //     if (darkModeToggle.checked) {
+     //         enableDarkMode();
+     //         localStorage.setItem('darkMode', 'dark');
+     //     } else {
+     //         disableDarkMode();
+     //         localStorage.setItem('darkMode', 'light');
+     //     }
+     // });
+
+     // function enableDarkMode() {
+
+     //     document.body.classList.add("toggle-dark");
+     //     toggleOrb.classList.add("toggle-orb");
+
+     //     for (i = 0; i < blockButton.length; i++) {
+     //         blockButton[i].classList.add("block-button-toggle");
+     //     }
+     //     for (i = 0; i < blockColor.length; i++) {
+     //         blockColor[i].classList.add("block-color-toggle");
+     //     }
 
 
-     //dark mode
-     var toggleDark = document.getElementById("dark-light");
-     var toggleOrb = document.getElementById("orb");
-     var blockButton = document.getElementsByClassName("block-button");
-     var blockColor = document.getElementsByClassName("block-color");
+     // }
 
-     const darkModePreference = localStorage.getItem('darkMode');
-     if (darkModePreference === 'dark') {
-         enableDarkMode();
-     }
-
-     const darkModeToggle = document.getElementById('darkModeToggle');
-     darkModeToggle.checked = darkModePreference === 'dark';
-
-     darkModeToggle.addEventListener('change', () => {
-         if (darkModeToggle.checked) {
-             enableDarkMode();
-             localStorage.setItem('darkMode', 'dark');
-         } else {
-             disableDarkMode();
-             localStorage.setItem('darkMode', 'light');
-         }
-     });
-
-     function enableDarkMode() {
-
-         document.body.classList.add("toggle-dark");
-         toggleOrb.classList.add("toggle-orb");
-
-         for (i = 0; i < blockButton.length; i++) {
-             blockButton[i].classList.add("block-button-toggle");
-         }
-         for (i = 0; i < blockColor.length; i++) {
-             blockColor[i].classList.add("block-color-toggle");
-         }
+     // function disableDarkMode() {
+     //     document.body.classList.remove("toggle-dark");
+     //     toggleOrb.classList.remove("toggle-orb");
+     //     for (i = 0; i < blockButton.length; i++) {
+     //         blockButton[i].classList.remove("block-button-toggle");
+     //     }
+     //     for (i = 0; i < blockColor.length; i++) {
+     //         blockColor[i].classList.remove("block-color-toggle");
+     //     }
+     // }
 
 
-     }
 
-     function disableDarkMode() {
-         document.body.classList.remove("toggle-dark");
-         toggleOrb.classList.remove("toggle-orb");
-         for (i = 0; i < blockButton.length; i++) {
-             blockButton[i].classList.remove("block-button-toggle");
-         }
-         for (i = 0; i < blockColor.length; i++) {
-             blockColor[i].classList.remove("block-color-toggle");
-         }
-     }
 
 
  }

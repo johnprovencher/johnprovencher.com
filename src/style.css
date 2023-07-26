@@ -152,6 +152,7 @@
         margin-right: 4px;
         vertical-align: middle;
         white-space: nowrap;
+        color: rgba(100,100,100, .4);
 
     }
 
@@ -184,12 +185,12 @@
         cursor: pointer;
         border-radius: 100%;
         transform: rotate(-20deg);
-        box-shadow: 1px 1px 25px rgba(255, 255, 255, .3);
+        box-shadow: 1px 1px 25px rgba(100, 100, 100, .7);
         transition: .1s ease;
     }
 
     #orb:hover {
-        box-shadow: 1px 1px 25px rgba(255, 255, 255, .4);
+        box-shadow: 1px 1px 25px rgba(100, 100, 100, .8);
     }
 
     #orb:after {
@@ -199,7 +200,7 @@
         left: 15%;
         width: calc(70%);
         height: 55%;
-        background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, .0), rgba(255, 255, 255, .0));
+        background: linear-gradient(rgba(255, 255, 255, .95), rgba(255, 255, 255, .0), rgba(255, 255, 255, .0));
         filter: blur(5px);
         border-radius: 100%;
 
@@ -321,7 +322,7 @@
         padding: 0 2ch;
         margin: 0;
         line-height: 2.4;
-        background-color: #222;
+        background-color: rgba(100,100,100, .4);
         color: inherit;
         border: none;
         border-radius: 4px;
@@ -365,7 +366,7 @@
         content: '';
         width: 4px;
         height: 4px;
-        background-color: #787676;
+        background-color: rgba(100,100,100, .75);
         position: absolute;
         display: block;
         left: 4px;
