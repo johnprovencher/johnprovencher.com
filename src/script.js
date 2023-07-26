@@ -233,7 +233,7 @@
          }
 
          for (i = 0; i < slideDOM.length; i++) {
-             countDOM[i].style.color = "rgba(100,100,100, .4)"
+             countDOM[i].style.color = "rgba(255,255,255, .4)"
 
          }
          for (i = 0; i < (t + 1); i++) {
@@ -243,7 +243,7 @@
          var percentage = ((t + 1) / (slideDOM.length)) * 100;
 
          for (i = 0; i < slideDOM.length; i++) {
-             countDOM[i].style.color = "rgba(100,100,100, .4)";
+             countDOM[i].style.color = "rgba(255,255,255, .4)";
          }
 
          for (i = 0; i < t + 1; i++) {
@@ -290,16 +290,10 @@
                          slideContainer.style.display = "block";
                          infoContainer.style.display = "none";
                          typeWrite(currentText)
-                         document.body.style.backgroundColor = "#" + currentText;
-                         document.getElementById("orb").style.backgroundColor = "#" + currentText;
-                         //document.body.style.overflow = "hidden";
 
                      } else {
                          slideContainer.style.display = "none";
                          infoContainer.style.display = "block";
-                         document.body.style.backgroundColor = "#000";
-                         document.getElementById("orb").style.backgroundColor = "#000";
-                         // document.body.style.overflow = "inherit";
                          typeWrite("johnprovencher@gmail.com")
                          if (tClick === 0) {
                              styleThumb()
@@ -314,55 +308,52 @@
      }
 
 
-     // //dark mode
-     // var toggleDark = document.getElementById("dark-light");
-     // var toggleOrb = document.getElementById("orb");
-     // var blockButton = document.getElementsByClassName("block-button");
-     // var blockColor = document.getElementsByClassName("block-color");
+     //dark mode
+     var toggleDark = document.getElementById("dark-light");
+     var toggleOrb = document.getElementById("orb");
+     var blockButton = document.getElementsByClassName("block-button");
+     var blockColor = document.getElementsByClassName("block-color");
 
-     // const darkModePreference = localStorage.getItem('darkMode');
-     // if (darkModePreference === 'dark') {
-     //     enableDarkMode();
-     // }
+     const darkModePreference = localStorage.getItem('darkMode');
+     if (darkModePreference === 'dark') {
+         enableDarkMode();
+     }
 
-     // const darkModeToggle = document.getElementById('darkModeToggle');
-     // darkModeToggle.checked = darkModePreference === 'dark';
+     const darkModeToggle = document.getElementById('darkModeToggle');
+     darkModeToggle.checked = darkModePreference === 'dark';
 
-     // darkModeToggle.addEventListener('change', () => {
-     //     if (darkModeToggle.checked) {
-     //         enableDarkMode();
-     //         localStorage.setItem('darkMode', 'dark');
-     //     } else {
-     //         disableDarkMode();
-     //         localStorage.setItem('darkMode', 'light');
-     //     }
-     // });
+     darkModeToggle.addEventListener('change', () => {
+         if (darkModeToggle.checked) {
+             enableDarkMode();
+             localStorage.setItem('darkMode', 'dark');
+         } else {
+             disableDarkMode();
+             localStorage.setItem('darkMode', 'light');
+         }
+     });
 
-     // function enableDarkMode() {
+     function enableDarkMode() {
 
-     //     document.body.classList.add("toggle-dark");
-     //     toggleOrb.classList.add("toggle-orb");
+         document.body.classList.add("toggle-dark");
+         toggleOrb.classList.add("toggle-orb");
 
-     //     for (i = 0; i < blockButton.length; i++) {
-     //         blockButton[i].classList.add("block-button-toggle");
-     //     }
-     //     for (i = 0; i < blockColor.length; i++) {
-     //         blockColor[i].classList.add("block-color-toggle");
-     //     }
+         for (i = 0; i < blockColor.length; i++) {
+             blockColor[i].classList.add("block-color-toggle");
+         }
 
 
-     // }
+     }
 
-     // function disableDarkMode() {
-     //     document.body.classList.remove("toggle-dark");
-     //     toggleOrb.classList.remove("toggle-orb");
-     //     for (i = 0; i < blockButton.length; i++) {
-     //         blockButton[i].classList.remove("block-button-toggle");
-     //     }
-     //     for (i = 0; i < blockColor.length; i++) {
-     //         blockColor[i].classList.remove("block-color-toggle");
-     //     }
-     // }
+     function disableDarkMode() {
+         document.body.classList.remove("toggle-dark");
+         toggleOrb.classList.remove("toggle-orb");
+         for (i = 0; i < blockButton.length; i++) {
+             blockButton[i].classList.remove("block-button-toggle");
+         }
+         for (i = 0; i < blockColor.length; i++) {
+             blockColor[i].classList.remove("block-color-toggle");
+         }
+     }
 
 
 
