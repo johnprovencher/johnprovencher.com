@@ -107,7 +107,8 @@
     .slide {
         position: absolute;
         transition: .2s ease;
-        transition: 0s ease;
+        will-change: left;
+
         text-align: center;
         display: none;
 
