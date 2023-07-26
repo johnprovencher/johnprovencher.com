@@ -9,56 +9,6 @@
          t = -1,
          animateType,
          currentText;
-
-
-     //innit
-     function loadMediaSequentially(slideshowSelector, callback) {
-         const slideshow = document.querySelector(slideshowSelector);
-         const mediaElements = Array.from(slideshow.querySelectorAll('img, video'));
-
-         // Helper function to load each media element sequentially
-         function loadMediaElement(index) {
-             if (index >= mediaElements.length) {
-                 callback(); // All media elements are loaded, trigger the callback
-                 return;
-             }
-
-             const mediaElement = mediaElements[index];
-             const isVideo = mediaElement.tagName.toLowerCase() === 'video';
-             const eventName = isVideo ? 'loadeddata' : 'load';
-
-             mediaElement.addEventListener(eventName, () => {
-                 // Once the current media element is loaded, load the next one
-                 loadMediaElement(index + 1);
-             });
-
-             if (!isVideo) {
-                 // For images, set the src attribute to trigger the load event
-                 mediaElement.src = mediaElement.getAttribute('src');
-             } else {
-                 // For videos, load() must be called to trigger the loadeddata event
-                 mediaElement.load();
-             }
-         }
-
-         // Start loading media elements sequentially from the beginning
-         loadMediaElement(0);
-     }
-
-     // Example usage:
-     loadMediaSequentially('#slideshow', () => {
-         setTimeout(function() {
-             console.log('All images and videos have been loaded.');
-             const slideshow = document.querySelector('#slideshow');
-
-             slideshow.style.display = 'block';
-             slider(false, false)
-             counter();
-         }, 500)
-
-     });
-
-
      //typewriter
      function typeWrite(text) {
 
@@ -77,7 +27,6 @@
          }
          typeNextCharacter();
      }
-     typeWrite('loading...')
 
      //p tag = image width
      function styleThumb() {
@@ -175,9 +124,9 @@
          }
 
          if (videoElement) {
-             videoElement.controls = false;
+            videoElement.controls = false;
              videoElement.play();
-             videoElement.controls = false;
+            videoElement.controls = false;
 
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
@@ -255,7 +204,9 @@
      }
 
 
-
+     //innit
+     slider(false, false)
+     counter();
 
      //top counter animation /  ticker
      function counter(clicker, toggle) {
