@@ -101,14 +101,13 @@
         overflow: hidden;
         height: 100%;
         width: 100%;
-        opacity: 0;
+        display: none;
     }
 
     .slide {
         position: absolute;
         transition: .2s ease;
         transition: 0s ease;
-
         text-align: center;
 
     }

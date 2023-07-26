@@ -130,48 +130,5 @@ layout: 'base.njk'
     </div>
 </div>
 <script type="text/javascript">
-function trackMediaLoading() {
-  const mediaElements = document.querySelectorAll('#slideshow img, #slideshow video');
-  const totalMediaCount = mediaElements.length;
-  let loadedMediaCount = 0;
-  const loadedMediaSet = new Set();
 
-  function mediaLoaded() {
-    if (!loadedMediaSet.has(this)) {
-      loadedMediaSet.add(this);
-      loadedMediaCount++;
-      console.log(`Media loaded: ${loadedMediaCount}/${totalMediaCount}`);
-      if (loadedMediaCount === totalMediaCount) {
-        console.log('All media items are loaded!');
-
-          const slideshow = document.getElementById('slideshow');
-          setTimeout(function(){
-             slideshow.style.opacity = 1
-          },1000)
-        // Perform additional actions once all media items are loaded
-        // For example, show the slideshow or start playback.
-      }
-    }
-  }
-
-  function videoCanPlayThrough() {
-    mediaLoaded.call(this);
-    // For videos, use 'canplaythrough' event instead of 'load'
-  }
-
-  mediaElements.forEach((media) => {
-    if (media.tagName === 'VIDEO') {
-      media.addEventListener('canplaythrough', videoCanPlayThrough);
-    } else {
-      media.addEventListener('load', mediaLoaded);
-    }
-    // In case the media is already loaded (e.g., cached), check if it's complete
-    if (media.complete || media.readyState === 4) {
-      mediaLoaded.call(media);
-    }
-  });
-}
-
-// Call the trackMediaLoading function after the slideshow is rendered
-trackMediaLoading();
 </script>
