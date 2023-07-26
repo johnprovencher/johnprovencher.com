@@ -148,8 +148,7 @@
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = 0 - offset + 'px'
-         ele.style.left = "-200%"
-         ele.style.display = 'block'
+         ele.style.display = 'none'
 
      }
 
@@ -160,23 +159,22 @@
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
-         ele.style.left = "200%"
+      //   ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
+         ele.style.display = 'none'
 
-         ele.style.display = 'block'
 
      }
 
      function leftOff(ele) {
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         ele.style.left = "-50%"
+     //    ele.style.left = "-50%"
          ele.style.display = 'none'
 
      }
 
      function rightOff(ele) {
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         ele.style.left = "150%"
+      //   ele.style.left = "150%"
          ele.style.display = 'none'
      }
 
