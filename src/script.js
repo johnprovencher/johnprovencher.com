@@ -148,7 +148,7 @@
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = 0 - offset + 'px'
-         ele.style.display = 'block'
+         ele.style.display = 'none'
 
      }
 
@@ -160,7 +160,7 @@
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
-         ele.style.display = 'block'
+         ele.style.display = 'none'
 
      }
 
@@ -189,8 +189,8 @@
              }
          }
          for (i = 0; i < slideDOM.length; i++) {
-             slideDOM[i].style.width = "50px"
-             slideDOM[i].style.height = sHeight + "px"
+             // slideDOM[i].style.width = "50px"
+             // slideDOM[i].style.height = sHeight + "px"
 
          }
          leftOff(slideDOM[slideArr[0]])
