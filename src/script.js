@@ -148,7 +148,8 @@
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = 0 - offset + 'px'
-         ele.style.display = 'none'
+         ele.style.left = "-200%"
+         ele.style.display = 'block'
 
      }
 
@@ -160,7 +161,9 @@
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
-         ele.style.display = 'none'
+         ele.style.left = "200%"
+
+         ele.style.display = 'block'
 
      }
 
