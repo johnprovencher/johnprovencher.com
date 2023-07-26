@@ -71,15 +71,14 @@
      }
 
      //layout sizing
+     var marginSize = height
      var sizerW = width
      var sizerH = height
      var sHeight = 50;
      var offset = 0;
 
      if (height > width) {
-         sizerW = width
-         sizerH = height
-         sHeight = height
+     var marginSize = width
          offset = 100
      }
 
@@ -110,8 +109,8 @@
 
      //slider functions
      function center(ele) {
-         ele.style.width = sizerW - (width/10) + "px"
-         ele.style.height = sizerH - (width/10) + "px"
+         ele.style.width = sizerW - (marginSize/8) + "px"
+         ele.style.height = sizerH - (marginSize/8) + "px"
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          ele.style.display = 'block'
