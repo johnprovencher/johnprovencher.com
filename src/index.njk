@@ -129,8 +129,8 @@ layout: 'base.njk'
         {%- for post in collections.post -%}
         {% if post.data.video %}
         <div class="slide">
-            <video controls='false' preload="false" muted autoplay="false" loop playsinline>
-                <source src="{{ post.data.video }}" type="video/mp4">
+            <video data-src="{{ post.data.video }}" controls='false' preload="false" muted autoplay="false" loop playsinline>
+                <source data-src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>

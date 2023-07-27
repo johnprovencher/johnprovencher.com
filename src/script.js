@@ -143,7 +143,6 @@
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
              mediaElement.removeAttribute('data-src');
-             mediaElement.src = dataSrc;
              mediaElement.load();
              console.log(mediaElement)
          }
@@ -172,9 +171,10 @@
          }
 
 
-         if (videoElementT) {
-            // lazyLoadMedia(videoElementT);
-             videoElementT.controls = false;
+         if (videoElement) {
+             lazyLoadMedia(videoElementT);
+             videoElement.controls = false;
+             videoElement.play();
              videoElementT.play();
 
              var textTracks = videoElementT.textTracks;
