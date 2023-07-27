@@ -144,51 +144,22 @@
              // Lazy load videos
              const sourceElement = mediaElement.querySelector('source');
              const dataSrc = sourceElement.getAttribute('data-src');
-             if (dataSrc) {
-                 const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                 mediaElement.removeAttribute('autoplay'); // Remove autoplay attribute
-                 if (isMobileDevice) {
-                     // On mobile devices, handle autoplay restrictions
-                     mediaElement.setAttribute('muted', ''); // Mute the video to autoplay
-                     mediaElement.pause(); // Pause the video to reset it
-                     sourceElement.setAttribute('src', dataSrc);
-                     sourceElement.setAttribute('type', 'video/mp4');
-                     sourceElement.removeAttribute('data-src');
-                     mediaElement.load();
-
-                     // Add a click event listener to start video playback on user interaction
-                     const playVideoOnInteraction = function() {
-                         mediaElement.play().then(() => {
-                             // Playback started successfully
-                             // Remove the click event listener after playback starts
-                             document.removeEventListener('click', playVideoOnInteraction);
-                         }).catch(error => {
-                             // Autoplay was blocked, handle this based on your use case
-                             const errorContainer = document.getElementById('error-container');
-                             errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
-                         });
-                     };
-
-                     // Add the click event listener to the document to detect user interaction
-                     document.addEventListener('click', playVideoOnInteraction);
-                 } else {
-                     // On desktop devices, keep the original behavior with autoplay and muted attributes
-                     mediaElement.setAttribute('autoplay', '');
-                     mediaElement.setAttribute('muted', '');
-                     mediaElement.pause();
-                     sourceElement.setAttribute('src', dataSrc);
-                     sourceElement.setAttribute('type', 'video/mp4');
-                     sourceElement.removeAttribute('data-src');
-                     mediaElement.load();
-                     mediaElement.play().catch(error => {
-                         // Autoplay was blocked, handle this based on your use case
-                         const errorContainer = document.getElementById('error-container');
-                         errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
-                     });
-                 }
-             }
+             mediaElement.setAttribute('autoplay', '');
+             mediaElement.setAttribute('muted', '');
+             mediaElement.pause();
+             sourceElement.setAttribute('src', dataSrc);
+             sourceElement.setAttribute('type', 'video/mp4');
+             sourceElement.removeAttribute('data-src');
+             mediaElement.load();
+             mediaElement.play().catch(error => {
+                 // Autoplay was blocked, handle this based on your use case
+                 const errorContainer = document.getElementById('error-container');
+                 errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
+                 console.error('Autoplay was blocked:', error.message);
+             });
          }
      }
+ }
 
 
 
@@ -198,303 +169,308 @@
 
 
 
-     //slider functions
-     function center(ele) {
-         ele.style.width = sizerW - (marginSize / 11) + "px"
-         ele.style.height = sizerH - (marginSize / 11) + "px"
-         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
-         ele.style.display = 'block'
+ //slider functions
+ function center(ele) {
+     ele.style.width = sizerW - (marginSize / 11) + "px"
+     ele.style.height = sizerH - (marginSize / 11) + "px"
+     ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+     ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
+     ele.style.display = 'block'
 
-         var imageElement = ele.querySelector('img');
-         var videoElement = ele.querySelector('video');
+     var imageElement = ele.querySelector('img');
+     var videoElement = ele.querySelector('video');
 
-         if (imageElement) {
-             var imageAltText = imageElement.getAttribute('alt');
-             currentText = imageAltText
-             if (info === false) {
-                 typeWrite(currentText)
-             }
-             if (imageElement.hasAttribute('data-src')) {
-                 lazyLoadMedia(imageElement);
-             }
-
+     if (imageElement) {
+         var imageAltText = imageElement.getAttribute('alt');
+         currentText = imageAltText
+         if (info === false) {
+             typeWrite(currentText)
          }
-         if (videoElement) {
+         if (imageElement.hasAttribute('data-src')) {
+             lazyLoadMedia(imageElement);
+         }
+
+     }
+     if (videoElement) {
+         videoElement.play().catch(error => {
+                 // Autoplay was blocked, handle this based on your use case
+                 const errorContainer = document.getElementById('error-container');
+                 errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
+                 console.error('Autoplay was blocked:', error.message);
+             });;
+
+         videoElement.controls = false;
+         var textTracks = videoElement.textTracks;
+         var videoAltText = textTracks[0].label
+         currentText = videoAltText
+         if (info === false) {
+             typeWrite(currentText)
+         }
+         var sourceElement = videoElement.querySelector('source');
+         if (sourceElement && sourceElement.hasAttribute('data-src')) {
+             lazyLoadMedia(videoElement);
+         } else {
              videoElement.play();
-
-             videoElement.controls = false;
-             var textTracks = videoElement.textTracks;
-             var videoAltText = textTracks[0].label
-             currentText = videoAltText
-             if (info === false) {
-                 typeWrite(currentText)
-             }
-             var sourceElement = videoElement.querySelector('source');
-             if (sourceElement && sourceElement.hasAttribute('data-src')) {
-                 lazyLoadMedia(videoElement);
-             } else {
-                 videoElement.play();
-             }
-
          }
-     }
-
-     function left(ele) {
-         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         ele.style.left = 0 - offset + 'px'
-         ele.style.display = 'none'
 
      }
+ }
 
-     function right(ele) {
-         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         //   ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
-         ele.style.display = 'none'
+ function left(ele) {
+     ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+     ele.style.left = 0 - offset + 'px'
+     ele.style.display = 'none'
 
+ }
+
+ function right(ele) {
+     ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+     //   ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
+     ele.style.display = 'none'
+
+
+ }
+
+ function leftOff(ele) {
+     var videoElement = ele.querySelector('video');
+
+     if (videoElement) {
+         videoElement.pause();
+         videoElement.autoplay = true;
 
      }
+     ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+     ele.style.left = "-5000%"
+     ele.style.display = 'none'
 
-     function leftOff(ele) {
-         var videoElement = ele.querySelector('video');
+ }
 
-         if (videoElement) {
-             videoElement.pause();
-             videoElement.autoplay = true;
+ function rightOff(ele) {
+     ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+     //   ele.style.left = "150%"
+     ele.style.display = 'none'
+ }
 
-         }
-         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         ele.style.left = "-5000%"
-         ele.style.display = 'none'
-
-     }
-
-     function rightOff(ele) {
-         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         //   ele.style.left = "150%"
-         ele.style.display = 'none'
-     }
-
-     //slider
-     function slider(toggle, resize) {
-         if (resize === false) {
-             if (toggle === true) {
-                 slideArr.unshift(slideArr.pop());
-
-             } else {
-                 slideArr.push(slideArr.shift())
-
-             }
-         }
-         for (i = 0; i < slideDOM.length; i++) {
-             // slideDOM[i].style.width = "50px"
-             // slideDOM[i].style.height = sHeight + "px"
-
-         }
-         center(slideDOM[slideArr[0]])
-         for (i = 1; i < slideDOM.length; i++) {
-             leftOff(slideDOM[slideArr[i]])
-         }
-     }
-
-
-     //innit
-     slider(true, true)
-     counter();
-
-     //top counter animation /  ticker
-     function counter(clicker, toggle) {
-
-
+ //slider
+ function slider(toggle, resize) {
+     if (resize === false) {
          if (toggle === true) {
-             t -= 1;
+             slideArr.unshift(slideArr.pop());
 
          } else {
-             t += 1;
+             slideArr.push(slideArr.shift())
 
          }
-         if (t >= slideDOM.length) {
-             t = 0;
-             for (i = 0; i < slideDOM.length; i++) {}
-         }
+     }
+     for (i = 0; i < slideDOM.length; i++) {
+         // slideDOM[i].style.width = "50px"
+         // slideDOM[i].style.height = sHeight + "px"
 
-         if (t <= -1) {
-             t = slideDOM.length - 1;
-         }
-
-         var percentage = ((t + 1) / (slideDOM.length)) * 100;
-         var scale = (percentage / 100) * 10;
-         for (i = 0; i < 10; i++) {
-             countDOM[i].style.color = "rgba(255,255,255, .4)";
-         }
-         for (i = 0; i < scale; i++) {
-             countDOM[i].style.color = "#54f408";
-         }
+     }
+     center(slideDOM[slideArr[0]])
+     for (i = 1; i < slideDOM.length; i++) {
+         leftOff(slideDOM[slideArr[i]])
+     }
+ }
 
 
-         var roundedPercent = Math.floor(percentage);
+ //innit
+ slider(true, true)
+ counter();
 
-         //var percentText = "(&thinsp;" + (t + 1) + "&thinsp;/&thinsp;" + slideDOM.length + "&thinsp;)"
-         document.getElementById('percent').innerHTML = "(&thinsp;" + roundedPercent + "%&thinsp;)"
+ //top counter animation /  ticker
+ function counter(clicker, toggle) {
+
+
+     if (toggle === true) {
+         t -= 1;
+
+     } else {
+         t += 1;
+
+     }
+     if (t >= slideDOM.length) {
+         t = 0;
+         for (i = 0; i < slideDOM.length; i++) {}
+     }
+
+     if (t <= -1) {
+         t = slideDOM.length - 1;
+     }
+
+     var percentage = ((t + 1) / (slideDOM.length)) * 100;
+     var scale = (percentage / 100) * 10;
+     for (i = 0; i < 10; i++) {
+         countDOM[i].style.color = "rgba(255,255,255, .4)";
+     }
+     for (i = 0; i < scale; i++) {
+         countDOM[i].style.color = "#54f408";
      }
 
 
-     //click/touch event
-     document.addEventListener("touchStart", click, false)
-     document.addEventListener("click", click, false)
+     var roundedPercent = Math.floor(percentage);
 
-     var slideContainer = document.getElementById("slide-container");
-     var infoContainer = document.getElementById("info-container");
-     var chatter = document.getElementById("chatter");
-
-     var tClick = 0;
+     //var percentText = "(&thinsp;" + (t + 1) + "&thinsp;/&thinsp;" + slideDOM.length + "&thinsp;)"
+     document.getElementById('percent').innerHTML = "(&thinsp;" + roundedPercent + "%&thinsp;)"
+ }
 
 
-     function click(ev) {
-         var isLeftHalfClick = (ev.clientX) < width / 2;
-         var isIgnored = ev.target.closest("#orb");
-         var isIgnoredAgainAgain = ev.target.closest("#chatter");
-         var isIgnoredAgain = ev.target.closest("#info-container");
-         if (!isIgnoredAgainAgain) {
+ //click/touch event
+ document.addEventListener("touchStart", click, false)
+ document.addEventListener("click", click, false)
 
-             if (!isIgnoredAgain) {
-                 if (!isIgnored) {
-                     counter(ev.isTrusted, isLeftHalfClick);
-                     slider(isLeftHalfClick, false)
+ var slideContainer = document.getElementById("slide-container");
+ var infoContainer = document.getElementById("info-container");
+ var chatter = document.getElementById("chatter");
+
+ var tClick = 0;
+
+
+ function click(ev) {
+     var isLeftHalfClick = (ev.clientX) < width / 2;
+     var isIgnored = ev.target.closest("#orb");
+     var isIgnoredAgainAgain = ev.target.closest("#chatter");
+     var isIgnoredAgain = ev.target.closest("#info-container");
+     if (!isIgnoredAgainAgain) {
+
+         if (!isIgnoredAgain) {
+             if (!isIgnored) {
+                 counter(ev.isTrusted, isLeftHalfClick);
+                 slider(isLeftHalfClick, false)
+
+             } else {
+                 if (slideContainer.style.display === "none") {
+                     slideContainer.style.display = "block";
+                     infoContainer.style.display = "none";
+                     if (width < 1200) {
+                         chatter.style.display = "none";
+                     }
+                     info = false
+                     typeWrite(currentText)
 
                  } else {
-                     if (slideContainer.style.display === "none") {
-                         slideContainer.style.display = "block";
-                         infoContainer.style.display = "none";
-                         if (width < 1200) {
-                             chatter.style.display = "none";
-                         }
-                         info = false
-                         typeWrite(currentText)
-
-                     } else {
-                         slideContainer.style.display = "none";
-                         infoContainer.style.display = "block";
-                         chatter.style.display = "inline-block";
-                         info = true
-                         typeWrite("e-mail?")
-                         if (tClick === 0) {
-                             styleThumb()
-                         }
-                         tClick += 1
+                     slideContainer.style.display = "none";
+                     infoContainer.style.display = "block";
+                     chatter.style.display = "inline-block";
+                     info = true
+                     typeWrite("e-mail?")
+                     if (tClick === 0) {
+                         styleThumb()
                      }
+                     tClick += 1
                  }
              }
          }
-
-         // ev.preventDefault();
      }
 
+     // ev.preventDefault();
+ }
 
-     var imageContainers = document.querySelectorAll('.image-container');
 
-     // Add a click event listener to each element with class 'image-container'
-     imageContainers.forEach(function(container, index) {
-         container.addEventListener('click', function() {
-             // Get the index of the clicked element among all elements with the class 'image-container'
-             var clickedIndex = Array.from(imageContainers).indexOf(container);
-             slideContainer.style.display = "block";
-             infoContainer.style.display = "none";
-             if (width < 1200) {
-                 chatter.style.display = "none";
-             }
-             info = false
-             var targetNumber = clickedIndex;
+ var imageContainers = document.querySelectorAll('.image-container');
 
-             var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
-             slideArr = shiftedArray;
-             t = targetNumber - 1
-             slider(true, true)
-             counter();
-         });
+ // Add a click event listener to each element with class 'image-container'
+ imageContainers.forEach(function(container, index) {
+     container.addEventListener('click', function() {
+         // Get the index of the clicked element among all elements with the class 'image-container'
+         var clickedIndex = Array.from(imageContainers).indexOf(container);
+         slideContainer.style.display = "block";
+         infoContainer.style.display = "none";
+         if (width < 1200) {
+             chatter.style.display = "none";
+         }
+         info = false
+         var targetNumber = clickedIndex;
+
+         var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
+         slideArr = shiftedArray;
+         t = targetNumber - 1
+         slider(true, true)
+         counter();
      });
+ });
 
 
-     // //dark mode
-     // var toggleDark = document.getElementById("dark-light");
-     // var toggleOrb = document.getElementById("orb");
-     // var blockButton = document.getElementsByClassName("block-button");
-     // var blockColor = document.getElementsByClassName("block-color");
-     // var anchorTags = document.querySelectorAll('a:not(.block-button)');
+ // //dark mode
+ // var toggleDark = document.getElementById("dark-light");
+ // var toggleOrb = document.getElementById("orb");
+ // var blockButton = document.getElementsByClassName("block-button");
+ // var blockColor = document.getElementsByClassName("block-color");
+ // var anchorTags = document.querySelectorAll('a:not(.block-button)');
 
 
 
-     // var darkModePreference = localStorage.getItem('darkMode');
-     // if (darkModePreference === 'dark') {
-     //     enableDarkMode();
-     // }
+ // var darkModePreference = localStorage.getItem('darkMode');
+ // if (darkModePreference === 'dark') {
+ //     enableDarkMode();
+ // }
 
-     // var darkModeToggle = document.getElementById('darkModeToggle');
-     // darkModeToggle.checked = darkModePreference === 'dark';
+ // var darkModeToggle = document.getElementById('darkModeToggle');
+ // darkModeToggle.checked = darkModePreference === 'dark';
 
-     // darkModeToggle.addEventListener('change', () => {
-     //     if (darkModeToggle.checked) {
-     //         enableDarkMode();
-     //         localStorage.setItem('darkMode', 'dark');
-     //     } else {
-     //         disableDarkMode();
-     //         localStorage.setItem('darkMode', 'light');
-     //     }
-     // });
+ // darkModeToggle.addEventListener('change', () => {
+ //     if (darkModeToggle.checked) {
+ //         enableDarkMode();
+ //         localStorage.setItem('darkMode', 'dark');
+ //     } else {
+ //         disableDarkMode();
+ //         localStorage.setItem('darkMode', 'light');
+ //     }
+ // });
 
-     // function enableDarkMode() {
+ // function enableDarkMode() {
 
-     //     document.body.classList.add("toggle-dark");
-     //     toggleOrb.classList.add("toggle-orb");
-     //     anchorTags.forEach(function(anchor) {
-     //         anchor.classList.add('toggle-dark');
-     //     });
-     //     for (i = 0; i < blockColor.length; i++) {
-     //         blockColor[i].classList.add("block-color-toggle");
-     //     }
+ //     document.body.classList.add("toggle-dark");
+ //     toggleOrb.classList.add("toggle-orb");
+ //     anchorTags.forEach(function(anchor) {
+ //         anchor.classList.add('toggle-dark');
+ //     });
+ //     for (i = 0; i < blockColor.length; i++) {
+ //         blockColor[i].classList.add("block-color-toggle");
+ //     }
 
 
-     // }
+ // }
 
-     // function disableDarkMode() {
-     //     document.body.classList.remove("toggle-dark");
-     //     toggleOrb.classList.remove("toggle-orb");
-     //     anchorTags.forEach(function(anchor) {
-     //         anchor.classList.remove('toggle-dark');
-     //     });
-     //     for (i = 0; i < blockButton.length; i++) {
-     //         blockButton[i].classList.remove("block-button-toggle");
-     //     }
-     //     for (i = 0; i < blockColor.length; i++) {
-     //         blockColor[i].classList.remove("block-color-toggle");
-     //     }
-     // }
+ // function disableDarkMode() {
+ //     document.body.classList.remove("toggle-dark");
+ //     toggleOrb.classList.remove("toggle-orb");
+ //     anchorTags.forEach(function(anchor) {
+ //         anchor.classList.remove('toggle-dark');
+ //     });
+ //     for (i = 0; i < blockButton.length; i++) {
+ //         blockButton[i].classList.remove("block-button-toggle");
+ //     }
+ //     for (i = 0; i < blockColor.length; i++) {
+ //         blockColor[i].classList.remove("block-color-toggle");
+ //     }
+ // }
 
-     // document.addEventListener('DOMContentLoaded', function() {
-     //     // Intersection Observer setup
-     //     const observerOptions = {
-     //         root: null,
-     //         rootMargin: '0px',
-     //         threshold: 0.1 // Trigger when 10% of the slide is visible
-     //     };
+ // document.addEventListener('DOMContentLoaded', function() {
+ //     // Intersection Observer setup
+ //     const observerOptions = {
+ //         root: null,
+ //         rootMargin: '0px',
+ //         threshold: 0.1 // Trigger when 10% of the slide is visible
+ //     };
 
-     //     const slideObserver = new IntersectionObserver(function(entries, observer) {
-     //         entries.forEach(entry => {
-     //             if (entry.isIntersecting) {
-     //                 lazyLoadMedia(entry.target);
-     //                 slideObserver.unobserve(entry.target);
-     //             }
-     //         });
-     //     }, observerOptions);
+ //     const slideObserver = new IntersectionObserver(function(entries, observer) {
+ //         entries.forEach(entry => {
+ //             if (entry.isIntersecting) {
+ //                 lazyLoadMedia(entry.target);
+ //                 slideObserver.unobserve(entry.target);
+ //             }
+ //         });
+ //     }, observerOptions);
 
-     //     // Observe all slides
-     //     slides.forEach(slide => {
-     //         slideObserver.observe(slide);
-     //     });
-     //     imageContainers.forEach(slide => {
-     //         slideObserver.observe(slide);
-     //     });
-     // });
+ //     // Observe all slides
+ //     slides.forEach(slide => {
+ //         slideObserver.observe(slide);
+ //     });
+ //     imageContainers.forEach(slide => {
+ //         slideObserver.observe(slide);
+ //     });
+ // });
 
 
 
