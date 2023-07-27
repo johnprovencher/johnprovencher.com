@@ -153,18 +153,7 @@
              // Add muted attribute
              mediaElement.setAttribute("muted", "");
 
-  // Function to play the video
-  function playVideo() {
-    if (mediaElement.readyState >= 4) {
-      mediaElement.play();
-    } else {
-      mediaElement.addEventListener("canplay", function () {
-        mediaElement.play();
-      });
-    }
-  }
 
-    playVideo();
 
 
              console.log(mediaElement)
@@ -196,14 +185,14 @@
              lazyLoadMedia(videoElement);
              //videoElement.controls = false;
              videoElement.autoplay = true;
-             videoElement.play();
+             //videoElement.play();
          }
 
          if (videoElementT) {
              //videoElementT.controls = false;
              videoElementT.autoplay = true;
 
-             videoElementT.play();
+             //videoElementT.play();
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
@@ -334,7 +323,7 @@
              if (!isIgnoredAgain) {
                  if (!isIgnored) {
                      counter(ev.isTrusted, isLeftHalfClick);
-                     slider(isLeftHalfClick, false)
+                     //slider(isLeftHalfClick, false)
 
                  } else {
                      if (slideContainer.style.display === "none") {
