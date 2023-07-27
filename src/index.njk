@@ -99,13 +99,24 @@ layout: 'base.njk'
     </div>
     <div id="thumbnails">
         {%- for post in collections.post -%}
+        {% if post.data.video %}
         <div class="image-container">
-            <a href="{{ post.url }}">
-                <img src="{{post.data.image}}" alt="{{post.data.alt}}">
-                <br>
-                <p class="small">{{ post.data.info }}</p>
-            </a>
+            <video controls='false' muted autoplay="false" loop playsinline>
+                <source src="{{ post.data.video }}" type="video/mp4">
+                <track label="{{post.data.imageAlt}}" label="English" default>
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            <p class="small">{{ post.data.info }}</p>
         </div>
+        {% endif %}
+        {% if post.data.image %}
+        <div class="image-container">
+            <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+            <br>
+            <p class="small">{{ post.data.info }}</p>
+        </div>
+        {% endif %}
         {%- endfor -%}
     </div>
     {% include 'footer.njk' %}
@@ -115,17 +126,20 @@ layout: 'base.njk'
     </div>
     <div id="slideshow">
         {%- for post in collections.post -%}
+        {% if post.data.video %}
         <div class="slide">
-            {% if post.data.video %}
             <video controls='false' muted autoplay="false" loop playsinline>
                 <source src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
-            {% else %}
-            <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
-            {% endif %}
         </div>
+        {% endif %}
+        {% if post.data.image %}
+        <div class="slide">
+            <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+        </div>
+        {% endif %}
         {%- endfor -%}
     </div>
 </div>

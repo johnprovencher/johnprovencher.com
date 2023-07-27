@@ -8,8 +8,18 @@
          slideArr = [],
          t = -1,
          animateType,
-         currentText;
+         currentText,
+         info = false;
 
+     function shiftArrayToNumber(arr, targetNumber) {
+         var index = arr.indexOf(targetNumber);
+         if (index >= 0) {
+             var leftPart = arr.slice(0, index);
+             var rightPart = arr.slice(index);
+             return rightPart.concat(leftPart);
+         }
+         return arr;
+     }
 
      //typewriter
      function typeWrite(text) {
@@ -36,6 +46,7 @@
          for (let container of containers) {
              var paragraph = container.querySelector("p");
              var image = container.querySelector("img");
+             var video = container.querySelector("video");
              var pWidth;
              if (paragraph) {
                  pWidth = paragraph.offsetWidth;
@@ -43,6 +54,10 @@
 
              if (image) {
                  image.style.width = pWidth + "px"
+             }
+             if (video) {
+                 video.style.width = pWidth + "px"
+                 video.pause()
              }
          }
      }
@@ -59,7 +74,7 @@
      var percent = document.createElement("div");
      percent.setAttribute("id", "percent");
      document.getElementById('counter').appendChild(percent);
-     for (i = 0; i < slideDOM.length; i++) {
+     for (i = 0; i < 10; i++) {
          var count = document.createElement("div");
          count.classList.add("count");
          var countIn = document.createElement("div");
@@ -78,7 +93,7 @@
      var offset = 0;
 
      if (height > width) {
-     var marginSize = width
+         var marginSize = width
          offset = 100
      }
 
@@ -109,19 +124,21 @@
 
      //slider functions
      function center(ele) {
-         ele.style.width = sizerW - (marginSize/11) + "px"
-         ele.style.height = sizerH - (marginSize/11) + "px"
+         ele.style.width = sizerW - (marginSize / 11) + "px"
+         ele.style.height = sizerH - (marginSize / 11) + "px"
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          ele.style.display = 'block'
 
          var imageElement = ele.querySelector('img');
          var videoElement = ele.querySelector('video');
-
+         console.log(slideArr)
          if (imageElement) {
              var imageAltText = imageElement.getAttribute('alt');
              currentText = imageAltText
-             typeWrite(currentText)
+             if (info === false) {
+                 typeWrite(currentText)
+             }
          }
 
          if (videoElement) {
@@ -132,7 +149,9 @@
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
-             typeWrite(currentText)
+             if (info === false) {
+                 typeWrite(currentText)
+             }
              document.body.style.backgroundColor = "#" + currentText;
              document.getElementById("orb").style.backgroundColor = "#" + currentText;
          }
@@ -196,19 +215,15 @@
              // slideDOM[i].style.height = sHeight + "px"
 
          }
-         leftOff(slideDOM[slideArr[0]])
-         left(slideDOM[slideArr[1]])
-         center(slideDOM[slideArr[2]])
-         right(slideDOM[slideArr[3]])
-         rightOff(slideDOM[slideArr[4]])
-         for (i = 5; i < slideDOM.length; i++) {
+         center(slideDOM[slideArr[0]])
+         for (i = 1; i < slideDOM.length; i++) {
              leftOff(slideDOM[slideArr[i]])
          }
      }
 
 
      //innit
-     slider(false, false)
+     slider(true, true)
      counter();
 
      //top counter animation /  ticker
@@ -231,34 +246,17 @@
              t = slideDOM.length - 1;
          }
 
-         for (i = 0; i < slideDOM.length; i++) {
-             countDOM[i].style.color = "rgba(255,255,255, .4)"
-
-         }
-         for (i = 0; i < (t + 1); i++) {
-             countDOM[i].style.color = "#54f408"
-         }
-
          var percentage = ((t + 1) / (slideDOM.length)) * 100;
-
-         for (i = 0; i < slideDOM.length; i++) {
+         var scale = (percentage / 100) * 10;
+         for (i = 0; i < 10; i++) {
              countDOM[i].style.color = "rgba(255,255,255, .4)";
          }
-
-         for (i = 0; i < t + 1; i++) {
-             if (percentage > 40) {
-                 //  document.getElementById('percent').style.color = "#4CBB17"
-                 countDOM[i].style.color = "#54f408";
-             } else {
-                 // document.getElementById('percent').style.color = "orangered"
-                 // countDOM[i].style.color = "orangered";
-                 countDOM[i].style.color = "#54f408";
-
-             }
+         for (i = 0; i < scale; i++) {
+             countDOM[i].style.color = "#54f408";
          }
 
 
-         const roundedPercent = Math.floor(percentage);
+         var roundedPercent = Math.floor(percentage);
 
          //var percentText = "(&thinsp;" + (t + 1) + "&thinsp;/&thinsp;" + slideDOM.length + "&thinsp;)"
          document.getElementById('percent').innerHTML = "(&thinsp;" + roundedPercent + "%&thinsp;)"
@@ -271,6 +269,8 @@
 
      var slideContainer = document.getElementById("slide-container");
      var infoContainer = document.getElementById("info-container");
+     var chatter = document.getElementById("chatter");
+
      var tClick = 0;
 
 
@@ -290,11 +290,17 @@
                      if (slideContainer.style.display === "none") {
                          slideContainer.style.display = "block";
                          infoContainer.style.display = "none";
+                         if (width < 1200) {
+                             chatter.style.display = "none";
+                         }
+                         info = false
                          typeWrite(currentText)
 
                      } else {
                          slideContainer.style.display = "none";
                          infoContainer.style.display = "block";
+                         chatter.style.display = "inline-block";
+                         info = true
                          typeWrite("johnprovencher@gmail.com")
                          if (tClick === 0) {
                              styleThumb()
@@ -309,6 +315,31 @@
      }
 
 
+     var imageContainers = document.querySelectorAll('.image-container');
+
+     // Add a click event listener to each element with class 'image-container'
+     imageContainers.forEach(function(container, index) {
+         container.addEventListener('click', function() {
+             // Get the index of the clicked element among all elements with the class 'image-container'
+             var clickedIndex = Array.from(imageContainers).indexOf(container);
+             slideContainer.style.display = "block";
+             infoContainer.style.display = "none";
+             if (width < 1200) {
+                 chatter.style.display = "none";
+             }
+             info = false
+             var targetNumber = clickedIndex;
+
+                 var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
+                 slideArr = shiftedArray;
+                 console.log(slideArr)
+             t = targetNumber
+             slider(true, true)
+             counter();
+         });
+     });
+
+
      //dark mode
      var toggleDark = document.getElementById("dark-light");
      var toggleOrb = document.getElementById("orb");
@@ -318,12 +349,12 @@
 
 
 
-     const darkModePreference = localStorage.getItem('darkMode');
+     var darkModePreference = localStorage.getItem('darkMode');
      if (darkModePreference === 'dark') {
          enableDarkMode();
      }
 
-     const darkModeToggle = document.getElementById('darkModeToggle');
+     var darkModeToggle = document.getElementById('darkModeToggle');
      darkModeToggle.checked = darkModePreference === 'dark';
 
      darkModeToggle.addEventListener('change', () => {

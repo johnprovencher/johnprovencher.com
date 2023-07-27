@@ -181,7 +181,7 @@
         cursor: pointer;
         border-radius: 100%;
         transform: rotate(-20deg);
-        box-shadow: 1px 1px 25px rgba(100, 100, 100, .7);
+        box-shadow: 1px 1px 25px rgba(90, 90, 90, .7);
         transition: .1s ease;
     }
 
@@ -507,6 +507,8 @@
 
         #chatter {
             display: none;
+            top: 30px;
+            left: 0px;
         }
 
         .countIn {
