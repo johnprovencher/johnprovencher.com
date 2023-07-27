@@ -143,7 +143,7 @@
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-             //mediaElement.play();
+             mediaElement.play();
              // // Add playsinline attribute
              // mediaElement.setAttribute("playsinline", "");
 
@@ -151,7 +151,7 @@
              // mediaElement.setAttribute("autoplay", "");
 
              // // Add muted attribute
-             // mediaElement.setAttribute("muted", "");
+              mediaElement.setAttribute("muted", "");
 
 
 
@@ -220,7 +220,7 @@
          var videoElement = ele.querySelector('video');
 
          if (videoElement) {
-             videoElement.pause();
+            // videoElement.pause();
              videoElement.autoplay = true;
 
          }
