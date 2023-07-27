@@ -303,7 +303,7 @@
                          infoContainer.style.display = "block";
                          chatter.style.display = "inline-block";
                          info = true
-                         typeWrite("johnprovencher@gmail.com")
+                         typeWrite("e-mail?")
                          if (tClick === 0) {
                              styleThumb()
                          }
