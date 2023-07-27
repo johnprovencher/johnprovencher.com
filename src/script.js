@@ -61,7 +61,7 @@
              if (video) {
                  lazyLoadMedia(video);
                  video.style.width = pWidth + "px"
-                 video.play()
+                 video.pause()
                  video.controls = false;
              }
          }
@@ -175,8 +175,11 @@
          if (videoElement) {
              lazyLoadMedia(videoElementT);
              videoElement.controls = false;
+             setTimeout(function(){
              videoElement.play();
              videoElementT.play();
+             },500)
+
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
