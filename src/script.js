@@ -162,7 +162,6 @@
          var videoElement = ele.querySelector('video[data-src]');
          if (imageElement) {
              lazyLoadMedia(imageElement);
-
              var imageAltText = imageElementT.getAttribute('alt');
              currentText = imageAltText
              if (info === false) {
@@ -176,9 +175,6 @@
              videoElement.controls = false;
              videoElement.play();
              videoElementT.play();
-
-
-
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
@@ -191,8 +187,7 @@
      function left(ele) {
          var videoElement = ele.querySelector('video');
          if (videoElement) {
-             //videoElement.pause();
-            // videoElement.autoplay = false;
+             videoElementT.play();
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -204,8 +199,7 @@
      function right(ele) {
          var videoElement = ele.querySelector('video');
          if (videoElement) {
-            // videoElement.pause();
-            // videoElement.autoplay = false;
+             videoElementT.play();
 
          }
 
@@ -451,11 +445,5 @@
      });
 
 
-        document.addEventListener('click', function(event) {
-            if (event.target.tagName === 'VIDEO') {
-                lazyLoadMedia(event.target);
-                event.target.play();
-            }
-        });
 
  }
