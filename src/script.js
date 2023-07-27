@@ -139,9 +139,8 @@
              mediaElement.setAttribute('src', dataSrc);
              mediaElement.removeAttribute('data-src');
          } else if (mediaElement.tagName === 'VIDEO') {
-             const sourceElement = mediaElement.querySelector('source');
+             const sourceElement = mediaElement;
              const dataSrc = sourceElement.getAttribute('data-src');
-             mediaElement.pause();
              sourceElement.setAttribute('src', dataSrc);
              sourceElement.setAttribute('type', 'video/mp4');
              sourceElement.removeAttribute('data-src');
@@ -194,7 +193,7 @@
              if (info === false) {
                  typeWrite(currentText)
              }
-             var sourceElement = videoElement.querySelector('source');
+             var sourceElement = videoElement;
              if (sourceElement && sourceElement.hasAttribute('data-src')) {
                  lazyLoadMedia(videoElement);
              } else {
