@@ -56,8 +56,10 @@
                  image.style.width = pWidth + "px"
              }
              if (video) {
+
                  video.style.width = pWidth + "px"
                  video.pause()
+                 video.controls = false;
              }
          }
      }
