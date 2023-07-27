@@ -99,7 +99,6 @@ layout: 'base.njk'
     </div>
     <div id="thumbnails">
         {%- for post in collections.post -%}
-
         {% if post.data.video %}
         <div class="image-container">
             <video controls='false' muted autoplay="false" loop playsinline>
@@ -107,15 +106,15 @@ layout: 'base.njk'
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
-                <br>
-                <p class="small">{{ post.data.info }}</p>
+            <br>
+            <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
         {% if post.data.image %}
         <div class="image-container">
             <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
-                <br>
-                <p class="small">{{ post.data.info }}</p>
+            <br>
+            <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
         {%- endfor -%}
@@ -129,8 +128,8 @@ layout: 'base.njk'
         {%- for post in collections.post -%}
         {% if post.data.video %}
         <div class="slide">
-            <video controls='false' muted autoplay="false" loop playsinline>
-                <source src="{{ post.data.video }}" type="video/mp4">
+            <video data-src="{{ post.data.video }}" controls='false' muted autoplay="false" loop playsinline>
+                <source data-src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
@@ -138,7 +137,7 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.image %}
         <div class="slide">
-            <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+            <img data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}
