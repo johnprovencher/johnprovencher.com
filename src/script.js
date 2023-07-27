@@ -144,6 +144,14 @@
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
              mediaElement.play();
+             // Add playsinline attribute
+             mediaElement.setAttribute("playsinline", "");
+
+             // Add autoplay attribute
+             mediaElement.setAttribute("autoplay", "");
+
+             // Add muted attribute
+             mediaElement.setAttribute("muted", "");
 
              console.log(mediaElement)
          }
