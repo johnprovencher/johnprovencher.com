@@ -132,31 +132,24 @@
      const slides = document.querySelectorAll('.slide');
 
      // Lazy load function
+     // Function to lazy load media
      function lazyLoadMedia(mediaElement) {
-         const dataSrc = mediaElement.getAttribute('data-src');
          if (mediaElement.tagName === 'IMG') {
-             mediaElement.src = dataSrc;
-             console.log(mediaElement)
-
+             const dataSrc = mediaElement.getAttribute('data-src');
+             mediaElement.setAttribute('src', dataSrc);
+             mediaElement.removeAttribute('data-src');
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement.querySelector('source');
-             sourceElement.src = dataSrc;
+             const dataSrc = sourceElement.getAttribute('data-src');
+             sourceElement.setAttribute('src', dataSrc);
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-             mediaElement.play();
-             // Add playsinline attribute
-             mediaElement.setAttribute("playsinline", "");
 
-             // Add autoplay attribute
-             mediaElement.setAttribute("autoplay", "");
-
-             // Add muted attribute
-             mediaElement.setAttribute("muted", "");
-
-
-             console.log(mediaElement)
+             // Wait for the 'loadeddata' event to ensure the video has finished loading
+             mediaElement.addEventListener('loadeddata', function() {
+                 //mediaElement.play(); // Add this line to attempt autoplay (with muted if needed)
+             });
          }
-         mediaElement.removeAttribute('data-src');
      }
 
      //slider functions
@@ -167,37 +160,36 @@
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          ele.style.display = 'block'
 
-         var imageElementT = ele.querySelector('img');
-         var videoElementT = ele.querySelector('video');
-         var imageElement = ele.querySelector('img[data-src]');
-         var videoElement = ele.querySelector('video[data-src]');
+         var imageElement = ele.querySelector('img');
+         var videoElement = ele.querySelector('video');
+
          if (imageElement) {
-             lazyLoadMedia(imageElement);
-             var imageAltText = imageElementT.getAttribute('alt');
+             var imageAltText = imageElement.getAttribute('alt');
              currentText = imageAltText
              if (info === false) {
                  typeWrite(currentText)
              }
+             if (imageElement.hasAttribute('data-src')) {
+                 lazyLoadMedia(imageElement);
+             }
+
          }
          if (videoElement) {
-             lazyLoadMedia(videoElement);
              videoElement.controls = false;
-             videoElement.autoplay = true;
-             videoElement.play();
-         }
-
-         if (videoElementT) {
-             videoElementT.controls = false;
-             videoElementT.autoplay = true;
-
-             videoElementT.play();
-
-             var textTracks = videoElementT.textTracks;
+             var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
              if (info === false) {
                  typeWrite(currentText)
              }
+             var sourceElement = videoElement.querySelector('source');
+             if (sourceElement && sourceElement.hasAttribute('data-src')) {
+                 lazyLoadMedia(videoElement);
+             }
+             else{
+                videoElement.play();
+             }
+
          }
      }
 
@@ -442,7 +434,7 @@
          const slideObserver = new IntersectionObserver(function(entries, observer) {
              entries.forEach(entry => {
                  if (entry.isIntersecting) {
-                     lazyLoadMedia(entry.target.querySelector('[data-src]'));
+                     lazyLoadMedia(entry.target);
                      slideObserver.unobserve(entry.target);
                  }
              });
@@ -456,6 +448,8 @@
              slideObserver.observe(slide);
          });
      });
+
+
 
 
  }
