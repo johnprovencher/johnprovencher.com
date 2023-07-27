@@ -62,7 +62,7 @@
                  lazyLoadMedia(video);
                  video.style.width = pWidth + "px"
                  video.pause()
-                 //video.controls = false;
+                 video.controls = false;
              }
          }
      }
@@ -143,31 +143,15 @@
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-             //mediaElement.play();
-             // // Add playsinline attribute
-             // mediaElement.setAttribute("playsinline", "");
+             mediaElement.play();
+             // Add playsinline attribute
+             mediaElement.setAttribute("playsinline", "");
 
-             // // Add autoplay attribute
-             // mediaElement.setAttribute("autoplay", "");
+             // Add autoplay attribute
+             mediaElement.setAttribute("autoplay", "");
 
-             // // Add muted attribute
-
-  // Function to play the video
-  function playVideo() {
-    if (mediaElement.readyState >= 4) {
-      mediaElement.play();
-    } else {
-      mediaElement.addEventListener("canplay", function () {
-        mediaElement.play();
-      });
-    }
-  }
-
-    playVideo();
-
-              mediaElement.setAttribute("muted", "");
-              mediaElement.setAttribute("playsinline", "");
-
+             // Add muted attribute
+             mediaElement.setAttribute("muted", "");
 
 
              console.log(mediaElement)
@@ -197,14 +181,16 @@
          }
          if (videoElement) {
              lazyLoadMedia(videoElement);
-             //videoElement.controls = false;
-             //videoElement.play();
+             videoElement.controls = false;
+             videoElement.autoplay = true;
+             videoElement.play();
          }
 
          if (videoElementT) {
-             //videoElementT.controls = false;
+             videoElementT.controls = false;
+             videoElementT.autoplay = true;
 
-             //videoElementT.play();
+             videoElementT.play();
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
@@ -234,7 +220,7 @@
          var videoElement = ele.querySelector('video');
 
          if (videoElement) {
-            // videoElement.pause();
+             videoElement.pause();
              videoElement.autoplay = true;
 
          }
@@ -335,7 +321,7 @@
              if (!isIgnoredAgain) {
                  if (!isIgnored) {
                      counter(ev.isTrusted, isLeftHalfClick);
-                     //slider(isLeftHalfClick, false)
+                     slider(isLeftHalfClick, false)
 
                  } else {
                      if (slideContainer.style.display === "none") {
