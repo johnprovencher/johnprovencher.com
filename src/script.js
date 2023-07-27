@@ -449,7 +449,8 @@
              slideObserver.observe(slide);
          });
      });
-document.addEventListener("DOMContentLoaded", function () {
+setInterval(function(){
+
   const videoElements = document.querySelectorAll("video");
 
   // Function to play a video
@@ -467,7 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
   videoElements.forEach(function (video) {
     playVideo(video);
   });
-});
+},1000)
 
 
  }
