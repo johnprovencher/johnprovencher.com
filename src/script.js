@@ -137,6 +137,10 @@
 
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement.querySelector('source');
+             sourceElement.onload = function() {
+                 // Video source has finished loading
+                mediaElement.play();
+             };
              sourceElement.src = dataSrc;
              mediaElement.load();
              console.log(mediaElement)
@@ -168,8 +172,8 @@
 
          if (videoElement) {
              lazyLoadMedia(videoElement);
-             videoElementT.play();
-             videoElement.play();
+
+           //  videoElementT.play();
              videoElementT.controls = false;
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
