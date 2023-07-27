@@ -142,6 +142,7 @@
              const sourceElement = mediaElement.querySelector('source');
              const dataSrc = sourceElement.getAttribute('data-src');
              sourceElement.setAttribute('src', dataSrc);
+             sourceElement.setAttribute('type', 'video/mp4');
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
              mediaElement.setAttribute("muted", "");
