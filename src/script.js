@@ -131,36 +131,40 @@
 
      const slides = document.querySelectorAll('.slide');
 
-     // Lazy load function
-     // Function to lazy load media
+// Function to lazy load media
 function lazyLoadMedia(mediaElement) {
   if (mediaElement.tagName === 'IMG') {
+    // Lazy load images
     const dataSrc = mediaElement.getAttribute('data-src');
     if (dataSrc) {
       mediaElement.setAttribute('src', dataSrc);
       mediaElement.removeAttribute('data-src');
     }
   } else if (mediaElement.tagName === 'VIDEO') {
+    // Lazy load videos
     const sourceElement = mediaElement.querySelector('source');
     const dataSrc = sourceElement.getAttribute('data-src');
     if (dataSrc) {
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      if (isMobileDevice) {
+        mediaElement.setAttribute('autoplay', '');
+        mediaElement.setAttribute('muted', '');
+      }
       mediaElement.pause();
-      sourceElement.remove(); // Remove previous source element
-      const newSourceElement = document.createElement('source');
-      newSourceElement.setAttribute('src', dataSrc);
-      newSourceElement.setAttribute('type', 'video/mp4');
-      mediaElement.appendChild(newSourceElement); // Add the new source element
+      sourceElement.setAttribute('src', dataSrc);
+      sourceElement.setAttribute('type', 'video/mp4');
+      sourceElement.removeAttribute('data-src');
       mediaElement.load();
-      mediaElement.setAttribute('autoplay', '');
-      mediaElement.setAttribute('muted', '');
-
-      // Wait for the 'canplay' event before playing the video
-      mediaElement.addEventListener('canplay', function() {
-        mediaElement.play();
+      mediaElement.play().catch(error => {
+        // Autoplay was blocked, handle this based on your use case
+        const errorContainer = document.getElementById('error-container');
+        errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
+        console.error('Autoplay was blocked:', error.message);
       });
     }
   }
 }
+
 
 
 
