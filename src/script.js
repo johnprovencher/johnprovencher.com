@@ -144,6 +144,7 @@
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
              mediaElement.play();
+
              console.log(mediaElement)
          }
          mediaElement.removeAttribute('data-src');
@@ -172,11 +173,14 @@
          if (videoElement) {
              lazyLoadMedia(videoElement);
              videoElement.controls = false;
+             videoElement.autoplay = true;
              videoElement.play();
          }
 
          if (videoElementT) {
              videoElementT.controls = false;
+             videoElementT.autoplay = true;
+
              videoElementT.play();
 
              var textTracks = videoElementT.textTracks;
@@ -208,6 +212,8 @@
 
          if (videoElement) {
              videoElement.pause();
+             videoElement.autoplay = true;
+
          }
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          //    ele.style.left = "-50%"
