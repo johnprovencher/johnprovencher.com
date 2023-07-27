@@ -424,31 +424,31 @@
      //     }
      // }
 
-     document.addEventListener('DOMContentLoaded', function() {
-         // Intersection Observer setup
-         const observerOptions = {
-             root: null,
-             rootMargin: '0px',
-             threshold: 0.1 // Trigger when 10% of the slide is visible
-         };
+     // document.addEventListener('DOMContentLoaded', function() {
+     //     // Intersection Observer setup
+     //     const observerOptions = {
+     //         root: null,
+     //         rootMargin: '0px',
+     //         threshold: 0.1 // Trigger when 10% of the slide is visible
+     //     };
 
-         const slideObserver = new IntersectionObserver(function(entries, observer) {
-             entries.forEach(entry => {
-                 if (entry.isIntersecting) {
-                     lazyLoadMedia(entry.target);
-                     slideObserver.unobserve(entry.target);
-                 }
-             });
-         }, observerOptions);
+     //     const slideObserver = new IntersectionObserver(function(entries, observer) {
+     //         entries.forEach(entry => {
+     //             if (entry.isIntersecting) {
+     //                 lazyLoadMedia(entry.target);
+     //                 slideObserver.unobserve(entry.target);
+     //             }
+     //         });
+     //     }, observerOptions);
 
-         // Observe all slides
-         slides.forEach(slide => {
-             slideObserver.observe(slide);
-         });
-         imageContainers.forEach(slide => {
-             slideObserver.observe(slide);
-         });
-     });
+     //     // Observe all slides
+     //     slides.forEach(slide => {
+     //         slideObserver.observe(slide);
+     //     });
+     //     imageContainers.forEach(slide => {
+     //         slideObserver.observe(slide);
+     //     });
+     // });
 
 
 
