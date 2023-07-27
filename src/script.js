@@ -363,60 +363,60 @@
      });
 
 
-     //dark mode
-     var toggleDark = document.getElementById("dark-light");
-     var toggleOrb = document.getElementById("orb");
-     var blockButton = document.getElementsByClassName("block-button");
-     var blockColor = document.getElementsByClassName("block-color");
-     var anchorTags = document.querySelectorAll('a:not(.block-button)');
+     // //dark mode
+     // var toggleDark = document.getElementById("dark-light");
+     // var toggleOrb = document.getElementById("orb");
+     // var blockButton = document.getElementsByClassName("block-button");
+     // var blockColor = document.getElementsByClassName("block-color");
+     // var anchorTags = document.querySelectorAll('a:not(.block-button)');
 
 
 
-     var darkModePreference = localStorage.getItem('darkMode');
-     if (darkModePreference === 'dark') {
-         enableDarkMode();
-     }
+     // var darkModePreference = localStorage.getItem('darkMode');
+     // if (darkModePreference === 'dark') {
+     //     enableDarkMode();
+     // }
 
-     var darkModeToggle = document.getElementById('darkModeToggle');
-     darkModeToggle.checked = darkModePreference === 'dark';
+     // var darkModeToggle = document.getElementById('darkModeToggle');
+     // darkModeToggle.checked = darkModePreference === 'dark';
 
-     darkModeToggle.addEventListener('change', () => {
-         if (darkModeToggle.checked) {
-             enableDarkMode();
-             localStorage.setItem('darkMode', 'dark');
-         } else {
-             disableDarkMode();
-             localStorage.setItem('darkMode', 'light');
-         }
-     });
+     // darkModeToggle.addEventListener('change', () => {
+     //     if (darkModeToggle.checked) {
+     //         enableDarkMode();
+     //         localStorage.setItem('darkMode', 'dark');
+     //     } else {
+     //         disableDarkMode();
+     //         localStorage.setItem('darkMode', 'light');
+     //     }
+     // });
 
-     function enableDarkMode() {
+     // function enableDarkMode() {
 
-         document.body.classList.add("toggle-dark");
-         toggleOrb.classList.add("toggle-orb");
-         anchorTags.forEach(function(anchor) {
-             anchor.classList.add('toggle-dark');
-         });
-         for (i = 0; i < blockColor.length; i++) {
-             blockColor[i].classList.add("block-color-toggle");
-         }
+     //     document.body.classList.add("toggle-dark");
+     //     toggleOrb.classList.add("toggle-orb");
+     //     anchorTags.forEach(function(anchor) {
+     //         anchor.classList.add('toggle-dark');
+     //     });
+     //     for (i = 0; i < blockColor.length; i++) {
+     //         blockColor[i].classList.add("block-color-toggle");
+     //     }
 
 
-     }
+     // }
 
-     function disableDarkMode() {
-         document.body.classList.remove("toggle-dark");
-         toggleOrb.classList.remove("toggle-orb");
-         anchorTags.forEach(function(anchor) {
-             anchor.classList.remove('toggle-dark');
-         });
-         for (i = 0; i < blockButton.length; i++) {
-             blockButton[i].classList.remove("block-button-toggle");
-         }
-         for (i = 0; i < blockColor.length; i++) {
-             blockColor[i].classList.remove("block-color-toggle");
-         }
-     }
+     // function disableDarkMode() {
+     //     document.body.classList.remove("toggle-dark");
+     //     toggleOrb.classList.remove("toggle-orb");
+     //     anchorTags.forEach(function(anchor) {
+     //         anchor.classList.remove('toggle-dark');
+     //     });
+     //     for (i = 0; i < blockButton.length; i++) {
+     //         blockButton[i].classList.remove("block-button-toggle");
+     //     }
+     //     for (i = 0; i < blockColor.length; i++) {
+     //         blockColor[i].classList.remove("block-color-toggle");
+     //     }
+     // }
 
      document.addEventListener('DOMContentLoaded', function() {
          // Intersection Observer setup
