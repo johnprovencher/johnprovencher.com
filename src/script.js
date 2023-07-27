@@ -154,9 +154,8 @@
 
          var imageElementT = ele.querySelector('img');
          var videoElementT = ele.querySelector('video');
-
-         const imageElement = ele.querySelector('img[data-src]');
-         const videoElement = ele.querySelector('video[data-src]');
+         var imageElement = ele.querySelector('img[data-src]');
+         var videoElement = ele.querySelector('video[data-src]');
          if (imageElement) {
              lazyLoadMedia(imageElement);
 
@@ -169,11 +168,9 @@
 
          if (videoElement) {
              lazyLoadMedia(videoElement);
-
              videoElementT.play();
+             videoElement.play();
              videoElementT.controls = false;
-             videoElementT.autoplay = true;
-
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
