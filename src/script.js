@@ -180,7 +180,12 @@
 
          }
          if (videoElement) {
-             videoElement.play();
+             videoElement.play().catch(error => {
+                 // Autoplay was blocked, handle this based on your use case
+                 const errorContainer = document.getElementById('error-container');
+                 errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
+                 console.error('Autoplay was blocked:', error.message);
+             });;;
 
              videoElement.controls = false;
              var textTracks = videoElement.textTracks;
@@ -193,7 +198,12 @@
              if (sourceElement && sourceElement.hasAttribute('data-src')) {
                  lazyLoadMedia(videoElement);
              } else {
-                 videoElement.play();
+                 videoElement.play().catch(error => {
+                 // Autoplay was blocked, handle this based on your use case
+                 const errorContainer = document.getElementById('error-container');
+                 errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
+                 console.error('Autoplay was blocked:', error.message);
+             });;;
              }
 
          }
