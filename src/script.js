@@ -143,7 +143,7 @@
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-
+             mediaElement.play();
              console.log(mediaElement)
          }
          mediaElement.removeAttribute('data-src');
