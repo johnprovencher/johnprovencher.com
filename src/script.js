@@ -141,10 +141,11 @@
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement;
              const dataSrc = sourceElement.getAttribute('data-src');
-             sourceElement.setAttribute('src', dataSrc);
+             sourceElement.setAttribute('src', 'https://incredible-dragon-cf736c.netlify.app' + dataSrc);
              sourceElement.setAttribute('type', 'video/mp4');
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
+
              mediaElement.setAttribute("autoplay", "");
              mediaElement.play().catch(error => {
                  // Autoplay was blocked, handle this based on your use case
