@@ -55,12 +55,12 @@
              }
 
              if (image) {
-                 lazyLoadMedia(image);
+             lazyLoadMedia(image);
 
                  image.style.width = pWidth + "px"
              }
              if (video) {
-                 lazyLoadMedia(video);
+             lazyLoadMedia(video);
 
                  video.style.width = pWidth + "px"
                  video.pause()
@@ -175,11 +175,10 @@
 
          if (videoElement) {
              lazyLoadMedia(videoElement);
-             videoElement.onloadedmetadata = function() {
-                 videoElement.play();
-                 videoElement.controls = false;
-                 videoElement.play();
-             };
+             videoElement.controls = false;
+             videoElement.play();
+             videoElement.play();
+
 
 
              var textTracks = videoElementT.textTracks;
