@@ -151,8 +151,7 @@
                  const errorContainer = document.getElementById('error-container');
                  errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
                  console.error('Autoplay was blocked:', error.message);
-             });;
-
+             });
          }
      }
 
@@ -179,13 +178,6 @@
 
          }
          if (videoElement) {
-             videoElement.play().catch(error => {
-                 // Autoplay was blocked, handle this based on your use case
-                 const errorContainer = document.getElementById('error-container');
-                 errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
-                 console.error('Autoplay was blocked:', error.message);
-             });;;
-
              videoElement.controls = false;
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
