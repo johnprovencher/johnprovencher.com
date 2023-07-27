@@ -124,6 +124,27 @@
          slider(true, true)
      }
 
+
+
+     const slides = document.querySelectorAll('.slide');
+
+     // Lazy load function
+     function lazyLoadMedia(mediaElement) {
+         const dataSrc = mediaElement.getAttribute('data-src');
+         if (mediaElement.tagName === 'IMG') {
+             mediaElement.src = dataSrc;
+             console.log(mediaElement)
+
+         } else if (mediaElement.tagName === 'VIDEO') {
+             const sourceElement = mediaElement.querySelector('source');
+             sourceElement.src = dataSrc;
+             sourceElement.removeAttribute('data-src');
+             mediaElement.load();
+             console.log(mediaElement)
+         }
+         mediaElement.removeAttribute('data-src');
+     }
+
      //slider functions
      function center(ele) {
          ele.style.width = sizerW - (marginSize / 11) + "px"
@@ -132,11 +153,14 @@
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          ele.style.display = 'block'
 
-         var imageElement = ele.querySelector('img');
-         var videoElement = ele.querySelector('video');
-         console.log(slideArr)
+         var imageElementT = ele.querySelector('img');
+         var videoElementT = ele.querySelector('video');
+         var imageElement = ele.querySelector('img[data-src]');
+         var videoElement = ele.querySelector('video[data-src]');
          if (imageElement) {
-             var imageAltText = imageElement.getAttribute('alt');
+             lazyLoadMedia(imageElement);
+
+             var imageAltText = imageElementT.getAttribute('alt');
              currentText = imageAltText
              if (info === false) {
                  typeWrite(currentText)
@@ -144,26 +168,25 @@
          }
 
          if (videoElement) {
-             videoElement.play();
+             lazyLoadMedia(videoElement);
              videoElement.controls = false;
+             videoElement.play();
 
-             var textTracks = videoElement.textTracks;
+
+             var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
              if (info === false) {
                  typeWrite(currentText)
              }
          }
-
-
-
-
      }
 
      function left(ele) {
          var videoElement = ele.querySelector('video');
          if (videoElement) {
              videoElement.pause();
+             videoElement.autoplay = false;
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -176,6 +199,8 @@
          var videoElement = ele.querySelector('video');
          if (videoElement) {
              videoElement.pause();
+             videoElement.autoplay = false;
+
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -329,9 +354,8 @@
              info = false
              var targetNumber = clickedIndex;
 
-                 var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
-                 slideArr = shiftedArray;
-                 console.log(slideArr)
+             var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
+             slideArr = shiftedArray;
              t = targetNumber - 1
              slider(true, true)
              counter();
@@ -394,7 +418,28 @@
          }
      }
 
+     document.addEventListener('DOMContentLoaded', function() {
+         // Intersection Observer setup
+         const observerOptions = {
+             root: null,
+             rootMargin: '0px',
+             threshold: 0.1 // Trigger when 10% of the slide is visible
+         };
 
+         const slideObserver = new IntersectionObserver(function(entries, observer) {
+             entries.forEach(entry => {
+                 if (entry.isIntersecting) {
+                     lazyLoadMedia(entry.target.querySelector('[data-src]'));
+                     slideObserver.unobserve(entry.target);
+                 }
+             });
+         }, observerOptions);
+
+         // Observe all slides
+         slides.forEach(slide => {
+             slideObserver.observe(slide);
+         });
+     });
 
 
 
