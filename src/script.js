@@ -124,6 +124,23 @@
          slider(true, true)
      }
 
+
+
+     const slides = document.querySelectorAll('.slide');
+
+     // Lazy load function
+     function lazyLoadMedia(mediaElement) {
+         const dataSrc = mediaElement.getAttribute('data-src');
+         if (mediaElement.tagName === 'IMG') {
+             mediaElement.src = dataSrc;
+         } else if (mediaElement.tagName === 'VIDEO') {
+             const sourceElement = mediaElement.querySelector('source');
+             sourceElement.src = dataSrc;
+             mediaElement.load();
+         }
+         mediaElement.removeAttribute('data-src');
+     }
+
      //slider functions
      function center(ele) {
          ele.style.width = sizerW - (marginSize / 11) + "px"
@@ -132,11 +149,16 @@
          ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          ele.style.display = 'block'
 
-         var imageElement = ele.querySelector('img');
-         var videoElement = ele.querySelector('video');
+         var imageElementT = ele.querySelector('img');
+         var videoElementT = ele.querySelector('video');
+
+         const imageElement = ele.querySelector('img[data-src]');
+         const videoElement = ele.querySelector('video[data-src]');
          console.log(slideArr)
          if (imageElement) {
-             var imageAltText = imageElement.getAttribute('alt');
+                lazyLoadMedia(imageElement);
+
+             var imageAltText = imageElementT.getAttribute('alt');
              currentText = imageAltText
              if (info === false) {
                  typeWrite(currentText)
@@ -144,6 +166,8 @@
          }
 
          if (videoElement) {
+                lazyLoadMedia(videoElement);
+
              videoElement.controls = false;
              videoElement.play();
              videoElement.controls = false;
@@ -154,13 +178,7 @@
              if (info === false) {
                  typeWrite(currentText)
              }
-             document.body.style.backgroundColor = "#" + currentText;
-             document.getElementById("orb").style.backgroundColor = "#" + currentText;
          }
-
-
-
-
      }
 
      function left(ele) {
@@ -332,9 +350,9 @@
              info = false
              var targetNumber = clickedIndex;
 
-                 var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
-                 slideArr = shiftedArray;
-                 console.log(slideArr)
+             var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
+             slideArr = shiftedArray;
+             console.log(slideArr)
              t = targetNumber - 1
              slider(true, true)
              counter();
@@ -397,7 +415,28 @@
          }
      }
 
+     document.addEventListener('DOMContentLoaded', function() {
+         // Intersection Observer setup
+         const observerOptions = {
+             root: null,
+             rootMargin: '0px',
+             threshold: 0.1 // Trigger when 10% of the slide is visible
+         };
 
+         const slideObserver = new IntersectionObserver(function(entries, observer) {
+             entries.forEach(entry => {
+                 if (entry.isIntersecting) {
+                     lazyLoadMedia(entry.target.querySelector('[data-src]'));
+                     slideObserver.unobserve(entry.target);
+                 }
+             });
+         }, observerOptions);
+
+         // Observe all slides
+         slides.forEach(slide => {
+             slideObserver.observe(slide);
+         });
+     });
 
 
 
