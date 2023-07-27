@@ -142,6 +142,8 @@
              const sourceElement = mediaElement.querySelector('source');
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
+             mediaElement.removeAttribute('data-src');
+             mediaElement.src = dataSrc;
              mediaElement.load();
              console.log(mediaElement)
          }
@@ -187,7 +189,8 @@
      function left(ele) {
          var videoElement = ele.querySelector('video');
          if (videoElement) {
-             videoElementT.play();
+             videoElement.pause();
+             videoElement.autoplay = false;
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -199,7 +202,8 @@
      function right(ele) {
          var videoElement = ele.querySelector('video');
          if (videoElement) {
-             videoElementT.play();
+             videoElement.pause();
+             videoElement.autoplay = false;
 
          }
 
