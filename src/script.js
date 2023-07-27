@@ -171,6 +171,9 @@
              videoElementT.play();
              videoElementT.controls = false;
              videoElementT.autoplay = true;
+             videoElement.play();
+             videoElement.autoplay = true;
+
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
