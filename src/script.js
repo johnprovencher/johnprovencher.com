@@ -144,11 +144,11 @@
              sourceElement.setAttribute('src', dataSrc);
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-             mediaElement.setAttribute("muted", "");
-             mediaElement.setAttribute("playsinline", "");
-             mediaElement.addEventListener('loadeddata', function() {
 
-                 mediaElement.play(); 
+             // Wait for the 'loadeddata' event to ensure the video has finished loading
+             mediaElement.addEventListener('loadeddata', function() {
+                 mediaElement.setAttribute("muted", "");
+                 mediaElement.play(); // Add this line to attempt autoplay (with muted if needed)
              });
          }
      }
