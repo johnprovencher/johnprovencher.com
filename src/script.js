@@ -143,6 +143,10 @@
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
              mediaElement.removeAttribute('data-src');
+             mediaElement.removeAttribute('muted');
+             mediaElement.removeAttribute('playsinline');
+             mediaElement.setAttribute('muted', true);
+             mediaElement.setAttribute('playsinline', true);
              mediaElement.load();
              console.log(mediaElement)
          }
@@ -449,26 +453,6 @@
              slideObserver.observe(slide);
          });
      });
-setInterval(function(){
-
-  const videoElements = document.querySelectorAll("video");
-
-  // Function to play a video
-  function playVideo(video) {
-    if (video.readyState >= 4) {
-      video.play();
-    } else {
-      video.addEventListener("canplay", function () {
-        video.play();
-      });
-    }
-  }
-
-  // Loop through all video elements and play each one
-  videoElements.forEach(function (video) {
-    playVideo(video);
-  });
-},1000)
 
 
  }
