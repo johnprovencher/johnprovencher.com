@@ -137,7 +137,6 @@ observer.observe();
 
      //slider functions
      function center(ele) {
-        observer.observe(); 
          ele.style.width = sizerW - (marginSize / 11) + "px"
          ele.style.height = sizerH - (marginSize / 11) + "px"
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -155,14 +154,16 @@ observer.observe();
              }
          }
          if (videoElement) {
+             videoElement.play()
              videoElement.controls = false;
+             videoElement.muted = true;
+             videoElement.autoplay = true;
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
              if (info === false) {
                  typeWrite(currentText)
              }
-             videoElement.play()
          }
      }
 
@@ -183,7 +184,6 @@ observer.observe();
 
      function leftOff(ele) {
          var videoElement = ele.querySelector('video');
-
          if (videoElement) {
              videoElement.pause();
          }
