@@ -147,23 +147,45 @@ function lazyLoadMedia(mediaElement) {
     if (dataSrc) {
       const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       if (isMobileDevice) {
+        // On mobile devices, handle autoplay restrictions
+        mediaElement.setAttribute('muted', ''); // Mute the video to autoplay
+        mediaElement.removeAttribute('autoplay'); // Remove autoplay attribute
+        mediaElement.pause(); // Pause the video to reset it
+        sourceElement.setAttribute('src', dataSrc);
+        sourceElement.setAttribute('type', 'video/mp4');
+        sourceElement.removeAttribute('data-src');
+        mediaElement.load();
+
+        // Add a click event listener to start video playback on user interaction
+        const playVideoOnInteraction = function() {
+          mediaElement.play().catch(error => {
+            // Autoplay was blocked, handle this based on your use case
+            console.error('Autoplay was blocked:', error.message);
+          });
+          // Remove the click event listener after playback starts
+          document.removeEventListener('click', playVideoOnInteraction);
+        };
+
+        // Add the click event listener to the document to detect user interaction
+        document.addEventListener('click', playVideoOnInteraction);
+      } else {
+        // On desktop devices, keep the original behavior with autoplay and muted attributes
         mediaElement.setAttribute('autoplay', '');
         mediaElement.setAttribute('muted', '');
+        mediaElement.pause();
+        sourceElement.setAttribute('src', dataSrc);
+        sourceElement.setAttribute('type', 'video/mp4');
+        sourceElement.removeAttribute('data-src');
+        mediaElement.load();
+        mediaElement.play().catch(error => {
+          // Autoplay was blocked, handle this based on your use case
+          console.error('Autoplay was blocked:', error.message);
+        });
       }
-      mediaElement.pause();
-      sourceElement.setAttribute('src', dataSrc);
-      sourceElement.setAttribute('type', 'video/mp4');
-      sourceElement.removeAttribute('data-src');
-      mediaElement.load();
-      mediaElement.play().catch(error => {
-        // Autoplay was blocked, handle this based on your use case
-        const errorContainer = document.getElementById('error-container');
-        errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
-        console.error('Autoplay was blocked:', error.message);
-      });
     }
   }
 }
+
 
 
 
