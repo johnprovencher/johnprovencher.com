@@ -161,6 +161,7 @@
          var videoElementT = ele.querySelector('video');
          var imageElement = ele.querySelector('img[data-src]');
          var videoElement = ele.querySelector('video[data-src]');
+         console.log(videoElement)
          if (imageElement) {
              lazyLoadMedia(imageElement);
              var imageAltText = imageElementT.getAttribute('alt');
@@ -175,7 +176,8 @@
              lazyLoadMedia(videoElementT);
              videoElement.controls = false;
              videoElement.play();
-             videoElementT.play();
+             videoElement.autoplay = true;
+             videoElement.playsinline = true;
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
