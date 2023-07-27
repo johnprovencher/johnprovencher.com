@@ -219,7 +219,7 @@
 
          }
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-         //    ele.style.left = "-50%"
+         ele.style.left = "-5000%"
          ele.style.display = 'none'
 
      }
