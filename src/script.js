@@ -177,7 +177,9 @@
              videoElementT.controls = false;
              videoElementT.play();
              videoElementT.autoplay = true;
-
+             videoElement.controls = false;
+             videoElement.play();
+             videoElement.autoplay = true;
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
@@ -190,8 +192,8 @@
      function left(ele) {
          var videoElement = ele.querySelector('video');
          if (videoElement) {
-             videoElement.pause();
-             videoElement.autoplay = false;
+             // videoElement.pause();
+             // videoElement.autoplay = false;
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -203,8 +205,8 @@
      function right(ele) {
          var videoElement = ele.querySelector('video');
          if (videoElement) {
-             videoElement.pause();
-             videoElement.autoplay = false;
+             // videoElement.pause();
+             // videoElement.autoplay = false;
 
          }
 
