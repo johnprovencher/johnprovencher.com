@@ -174,10 +174,9 @@
 
          if (videoElement) {
              lazyLoadMedia(videoElementT);
-             videoElement.controls = false;
-             videoElement.play();
-             videoElement.autoplay = true;
-             videoElement.playsinline = true;
+             videoElementT.controls = false;
+             videoElementT.play();
+             videoElementT.autoplay = true;
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
