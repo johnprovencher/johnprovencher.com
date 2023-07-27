@@ -138,6 +138,7 @@
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement.querySelector('source');
              sourceElement.src = dataSrc;
+             sourceElement.removeAttribute('data-src');
              mediaElement.load();
              console.log(mediaElement)
          }
