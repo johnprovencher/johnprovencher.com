@@ -133,28 +133,41 @@
 
      // Lazy load function
      // Function to lazy load media
-     function lazyLoadMedia(mediaElement) {
-         if (mediaElement.tagName === 'IMG') {
-             const dataSrc = mediaElement.getAttribute('data-src');
-             if (dataSrc) {
-                 mediaElement.setAttribute('src', dataSrc);
-                 mediaElement.removeAttribute('data-src');
-             }
-         } else if (mediaElement.tagName === 'VIDEO') {
-             const sourceElement = mediaElement.querySelector('source');
-             const dataSrc = sourceElement.getAttribute('data-src');
-             if (dataSrc) {
-                 mediaElement.pause();
-                 sourceElement.setAttribute('src', dataSrc);
-                 sourceElement.setAttribute('type', 'video/mp4');
-                 sourceElement.removeAttribute('data-src');
-                 mediaElement.load();
-                 mediaElement.setAttribute('autoplay', '');
-                 mediaElement.setAttribute('muted', '');
-                 mediaElement.play();
-             }
-         }
-     }
+function lazyLoadMedia(mediaElement) {
+  if (mediaElement.tagName === 'IMG') {
+    const dataSrc = mediaElement.getAttribute('data-src');
+    if (dataSrc) {
+      mediaElement.setAttribute('src', dataSrc);
+      mediaElement.removeAttribute('data-src');
+    }
+  } else if (mediaElement.tagName === 'VIDEO') {
+    const sourceElement = mediaElement.querySelector('source');
+    const dataSrc = sourceElement.getAttribute('data-src');
+    if (dataSrc) {
+      mediaElement.pause();
+      sourceElement.remove(); // Remove previous source element
+      const newSourceElement = document.createElement('source');
+      newSourceElement.setAttribute('src', dataSrc);
+      newSourceElement.setAttribute('type', 'video/mp4');
+      mediaElement.appendChild(newSourceElement); // Add the new source element
+      mediaElement.load();
+      mediaElement.setAttribute('autoplay', '');
+      mediaElement.setAttribute('muted', '');
+
+      // Wait for the 'canplay' event before playing the video
+      mediaElement.addEventListener('canplay', function() {
+        mediaElement.play();
+      });
+    }
+  }
+}
+
+
+
+
+
+
+
 
      //slider functions
      function center(ele) {
