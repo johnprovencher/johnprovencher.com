@@ -55,15 +55,13 @@
              }
 
              if (image) {
-             lazyLoadMedia(image);
-
+                 lazyLoadMedia(image);
                  image.style.width = pWidth + "px"
              }
              if (video) {
-             lazyLoadMedia(video);
-
+                 lazyLoadMedia(video);
                  video.style.width = pWidth + "px"
-                 video.pause()
+                 video.play()
                  video.controls = false;
              }
          }
