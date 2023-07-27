@@ -143,7 +143,7 @@
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-             mediaElement.play();
+             //mediaElement.play();
              // Add playsinline attribute
              mediaElement.setAttribute("playsinline", "");
 
