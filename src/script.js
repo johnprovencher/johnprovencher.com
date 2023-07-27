@@ -20,6 +20,8 @@
          }
          return arr;
      }
+const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+observer.observe();
 
      //typewriter
      function typeWrite(text) {
@@ -55,11 +57,11 @@
              }
 
              if (image) {
-                 lazyLoadMedia(image);
+                // lazyLoadMedia(image);
                  image.style.width = pWidth + "px"
              }
              if (video) {
-                 lazyLoadMedia(video);
+                // lazyLoadMedia(video);
                  video.style.width = pWidth + "px"
                  video.pause()
                  video.controls = false;
@@ -131,12 +133,11 @@
 
      const slides = document.querySelectorAll('.slide');
 
-     // Lazy load function
-     // Function to lazy load media
 
 
      //slider functions
      function center(ele) {
+        observer.observe(); 
          ele.style.width = sizerW - (marginSize / 11) + "px"
          ele.style.height = sizerH - (marginSize / 11) + "px"
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -394,7 +395,6 @@
      // }
 
 
-const observer = lozad(); // lazy loads elements with default selector as '.lozad'
-observer.observe();
+
 
  }
