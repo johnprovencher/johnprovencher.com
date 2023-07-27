@@ -128,7 +128,7 @@ layout: 'base.njk'
     <div id="slideshow">
         {%- for post in collections.post -%}
         {% if post.data.video %}
-        <div class="slide">
+        <div class="slide" style="left:-5000%">
             <video loading="lazy" controls='true' preload="false" muted autoplay loop playsinline>
                 <source src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
