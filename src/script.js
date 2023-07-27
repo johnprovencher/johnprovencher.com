@@ -177,17 +177,7 @@
              videoElementT.controls = false;
              videoElementT.play();
              videoElementT.autoplay = true;
-             videoElement.controls = false;
-             videoElement.play();
-             videoElement.autoplay = true;
 
-      videoElementT.addEventListener("canplay", function () {
-        videoElementT.play();
-      });
-
-     videoElement.addEventListener("canplay", function () {
-        videoElement.play();
-      });
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
@@ -459,7 +449,25 @@
              slideObserver.observe(slide);
          });
      });
+document.addEventListener("DOMContentLoaded", function () {
+  const videoElements = document.querySelectorAll("video");
 
+  // Function to play a video
+  function playVideo(video) {
+    if (video.readyState >= 4) {
+      video.play();
+    } else {
+      video.addEventListener("canplay", function () {
+        video.play();
+      });
+    }
+  }
+
+  // Loop through all video elements and play each one
+  videoElements.forEach(function (video) {
+    playVideo(video);
+  });
+});
 
 
  }
