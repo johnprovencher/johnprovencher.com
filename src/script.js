@@ -177,7 +177,7 @@
              lazyLoadMedia(videoElement);
              videoElement.controls = false;
              videoElement.play();
-             videoElement.play();
+             videoElementT.play();
 
 
 
