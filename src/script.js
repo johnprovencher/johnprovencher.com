@@ -145,9 +145,9 @@
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
 
-             // Wait for the 'loadeddata' event to ensure the video has finished loading
              mediaElement.addEventListener('loadeddata', function() {
-                 mediaElement.play(); // Add this line to attempt autoplay (with muted if needed)
+                 mediaElement.setAttribute("muted", "");
+                 mediaElement.play(); 
              });
          }
      }
@@ -175,7 +175,7 @@
 
          }
          if (videoElement) {
-                videoElement.play();
+             videoElement.play();
 
              videoElement.controls = false;
              var textTracks = videoElement.textTracks;
@@ -187,9 +187,8 @@
              var sourceElement = videoElement.querySelector('source');
              if (sourceElement && sourceElement.hasAttribute('data-src')) {
                  lazyLoadMedia(videoElement);
-             }
-             else{
-                videoElement.play();
+             } else {
+                 videoElement.play();
              }
 
          }
