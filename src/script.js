@@ -172,13 +172,10 @@
          }
 
 
-         if (videoElement) {
-             lazyLoadMedia(videoElementT);
-             videoElement.controls = false;
-             setTimeout(function(){
-             videoElement.play();
+         if (videoElementT) {
+            // lazyLoadMedia(videoElementT);
+             videoElementT.controls = false;
              videoElementT.play();
-             },500)
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
