@@ -6,7 +6,6 @@ layout: 'base.njk'
     <div id="orb"></div>
     <a class="block-button" id="chatter" target="_blank" href="mailto:johnprovencher@gmail.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
 </div>
-<div id="error-container">haha</div>
 <div id="info-container">
     <div class="info-grid">
         <div class="column">
@@ -130,7 +129,7 @@ layout: 'base.njk'
         {%- for post in collections.post -%}
         {% if post.data.video %}
         <div class="slide" style="left:-5000px">
-            <video data-src="{{ post.data.video }}" type="video/mp4" controls='true' preload="none" muted autoplay loop playsinline>
+            <video class="lozad" data-src="{{ post.data.video }}" type="video/mp4" controls='true' preload="none" muted autoplay loop playsinline>
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
@@ -138,7 +137,7 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.image %}
         <div class="slide">
-            <img data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+            <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}

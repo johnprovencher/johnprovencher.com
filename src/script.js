@@ -133,23 +133,7 @@
 
      // Lazy load function
      // Function to lazy load media
-     function lazyLoadMedia(mediaElement) {
-         if (mediaElement.tagName === 'IMG') {
-             const dataSrc = mediaElement.getAttribute('data-src');
-             mediaElement.setAttribute('src', dataSrc);
-             mediaElement.removeAttribute('data-src');
-         } else if (mediaElement.tagName === 'VIDEO') {
-             const sourceElement = mediaElement;
-             const dataSrc = sourceElement.getAttribute('data-src');
-             sourceElement.setAttribute('src', dataSrc);
-             sourceElement.setAttribute('type', 'video/mp4');
-             sourceElement.removeAttribute('data-src');
-             mediaElement.load();
 
-             mediaElement.setAttribute("autoplay", true);
-             //mediaElement.play()
-         }
-     }
 
      //slider functions
      function center(ele) {
@@ -168,10 +152,6 @@
              if (info === false) {
                  typeWrite(currentText)
              }
-             if (imageElement.hasAttribute('data-src')) {
-                 lazyLoadMedia(imageElement);
-             }
-
          }
          if (videoElement) {
              videoElement.controls = false;
@@ -181,13 +161,7 @@
              if (info === false) {
                  typeWrite(currentText)
              }
-             var sourceElement = videoElement;
-             if (sourceElement && sourceElement.hasAttribute('data-src')) {
-                 lazyLoadMedia(videoElement);
-             } else {
-                 //videoElement.play()
-             }
-
+             videoElement.play()
          }
      }
 
@@ -419,33 +393,8 @@
      //     }
      // }
 
-     // document.addEventListener('DOMContentLoaded', function() {
-     //     // Intersection Observer setup
-     //     const observerOptions = {
-     //         root: null,
-     //         rootMargin: '0px',
-     //         threshold: 0.1 // Trigger when 10% of the slide is visible
-     //     };
 
-     //     const slideObserver = new IntersectionObserver(function(entries, observer) {
-     //         entries.forEach(entry => {
-     //             if (entry.isIntersecting) {
-     //                 lazyLoadMedia(entry.target);
-     //                 slideObserver.unobserve(entry.target);
-     //             }
-     //         });
-     //     }, observerOptions);
-
-     //     // Observe all slides
-     //     slides.forEach(slide => {
-     //         slideObserver.observe(slide);
-     //     });
-     //     imageContainers.forEach(slide => {
-     //         slideObserver.observe(slide);
-     //     });
-     // });
-
-
-
+const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+observer.observe();
 
  }
