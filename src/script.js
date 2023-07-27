@@ -175,6 +175,8 @@
 
          }
          if (videoElement) {
+                videoElement.play();
+
              videoElement.controls = false;
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
