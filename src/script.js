@@ -153,6 +153,20 @@
              // Add muted attribute
              mediaElement.setAttribute("muted", "");
 
+  // Function to play the video
+  function playVideo() {
+    if (mediaElement.readyState >= 4) {
+      mediaElement.play();
+    } else {
+      mediaElement.addEventListener("canplay", function () {
+        mediaElement.play();
+      });
+    }
+  }
+
+    playVideo();
+
+
              console.log(mediaElement)
          }
          mediaElement.removeAttribute('data-src');
