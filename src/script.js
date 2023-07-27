@@ -62,7 +62,7 @@
                  lazyLoadMedia(video);
                  video.style.width = pWidth + "px"
                  video.pause()
-                 video.controls = false;
+                 video.controls = true;
              }
          }
      }
@@ -179,7 +179,7 @@
          if (videoElement) {
              videoElement.play();
 
-             videoElement.controls = false;
+             videoElement.controls = true;
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
@@ -316,7 +316,7 @@
              if (!isIgnoredAgain) {
                  if (!isIgnored) {
                      counter(ev.isTrusted, isLeftHalfClick);
-                     slider(isLeftHalfClick, false)
+                     //slider(isLeftHalfClick, false)
 
                  } else {
                      if (slideContainer.style.display === "none") {
