@@ -142,12 +142,8 @@
              const sourceElement = mediaElement.querySelector('source');
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
-             mediaElement.removeAttribute('data-src');
-             mediaElement.removeAttribute('muted');
-             mediaElement.removeAttribute('playsinline');
-             mediaElement.setAttribute('muted', true);
-             mediaElement.setAttribute('playsinline', true);
              mediaElement.load();
+
              console.log(mediaElement)
          }
          mediaElement.removeAttribute('data-src');
@@ -165,7 +161,6 @@
          var videoElementT = ele.querySelector('video');
          var imageElement = ele.querySelector('img[data-src]');
          var videoElement = ele.querySelector('video[data-src]');
-         console.log(videoElement)
          if (imageElement) {
              lazyLoadMedia(imageElement);
              var imageAltText = imageElementT.getAttribute('alt');
@@ -174,14 +169,15 @@
                  typeWrite(currentText)
              }
          }
-
-
          if (videoElement) {
-             lazyLoadMedia(videoElementT);
+             lazyLoadMedia(videoElement);
+             videoElement.controls = false;
+             videoElement.play();
+         }
+
+         if (videoElementT) {
              videoElementT.controls = false;
              videoElementT.play();
-             videoElementT.autoplay = true;
-
 
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
@@ -193,12 +189,6 @@
      }
 
      function left(ele) {
-         var videoElement = ele.querySelector('video');
-         if (videoElement) {
-             // videoElement.pause();
-             // videoElement.autoplay = false;
-         }
-
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = 0 - offset + 'px'
          ele.style.display = 'none'
@@ -206,13 +196,6 @@
      }
 
      function right(ele) {
-         var videoElement = ele.querySelector('video');
-         if (videoElement) {
-             // videoElement.pause();
-             // videoElement.autoplay = false;
-
-         }
-
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          //   ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
          ele.style.display = 'none'
@@ -221,6 +204,11 @@
      }
 
      function leftOff(ele) {
+         var videoElement = ele.querySelector('video');
+
+         if (videoElement) {
+             videoElement.pause();
+         }
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          //    ele.style.left = "-50%"
          ele.style.display = 'none'
