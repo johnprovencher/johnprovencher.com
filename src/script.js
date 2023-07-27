@@ -171,6 +171,7 @@
              lazyLoadMedia(videoElement);
              videoElement.controls = false;
              videoElement.play();
+             videoElementT.play();
 
 
              var textTracks = videoElementT.textTracks;
