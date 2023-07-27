@@ -174,7 +174,7 @@
 
 
          if (videoElement) {
-             lazyLoadMedia(videoElement);
+             lazyLoadMedia(videoElementT);
              videoElement.controls = false;
              videoElement.play();
              videoElementT.play();
