@@ -130,7 +130,7 @@ layout: 'base.njk'
         {% if post.data.video %}
         <div class="slide" style="left:-5000px">
             <video controls='true' preload="auto" muted autoplay loop playsinline>
-                <source src="{{ post.data.video }}" type="video/mp4">
+                <source data-src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
@@ -138,7 +138,7 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.image %}
         <div class="slide">
-            <img src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+            <img data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}
