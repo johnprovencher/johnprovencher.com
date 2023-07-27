@@ -47,15 +47,20 @@
              var paragraph = container.querySelector("p");
              var image = container.querySelector("img");
              var video = container.querySelector("video");
+             var imageElement = container.querySelector('img[data-src]');
+             var videoElement = container.querySelector('video[data-src]');
              var pWidth;
              if (paragraph) {
                  pWidth = paragraph.offsetWidth;
              }
 
              if (image) {
+             lazyLoadMedia(image);
+
                  image.style.width = pWidth + "px"
              }
              if (video) {
+             lazyLoadMedia(video);
 
                  video.style.width = pWidth + "px"
                  video.pause()
@@ -437,6 +442,9 @@
 
          // Observe all slides
          slides.forEach(slide => {
+             slideObserver.observe(slide);
+         });
+         imageContainers.forEach(slide => {
              slideObserver.observe(slide);
          });
      });
