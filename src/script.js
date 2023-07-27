@@ -133,10 +133,13 @@
          const dataSrc = mediaElement.getAttribute('data-src');
          if (mediaElement.tagName === 'IMG') {
              mediaElement.src = dataSrc;
+             console.log(mediaElement)
+
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement.querySelector('source');
              sourceElement.src = dataSrc;
              mediaElement.load();
+             console.log(mediaElement)
          }
          mediaElement.removeAttribute('data-src');
      }
@@ -154,9 +157,8 @@
 
          const imageElement = ele.querySelector('img[data-src]');
          const videoElement = ele.querySelector('video[data-src]');
-         console.log(slideArr)
          if (imageElement) {
-                lazyLoadMedia(imageElement);
+             lazyLoadMedia(imageElement);
 
              var imageAltText = imageElementT.getAttribute('alt');
              currentText = imageAltText
@@ -166,13 +168,13 @@
          }
 
          if (videoElement) {
-                lazyLoadMedia(videoElement);
+             lazyLoadMedia(videoElement);
 
-             videoElement.controls = false;
-             videoElement.play();
-             videoElement.controls = false;
+             videoElementT.play();
+             videoElementT.controls = false;
+             videoElementT.autoplay = true;
 
-             var textTracks = videoElement.textTracks;
+             var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
              if (info === false) {
@@ -352,7 +354,6 @@
 
              var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
              slideArr = shiftedArray;
-             console.log(slideArr)
              t = targetNumber - 1
              slider(true, true)
              counter();
