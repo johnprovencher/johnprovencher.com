@@ -62,7 +62,7 @@
                  lazyLoadMedia(video);
                  video.style.width = pWidth + "px"
                  video.pause()
-                 video.controls = false;
+                 //video.controls = false;
              }
          }
      }
@@ -194,13 +194,13 @@
          }
          if (videoElement) {
              lazyLoadMedia(videoElement);
-             videoElement.controls = false;
+             //videoElement.controls = false;
              videoElement.autoplay = true;
              videoElement.play();
          }
 
          if (videoElementT) {
-             videoElementT.controls = false;
+             //videoElementT.controls = false;
              videoElementT.autoplay = true;
 
              videoElementT.play();
