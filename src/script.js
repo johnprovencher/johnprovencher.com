@@ -147,7 +147,7 @@
 
              // Wait for the 'loadeddata' event to ensure the video has finished loading
              mediaElement.addEventListener('loadeddata', function() {
-                 //mediaElement.play(); // Add this line to attempt autoplay (with muted if needed)
+                 mediaElement.play(); // Add this line to attempt autoplay (with muted if needed)
              });
          }
      }
