@@ -160,7 +160,8 @@ function lazyLoadMedia(mediaElement) {
         const playVideoOnInteraction = function() {
           mediaElement.play().catch(error => {
             // Autoplay was blocked, handle this based on your use case
-            console.error('Autoplay was blocked:', error.message);
+             const errorContainer = document.getElementById('error-container');
+        errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
           });
           // Remove the click event listener after playback starts
           document.removeEventListener('click', playVideoOnInteraction);
@@ -179,7 +180,8 @@ function lazyLoadMedia(mediaElement) {
         mediaElement.load();
         mediaElement.play().catch(error => {
           // Autoplay was blocked, handle this based on your use case
-          console.error('Autoplay was blocked:', error.message);
+           const errorContainer = document.getElementById('error-container');
+        errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
         });
       }
     }
