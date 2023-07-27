@@ -141,18 +141,13 @@
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement;
              const dataSrc = sourceElement.getAttribute('data-src');
-             sourceElement.setAttribute('src', 'https://incredible-dragon-cf736c.netlify.app' + dataSrc);
+             sourceElement.setAttribute('src', dataSrc);
              sourceElement.setAttribute('type', 'video/mp4');
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
 
-             mediaElement.setAttribute("autoplay", "");
-             mediaElement.play().catch(error => {
-                 // Autoplay was blocked, handle this based on your use case
-                 const errorContainer = document.getElementById('error-container');
-                 errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
-                 console.error('Autoplay was blocked:', error.message);
-             });
+             mediaElement.setAttribute("autoplay", true);
+             //mediaElement.play()
          }
      }
 
@@ -190,12 +185,7 @@
              if (sourceElement && sourceElement.hasAttribute('data-src')) {
                  lazyLoadMedia(videoElement);
              } else {
-                 videoElement.play().catch(error => {
-                 // Autoplay was blocked, handle this based on your use case
-                 const errorContainer = document.getElementById('error-container');
-                 errorContainer.textContent = 'Autoplay was blocked: ' + error.message;
-                 console.error('Autoplay was blocked:', error.message);
-             });;;
+                 //videoElement.play()
              }
 
          }
@@ -221,8 +211,6 @@
 
          if (videoElement) {
              videoElement.pause();
-             videoElement.autoplay = true;
-
          }
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
          ele.style.left = "-5000%"
