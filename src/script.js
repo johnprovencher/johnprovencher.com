@@ -137,10 +137,6 @@
 
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement.querySelector('source');
-             sourceElement.onload = function() {
-                 // Video source has finished loading
-                mediaElement.play();
-             };
              sourceElement.src = dataSrc;
              mediaElement.load();
              console.log(mediaElement)
@@ -172,9 +168,10 @@
 
          if (videoElement) {
              lazyLoadMedia(videoElement);
-
-           //  videoElementT.play();
+             videoElementT.play();
              videoElementT.controls = false;
+             videoElementT.autoplay = true;
+
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
@@ -188,6 +185,7 @@
          var videoElement = ele.querySelector('video');
          if (videoElement) {
              videoElement.pause();
+             videoElement.autoplay = false;
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
@@ -200,6 +198,8 @@
          var videoElement = ele.querySelector('video');
          if (videoElement) {
              videoElement.pause();
+             videoElement.autoplay = false;
+
          }
 
          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
