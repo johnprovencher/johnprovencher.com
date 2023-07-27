@@ -184,7 +184,11 @@
       videoElementT.addEventListener("canplay", function () {
         videoElementT.play();
       });
-      
+
+     videoElement.addEventListener("canplay", function () {
+        videoElement.play();
+      });
+
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
