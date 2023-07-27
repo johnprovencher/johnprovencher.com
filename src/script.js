@@ -136,20 +136,23 @@
      function lazyLoadMedia(mediaElement) {
          if (mediaElement.tagName === 'IMG') {
              const dataSrc = mediaElement.getAttribute('data-src');
-             mediaElement.setAttribute('src', dataSrc);
-             mediaElement.removeAttribute('data-src');
+             if (dataSrc) {
+                 mediaElement.setAttribute('src', dataSrc);
+                 mediaElement.removeAttribute('data-src');
+             }
          } else if (mediaElement.tagName === 'VIDEO') {
              const sourceElement = mediaElement.querySelector('source');
              const dataSrc = sourceElement.getAttribute('data-src');
-             mediaElement.pause();
-             sourceElement.setAttribute('src', dataSrc);
-             sourceElement.setAttribute('type', 'video/mp4');
-             sourceElement.removeAttribute('data-src');
-             mediaElement.load();
-             mediaElement.setAttribute("autoplay", "");
-
-             mediaElement.play();
-
+             if (dataSrc) {
+                 mediaElement.pause();
+                 sourceElement.setAttribute('src', dataSrc);
+                 sourceElement.setAttribute('type', 'video/mp4');
+                 sourceElement.removeAttribute('data-src');
+                 mediaElement.load();
+                 mediaElement.setAttribute('autoplay', '');
+                 mediaElement.setAttribute('muted', '');
+                 mediaElement.play();
+             }
          }
      }
 
