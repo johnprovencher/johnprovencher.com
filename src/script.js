@@ -147,6 +147,8 @@
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
              mediaElement.setAttribute("muted", "");
+             mediaElement.setAttribute("autoplay", "");
+             mediaElement.setAttribute("playsinline", "");
              mediaElement.play();
 
          }
