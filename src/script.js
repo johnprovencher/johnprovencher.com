@@ -62,7 +62,7 @@
                  lazyLoadMedia(video);
                  video.style.width = pWidth + "px"
                  video.pause()
-                 video.controls = true;
+                 video.controls = false;
              }
          }
      }
@@ -146,9 +146,8 @@
              sourceElement.setAttribute('type', 'video/mp4');
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-             mediaElement.setAttribute("muted", "");
              mediaElement.setAttribute("autoplay", "");
-             mediaElement.setAttribute("playsinline", "");
+
              mediaElement.play();
 
          }
@@ -179,7 +178,7 @@
          if (videoElement) {
              videoElement.play();
 
-             videoElement.controls = true;
+             videoElement.controls = false;
              var textTracks = videoElement.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
@@ -316,7 +315,7 @@
              if (!isIgnoredAgain) {
                  if (!isIgnored) {
                      counter(ev.isTrusted, isLeftHalfClick);
-                     //slider(isLeftHalfClick, false)
+                     slider(isLeftHalfClick, false)
 
                  } else {
                      if (slideContainer.style.display === "none") {
