@@ -180,6 +180,11 @@
              videoElement.controls = false;
              videoElement.play();
              videoElement.autoplay = true;
+
+      videoElementT.addEventListener("canplay", function () {
+        videoElementT.play();
+      });
+      
              var textTracks = videoElementT.textTracks;
              var videoAltText = textTracks[0].label
              currentText = videoAltText
