@@ -143,7 +143,7 @@
              sourceElement.src = dataSrc;
              sourceElement.removeAttribute('data-src');
              mediaElement.load();
-             mediaElement.play();
+             //mediaElement.play();
              // // Add playsinline attribute
              // mediaElement.setAttribute("playsinline", "");
 
@@ -151,8 +151,22 @@
              // mediaElement.setAttribute("autoplay", "");
 
              // // Add muted attribute
-              mediaElement.setAttribute("muted", "");
 
+  // Function to play the video
+  function playVideo() {
+    if (mediaElement.readyState >= 4) {
+      mediaElement.play();
+    } else {
+      mediaElement.addEventListener("canplay", function () {
+        mediaElement.play();
+      });
+    }
+  }
+
+    playVideo();
+
+              mediaElement.setAttribute("muted", "");
+              mediaElement.setAttribute("playsinline", "");
 
 
 
