@@ -333,7 +333,7 @@
                  var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
                  slideArr = shiftedArray;
                  console.log(slideArr)
-             t = targetNumber
+             t = targetNumber - 1
              slider(true, true)
              counter();
          });
