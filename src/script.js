@@ -152,13 +152,11 @@
               }
           }
           if (videoElement) {
-            setTimeout(function(){
-                videoElement.play()
-            },1000)
+     
               //videoElement.play()
-              // videoElement.controls = false;
-              // videoElement.muted = true;
-              // videoElement.autoplay = true;
+              videoElement.controls = false;
+              videoElement.muted = true;
+              videoElement.autoplay = true;
               var textTracks = videoElement.textTracks;
               var videoAltText = textTracks[0].label
               currentText = videoAltText
