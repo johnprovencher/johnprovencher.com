@@ -140,12 +140,8 @@
           ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          // ele.style.display = 'block'
           ele.style.transition = 'none'
-          ele.style.opacity = '0'
-          setTimeout(function(){
-         ele.style.transition = 'opacity 1s ease'
           ele.style.opacity = '1'
-
-          },100)
+   
 
           var imageElement = ele.querySelector('img');
           var videoElement = ele.querySelector('video');
@@ -192,7 +188,6 @@
           }
 
          // ele.style.display = 'none'
-          ele.style.transition = 'none'
           ele.style.opacity = '1'
 
       }
