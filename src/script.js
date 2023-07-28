@@ -231,7 +231,7 @@
 
       //innit
       var slideshowx = document.getElementById('slideshow');
-      var loaderx = document.getElementById('slideshowx');
+      var loaderx = document.getElementById('loader');
       var entry = false
       setTimeout(function() {
           slider(true, true)
