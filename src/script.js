@@ -157,26 +157,18 @@
               videoElement.controls = false;
               // videoElement.play()
 
-              let shouldPlayVideo;
 
               const playVideo = (video) => {
-                  shouldPlayVideo = true;
                   video.addEventListener('loadeddata', () => {
                       // This may have flipped to false if resetVideo was called before loadeddata fired
-                      if (shouldPlayVideo) {
                           video.play();
-                          console.log('yoo')
-                      }
                   });
                   video.load();
               }
 
+              playVideo(videoElement)
 
-              const resetVideo = (video) => {
-                  shouldPlayVideo = false;
-                  video.load();
-              }
-
+      
 
               var textTracks = videoElement.textTracks;
               var videoAltText = textTracks[0].label
