@@ -286,7 +286,7 @@
 
     .image-container p {
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 0px;
     }
 
     .image-container {
