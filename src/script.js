@@ -143,7 +143,7 @@
 
           var imageElement = ele.querySelector('img');
           var videoElement = ele.querySelector('video');
-
+          console.log(videoElement)
           if (imageElement) {
               var imageAltText = imageElement.getAttribute('alt');
               currentText = imageAltText
