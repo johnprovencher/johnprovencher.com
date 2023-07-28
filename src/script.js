@@ -20,22 +20,20 @@
           }
           return arr;
       }
-      const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+      var observer = lozad(); // lazy loads elements with default selector as '.lozad'
       observer.observe();
 
-    // Initialize lozad with default settings
-    const observer = lozad();
-    observer.observe();
 
-    const observer = lozad('video.lazy', {
+
+    var observer = lozad('video.lazy', {
       threshold: 0.1,
       load: function(el) {
         el.play(); // Autoplay the video when it becomes visible
         console.log(el)
       }
     });
-    observer.observe();
 
+      observer.observe();
 
 
       //typewriter
