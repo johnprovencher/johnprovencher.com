@@ -139,7 +139,13 @@
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          // ele.style.display = 'block'
+          ele.style.transition = 'none'
+          ele.style.opacity = '0'
+          setTimeout(function(){
+         ele.style.transition = 'opacity 1s ease'
           ele.style.opacity = '1'
+
+          },100)
 
           var imageElement = ele.querySelector('img');
           var videoElement = ele.querySelector('video');
@@ -181,14 +187,29 @@
           } else {
               observer.triggerLoad(imageElement);
           }
-          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-          ele.style.left = width * 2 + "px"
+          ele.style.top = height - 50 + "px"
+          ele.style.left = width - 50 + "px"
          // ele.style.display = 'none'
-          ele.style.opacity = '0'
+          ele.style.transition = 'none'
+          ele.style.opacity = '1'
 
       }
 
+      function nextL(ele) {
+          var videoElement = ele.querySelector('video');
+          var imageElement = ele.querySelector('img');
+          if (videoElement) {
+              videoElement.pause();
+          } else {
+              observer.triggerLoad(imageElement);
+          }
+          ele.style.top = height - 50 + "px"
+          ele.style.left = 0 + "px"
+         // ele.style.display = 'none'
+          ele.style.transition = 'none'
+          ele.style.opacity = '1'
 
+      }
 
 
       function leftOff(ele) {
@@ -215,14 +236,14 @@
               }
           }
           for (i = 0; i < slideDOM.length; i++) {
-              // slideDOM[i].style.width = "50px"
-              // slideDOM[i].style.height = sHeight + "px"
+              slideDOM[i].style.width = "50px"
+              slideDOM[i].style.height = sHeight + "px"
 
           }
           center(slideDOM[slideArr[0]])
           next(slideDOM[slideArr[1]])
-          next(slideDOM[slideArr[slideDOM.length - 1]])
-          for (i = 2; i < slideDOM.length; i++) {
+          nextL(slideDOM[slideArr[slideDOM.length - 1]])
+          for (i = 2; i < slideDOM.length-1; i++) {
               leftOff(slideDOM[slideArr[i]])
           }
       }
