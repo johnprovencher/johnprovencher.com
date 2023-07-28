@@ -198,6 +198,7 @@
       }
 
       function nextL(ele) {
+          ele.style.transition = 'none'
           ele.style.top = height - 50 + "px"
           ele.style.left = 0 + "px"
           var videoElement = ele.querySelector('video');
@@ -210,7 +211,6 @@
           }
 
          // ele.style.display = 'none'
-          ele.style.transition = 'none'
           ele.style.opacity = '1'
 
       }
