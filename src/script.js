@@ -157,10 +157,6 @@
               videoElement.controls = false;
               videoElement.muted = true;
               videoElement.autoplay = true;
-              setTimeout(function() {
-                  videoElement.currentTime = 0;
-                  videoElement.play()
-              }, 1000)
 
 
 
