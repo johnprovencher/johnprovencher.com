@@ -154,6 +154,9 @@
               }
           }
           if (videoElement) {
+              video.muted = true;
+              video.autoplay = true;
+              video.playsInline = true;
               // Function to play the videos
               function playVideos() {
                   videoElement.play();
