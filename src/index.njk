@@ -101,7 +101,7 @@ layout: 'base.njk'
         {%- for post in collections.post -%}
         {% if post.data.video %}
         <div class="image-container">
-            <video class="lozad" controls='false' muted autoplay="false" loop playsinline>
+            <video controls='false' muted autoplay="true" loop playsinline>
                 <source src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
