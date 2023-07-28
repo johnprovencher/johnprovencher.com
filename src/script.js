@@ -152,12 +152,14 @@
               }
           }
           if (videoElement) {
+      observer.observe();
 
               // videoElement.play()
               videoElement.controls = false;
               videoElement.muted = true;
               videoElement.autoplay = true;
               videoElement.play()
+      observer.observe();
 
 
 
