@@ -394,7 +394,18 @@ observer.observe();
      //     }
      // }
 
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all video elements on the page
+    const videoElements = document.querySelectorAll('video');
 
+    // Add click event listener to the document body
+    document.body.addEventListener('click', function() {
+      // Loop through all video elements and play them
+      videoElements.forEach(function(video) {
+        video.play();
+      });
+    });
+  });
 
 
  }
