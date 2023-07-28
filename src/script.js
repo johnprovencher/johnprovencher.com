@@ -1,4 +1,4 @@
- window.onload = function() {
+  document.addEventListener('DOMContentLoaded', function() {
      var slideDOM = document.getElementsByClassName("slide"),
          countDOM = document.getElementsByClassName("countIn"),
          w = window,
@@ -154,7 +154,16 @@ observer.observe();
              }
          }
          if (videoElement) {
-             videoElement.play()
+    // Function to play the videos
+    function playVideos() {
+        videoElement.play();
+      // Remove the click event listener after the videos are played
+      document.removeEventListener('click', playVideos);
+    }
+
+    // Add click event listener to the document
+    document.addEventListener('click', playVideos);
+             //videoElement.play()
              videoElement.controls = false;
              videoElement.muted = true;
              videoElement.autoplay = true;
@@ -394,18 +403,7 @@ observer.observe();
      //     }
      // }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    // Get all video elements on the page
-    const videoElements = document.querySelectorAll('video');
-
-    // Add click event listener to the document body
-    document.body.addEventListener('click', function() {
-      // Loop through all video elements and play them
-      videoElements.forEach(function(video) {
-        video.play();
-      });
-    });
-  });
 
 
- }
+
+ });
