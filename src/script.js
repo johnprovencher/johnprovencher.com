@@ -20,7 +20,12 @@
           }
           return arr;
       }
-      const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+      const observer = lozad('.lozad', {
+    rootMargin: '3000px 0px', // syntax similar to that of CSS Margin
+    threshold: 0.1, // ratio of element convergence
+    enableAutoReload: true // it will reload the new image when validating attributes changes
+});
+
       observer.observe();
 
       //typewriter
@@ -295,6 +300,7 @@
       var chatter = document.getElementById("chatter");
 
       var tClick = 0;
+      var imageContainers = document.querySelectorAll('.image-container');
 
 
       function click(ev) {
@@ -319,6 +325,7 @@
                   chatter.style.display = "inline-block";
                   setTimeout(function(){
                   thumbnails.style.opacity = "1";
+
 
                 },100)
                   email.style.display = "none";
@@ -349,7 +356,6 @@
       }
 
 
-      var imageContainers = document.querySelectorAll('.image-container');
 
       // Add a click event listener to each element with class 'image-container'
       imageContainers.forEach(function(container, index) {
