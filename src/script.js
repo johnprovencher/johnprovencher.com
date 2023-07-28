@@ -189,9 +189,14 @@
 
       function leftOff(ele) {
           var videoElement = ele.querySelector('video');
+          var imageElement = ele.querySelector('img');
           if (videoElement) {
-              // videoElement.pause();
+              videoElement.pause();
+          } else {
           }
+          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+          ele.style.left = width * 2 + "px"
+          ele.style.display = 'none'
       }
 
 
