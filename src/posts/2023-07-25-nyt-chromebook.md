@@ -6,7 +6,7 @@ image: /assets/screen-shot-2023-07-19-at-11.24.05-am.png
 imageAlt: bloomberg, ransomware
 tags:
   - post
-video: /assets/chromebook-pixel.gif
+video: /assets/nyt-chromebook.mp4
 link: 'https://www.nytimes.com/2022/08/18/technology/chromebooks-pandemic-star.html'
 ---
 

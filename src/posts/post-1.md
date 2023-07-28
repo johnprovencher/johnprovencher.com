@@ -7,7 +7,7 @@ imageAlt: nike moonshot
 tags:
   - post
   - featured
-video: /assets/MOON_01.gif
+video: /assets/nike.mp4
 link: 'https://pbs.twimg.com/media/F10GgpKXsAQUgd4?format=jpg&name=large'
 ---
 

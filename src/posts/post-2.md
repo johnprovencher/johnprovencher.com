@@ -7,6 +7,6 @@ imageAlt: doss
 tags:
   - post
   - featured
-video: /assets/animation-gif-green.gif
+video: /assets/doss.mp4
 ---
 

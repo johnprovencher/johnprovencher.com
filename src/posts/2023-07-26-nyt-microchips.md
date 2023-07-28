@@ -7,6 +7,6 @@ imageAlt: nyt, data
 tags:
   - nyt
   - data
-video: /assets/gif.gif
+video: /assets/nyt-data.mp4
 ---
 
