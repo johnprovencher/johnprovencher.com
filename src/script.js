@@ -160,7 +160,7 @@
               setTimeout(function() {
                   videoElement.currentTime = 0;
                   videoElement.play()
-              }, 1000)
+              }, 5000)
 
 
 
