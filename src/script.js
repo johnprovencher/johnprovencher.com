@@ -49,8 +49,6 @@
               var paragraph = container.querySelector("p");
               var image = container.querySelector("img");
               var video = container.querySelector("video");
-              var imageElement = container.querySelector('img[data-src]');
-              var videoElement = container.querySelector('video[data-src]');
               var pWidth;
               if (paragraph) {
                   pWidth = paragraph.offsetWidth;
@@ -63,7 +61,7 @@
               if (video) {
                   // lazyLoadMedia(video);
                   video.style.width = pWidth + "px"
-                  video.pause()
+                  video.autoplay = false
                   video.controls = false;
               }
           }
@@ -154,22 +152,13 @@
               }
           }
           if (videoElement) {
-              video.muted = true;
-              video.autoplay = true;
-              video.playsInline = true;
-              // Function to play the videos
-              function playVideos() {
-                  videoElement.play();
-                  // Remove the click event listener after the videos are played
-                  document.removeEventListener('click', playVideos);
-              }
-
-              // Add click event listener to the document
-              document.addEventListener('click', playVideos);
+            setTimeout(function(){
+                videoElement.play()
+            },1000)
               //videoElement.play()
-              videoElement.controls = false;
-              videoElement.muted = true;
-              videoElement.autoplay = true;
+              // videoElement.controls = false;
+              // videoElement.muted = true;
+              // videoElement.autoplay = true;
               var textTracks = videoElement.textTracks;
               var videoAltText = textTracks[0].label
               currentText = videoAltText
@@ -197,7 +186,7 @@
       function leftOff(ele) {
           var videoElement = ele.querySelector('video');
           if (videoElement) {
-              videoElement.pause();
+              //videoElement.pause();
           }
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = "-5000%"
