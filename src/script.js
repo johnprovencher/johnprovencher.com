@@ -192,23 +192,7 @@
 
       }
 
-      function nextL(ele) {
-          ele.style.opacity = '0'
-          ele.style.transition = 'none'
-          ele.style.top = height * 2 + "px"
-          ele.style.left = width * 2 + "px"
-          var videoElement = ele.querySelector('video');
-          var imageElement = ele.querySelector('img');
-          if (videoElement) {
-              videoElement.controls = false;
-              videoElement.pause();
-          } else {
-              observer.triggerLoad(imageElement);
-          }
 
-         // ele.style.display = 'none'
-
-      }
 
 
       function leftOff(ele) {
@@ -241,7 +225,7 @@
           }
           center(slideDOM[slideArr[0]])
           next(slideDOM[slideArr[1]])
-          nextL(slideDOM[slideArr[slideDOM.length - 1]])
+          next(slideDOM[slideArr[slideDOM.length - 1]])
           for (i = 2; i < slideDOM.length-1; i++) {
               leftOff(slideDOM[slideArr[i]])
           }
