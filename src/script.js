@@ -225,8 +225,7 @@
           }
           center(slideDOM[slideArr[0]])
           next(slideDOM[slideArr[1]])
-          next(slideDOM[slideArr[slideDOM.length - 1]])
-          for (i = 2; i < slideDOM.length-1; i++) {
+          for (i = 2; i < slideDOM.length; i++) {
               leftOff(slideDOM[slideArr[i]])
           }
       }
