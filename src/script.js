@@ -143,7 +143,6 @@
 
           var imageElement = ele.querySelector('img');
           var videoElement = ele.querySelector('video');
-          console.log(videoElement)
           if (imageElement) {
               var imageAltText = imageElement.getAttribute('alt');
               currentText = imageAltText
@@ -155,19 +154,12 @@
 
               // videoElement.play()
               videoElement.controls = false;
-              // videoElement.play()
-
-      
+              videoElement.play()
 
 
-videoElement.addEventListener('loadeddata', (e) => {
-   //Video should now be loaded but we can add a second check
-
- console.log(videoElement.readyState)
- videoElement.play()
-
-
-});
+              videoElement.addEventListener('loadeddata', (e) => {
+                  //   videoElement.play()
+              });
 
 
 
@@ -180,28 +172,32 @@ videoElement.addEventListener('loadeddata', (e) => {
           }
       }
 
-      function left(ele) {
-          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-          ele.style.left = 0 - offset + 'px'
-          ele.style.display = 'none'
 
+      function next(ele) {
+          var videoElement = ele.querySelector('video');
+          var imageElement = ele.querySelector('img');
+
+          if (videoElement) {
+              videoElement.pause();
+          } else {
+              observer.triggerLoad(imageElement);
+          }
+          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+          ele.style.left = width + "px"
+          ele.style.display = 'none'
       }
 
-      function right(ele) {
-          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-          //   ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10))) + offset + "px"
-          ele.style.display = 'none'
 
 
-      }
+
 
       function leftOff(ele) {
           var videoElement = ele.querySelector('video');
           if (videoElement) {
-              //videoElement.pause();
+              videoElement.pause();
           }
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-          ele.style.left = "-5000%"
+          ele.style.left = width + "px"
           ele.style.display = 'none'
 
       }
@@ -229,7 +225,9 @@ videoElement.addEventListener('loadeddata', (e) => {
 
           }
           center(slideDOM[slideArr[0]])
-          for (i = 1; i < slideDOM.length; i++) {
+          next(slideDOM[slideArr[1]])
+          next(slideDOM[slideArr[slideDOM.length-1]])
+          for (i = 2; i < slideDOM.length; i++) {
               leftOff(slideDOM[slideArr[i]])
           }
       }
@@ -352,62 +350,47 @@ videoElement.addEventListener('loadeddata', (e) => {
       });
 
 
-      // //dark mode
-      // var toggleDark = document.getElementById("dark-light");
-      // var toggleOrb = document.getElementById("orb");
-      // var blockButton = document.getElementsByClassName("block-button");
-      // var blockColor = document.getElementsByClassName("block-color");
-      // var anchorTags = document.querySelectorAll('a:not(.block-button)');
+      var toggleDark = document.getElementById("dark-light");
+      var toggleOrb = document.getElementById("orb");
+      var blockButton = document.getElementsByClassName("block-button");
+      var blockColor = document.getElementsByClassName("block-color");
+      var anchorTags = document.querySelectorAll('a:not(.block-button)');
 
+      // Function to enable dark mode
+      function enableDarkMode() {
+          document.body.classList.add("toggle-dark");
+          toggleOrb.classList.add("toggle-orb");
+          anchorTags.forEach(function(anchor) {
+              anchor.classList.add('toggle-dark');
+          });
+          for (i = 0; i < blockColor.length; i++) {
+              blockColor[i].classList.add("block-color-toggle");
+          }
+      }
 
+      // Function to disable dark mode
+      function disableDarkMode() {
+          document.body.classList.remove("toggle-dark");
+          toggleOrb.classList.remove("toggle-orb");
+          anchorTags.forEach(function(anchor) {
+              anchor.classList.remove('toggle-dark');
+          });
+          for (i = 0; i < blockButton.length; i++) {
+              blockButton[i].classList.remove("block-button-toggle");
+          }
+          for (i = 0; i < blockColor.length; i++) {
+              blockColor[i].classList.remove("block-color-toggle");
+          }
+      }
 
-      // var darkModePreference = localStorage.getItem('darkMode');
-      // if (darkModePreference === 'dark') {
-      //     enableDarkMode();
-      // }
-
-      // var darkModeToggle = document.getElementById('darkModeToggle');
-      // darkModeToggle.checked = darkModePreference === 'dark';
-
-      // darkModeToggle.addEventListener('change', () => {
-      //     if (darkModeToggle.checked) {
-      //         enableDarkMode();
-      //         localStorage.setItem('darkMode', 'dark');
-      //     } else {
-      //         disableDarkMode();
-      //         localStorage.setItem('darkMode', 'light');
-      //     }
-      // });
-
-      // function enableDarkMode() {
-
-      //     document.body.classList.add("toggle-dark");
-      //     toggleOrb.classList.add("toggle-orb");
-      //     anchorTags.forEach(function(anchor) {
-      //         anchor.classList.add('toggle-dark');
-      //     });
-      //     for (i = 0; i < blockColor.length; i++) {
-      //         blockColor[i].classList.add("block-color-toggle");
-      //     }
-
-
-      // }
-
-      // function disableDarkMode() {
-      //     document.body.classList.remove("toggle-dark");
-      //     toggleOrb.classList.remove("toggle-orb");
-      //     anchorTags.forEach(function(anchor) {
-      //         anchor.classList.remove('toggle-dark');
-      //     });
-      //     for (i = 0; i < blockButton.length; i++) {
-      //         blockButton[i].classList.remove("block-button-toggle");
-      //     }
-      //     for (i = 0; i < blockColor.length; i++) {
-      //         blockColor[i].classList.remove("block-color-toggle");
-      //     }
-      // }
-
-
+      var darkModeToggle = document.getElementById('darkModeToggle');
+      darkModeToggle.addEventListener('change', () => {
+          if (darkModeToggle.checked) {
+              enableDarkMode();
+          } else {
+              disableDarkMode();
+          }
+      });
 
 
   });
