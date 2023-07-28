@@ -158,13 +158,21 @@
               // videoElement.play()
 
       
-setInterval(function(){
-console.log(videoElement.readyState)
 
-        if (videoElement.readyState === 4) {
-                  videoElement.play()
-              }
-},1000)
+
+videoElement.addEventListener('loadeddata', (e) => {
+   //Video should now be loaded but we can add a second check
+
+ console.log(videoElement.readyState)
+
+
+});
+
+
+//         if (videoElement.readyState === 4) {
+//                   videoElement.play()
+//               }
+// },1000)
 
 
               var textTracks = videoElement.textTracks;
