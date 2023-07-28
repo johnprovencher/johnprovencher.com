@@ -61,7 +61,7 @@
               if (video) {
                   // lazyLoadMedia(video);
                   video.style.width = pWidth + "px"
-                  video.autoplay = false
+                  video.pause()
                   video.controls = false;
               }
           }
@@ -152,11 +152,11 @@
               }
           }
           if (videoElement) {
-     
+
               //videoElement.play()
-              videoElement.controls = false;
-              videoElement.muted = true;
-              videoElement.autoplay = true;
+              // videoElement.controls = false;
+              // videoElement.muted = true;
+              // videoElement.autoplay = true;
               var textTracks = videoElement.textTracks;
               var videoAltText = textTracks[0].label
               currentText = videoAltText
