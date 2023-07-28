@@ -7,6 +7,6 @@ imageAlt: alexander wang
 tags:
   - post
   - featured
-video: /assets/wang.mp4
+video: /assets/MOON_02.gif
 ---
 

@@ -7,6 +7,6 @@ imageAlt: bloomberg, ransomware
 tags:
   - post
   - featured
-video: /assets/bloomberg-ransomware.mp4
+video: /assets/ransomware-jp-animation-large-compressed.gif
 ---
 
