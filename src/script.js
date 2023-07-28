@@ -164,15 +164,11 @@ videoElement.addEventListener('loadeddata', (e) => {
    //Video should now be loaded but we can add a second check
 
  console.log(videoElement.readyState)
+ videoElement.play()
 
 
 });
 
-
-//         if (videoElement.readyState === 4) {
-//                   videoElement.play()
-//               }
-// },1000)
 
 
               var textTracks = videoElement.textTracks;
