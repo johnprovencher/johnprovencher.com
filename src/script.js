@@ -180,15 +180,17 @@
 
 
       function next(ele) {
+          ele.style.top = height - 50 + "px"
+          ele.style.left = width - 50 + "px"
           var videoElement = ele.querySelector('video');
           var imageElement = ele.querySelector('img');
           if (videoElement) {
+              videoElement.controls = false;
               videoElement.pause();
           } else {
               observer.triggerLoad(imageElement);
           }
-          ele.style.top = height - 50 + "px"
-          ele.style.left = width - 50 + "px"
+
          // ele.style.display = 'none'
           ele.style.transition = 'none'
           ele.style.opacity = '1'
@@ -196,15 +198,17 @@
       }
 
       function nextL(ele) {
+          ele.style.top = height - 50 + "px"
+          ele.style.left = 0 + "px"
           var videoElement = ele.querySelector('video');
           var imageElement = ele.querySelector('img');
           if (videoElement) {
+              videoElement.controls = false;
               videoElement.pause();
           } else {
               observer.triggerLoad(imageElement);
           }
-          ele.style.top = height - 50 + "px"
-          ele.style.left = 0 + "px"
+
          // ele.style.display = 'none'
           ele.style.transition = 'none'
           ele.style.opacity = '1'
