@@ -155,11 +155,7 @@
 
               // videoElement.play()
               videoElement.controls = false;
-              videoElement.muted = true;
-              videoElement.autoplay = true;
-              //videoElement.play()
-
-
+              videoElement.play()
 
 
               var textTracks = videoElement.textTracks;
