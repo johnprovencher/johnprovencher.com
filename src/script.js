@@ -139,7 +139,6 @@
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
          // ele.style.display = 'block'
-          
           ele.style.opacity = '1'
 
           var imageElement = ele.querySelector('img');
@@ -182,10 +181,10 @@
           } else {
               observer.triggerLoad(imageElement);
           }
-          ele.style.top = height - 50 + "px"
-          ele.style.left = width - 50 + "px"
+          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+          ele.style.left = width * 2 + "px"
          // ele.style.display = 'none'
-          ele.style.opacity = '1'
+          ele.style.opacity = '0'
 
       }
 
@@ -216,8 +215,8 @@
               }
           }
           for (i = 0; i < slideDOM.length; i++) {
-              slideDOM[i].style.width = "50px"
-              slideDOM[i].style.height = sHeight + "px"
+              // slideDOM[i].style.width = "50px"
+              // slideDOM[i].style.height = sHeight + "px"
 
           }
           center(slideDOM[slideArr[0]])
