@@ -198,20 +198,20 @@
       }
 
       function nextL(ele) {
+          ele.style.opacity = '0'
           ele.style.transition = 'none'
-          ele.style.top = height - 50 + "px"
-          ele.style.left = 0 + "px"
+          ele.style.top = height * 2 + "px"
+          ele.style.left = width * 2 + "px"
           var videoElement = ele.querySelector('video');
           var imageElement = ele.querySelector('img');
           if (videoElement) {
               videoElement.controls = false;
               videoElement.pause();
           } else {
-              //observer.triggerLoad(imageElement);
+              observer.triggerLoad(imageElement);
           }
 
          // ele.style.display = 'none'
-          ele.style.opacity = '1'
 
       }
 
