@@ -23,6 +23,21 @@
       const observer = lozad(); // lazy loads elements with default selector as '.lozad'
       observer.observe();
 
+    // Initialize lozad with default settings
+    const observer = lozad();
+    observer.observe();
+
+    const observer = lozad('video.lazy', {
+      threshold: 0.1,
+      load: function(el) {
+        el.play(); // Autoplay the video when it becomes visible
+        console.log(el)
+      }
+    });
+    observer.observe();
+
+
+
       //typewriter
       function typeWrite(text) {
 
@@ -157,7 +172,7 @@
               videoElement.controls = false;
               videoElement.muted = true;
               videoElement.autoplay = true;
-              videoElement.play()
+              //videoElement.play()
 
 
 
