@@ -153,8 +153,16 @@
           }
           if (videoElement) {
 
-              //videoElement.play()
-              // videoElement.controls = false;
+             // videoElement.play()
+
+            setTimeout(function(){
+                videoElement.currentTime = 0;
+                videoElement.play()
+            },1000)
+
+  
+
+              videoElement.controls = false;
               // videoElement.muted = true;
               // videoElement.autoplay = true;
               var textTracks = videoElement.textTracks;
