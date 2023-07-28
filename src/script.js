@@ -177,14 +177,16 @@
           var videoElement = ele.querySelector('video');
           var imageElement = ele.querySelector('img');
 
-          if (videoElement) {
-              videoElement.pause();
-          } else {
-              observer.triggerLoad(imageElement);
-          }
+
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = width + "px"
           ele.style.display = 'none'
+          if (videoElement) {
+              videoElement.pause();
+              ele.style.display = 'block'
+          } else {
+              observer.triggerLoad(imageElement);
+          }
       }
 
 
@@ -194,7 +196,7 @@
       function leftOff(ele) {
           var videoElement = ele.querySelector('video');
           if (videoElement) {
-              videoElement.pause();
+              // videoElement.pause();
           }
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = width + "px"
@@ -226,7 +228,7 @@
           }
           center(slideDOM[slideArr[0]])
           next(slideDOM[slideArr[1]])
-          next(slideDOM[slideArr[slideDOM.length-1]])
+          next(slideDOM[slideArr[slideDOM.length - 1]])
           for (i = 2; i < slideDOM.length; i++) {
               leftOff(slideDOM[slideArr[i]])
           }
