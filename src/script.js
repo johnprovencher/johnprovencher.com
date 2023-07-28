@@ -59,7 +59,7 @@
               }
               if (video) {
                   video.style.width = pWidth + "px"
-                //  video.pause()
+                  //  video.pause()
                   video.controls = false;
               }
           }
@@ -192,8 +192,7 @@
           var imageElement = ele.querySelector('img');
           if (videoElement) {
               videoElement.pause();
-          } else {
-          }
+          } else {}
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = width * 2 + "px"
           ele.style.display = 'none'
@@ -281,39 +280,45 @@
           var isLeftHalfClick = (ev.clientX) < width / 2;
           var isIgnored = ev.target.closest("#orb");
           var isIgnoredAgainAgain = ev.target.closest("#chatter");
+          var email = document.getElementById("email");
+
+          function toggleThis() {
+              if (slideContainer.style.display === "none") {
+                  slideContainer.style.display = "block";
+                  infoContainer.style.display = "none";
+                  if (width < 1200) {
+                      chatter.style.display = "none";
+                  }
+                  info = false
+                  typeWrite(currentText)
+
+              } else {
+                  slideContainer.style.display = "none";
+                  infoContainer.style.display = "block";
+                  chatter.style.display = "inline-block";
+                  email.style.display = "none";
+                  info = true
+                  typeWrite("e-mail?")
+                  if (tClick === 0) {
+                      styleThumb()
+                  }
+                  tClick += 1
+              }
+          }
           var isIgnoredAgain = ev.target.closest("#info-container");
           if (!isIgnoredAgainAgain) {
-
               if (!isIgnoredAgain) {
                   if (!isIgnored) {
                       counter(ev.isTrusted, isLeftHalfClick);
                       slider(isLeftHalfClick, false)
 
                   } else {
-                      if (slideContainer.style.display === "none") {
-                          slideContainer.style.display = "block";
-                          infoContainer.style.display = "none";
-                          if (width < 1200) {
-                              chatter.style.display = "none";
-                          }
-                          info = false
-                          typeWrite(currentText)
-
-                      } else {
-                          slideContainer.style.display = "none";
-                          infoContainer.style.display = "block";
-                          chatter.style.display = "inline-block";
-                          info = true
-                          typeWrite("e-mail?")
-                          if (tClick === 0) {
-                              styleThumb()
-                          }
-                          tClick += 1
-                      }
+                      toggleThis()
                   }
               }
+          } else {
+              toggleThis()
           }
-
           // ev.preventDefault();
       }
 

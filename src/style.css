@@ -323,7 +323,7 @@
         padding: 0 2ch;
         margin: 0;
         line-height: 2.4;
-        background-color: rgba(95,95,95, .4);
+        background-color: rgba(95, 95, 95, .4);
         color: inherit;
         border: none;
         border-radius: 4px;
@@ -339,7 +339,15 @@
         color: #54f408;
     }
 
- 
+    .image-container:hover {
+        color: #54f408;
+    }
+
+
+    .block-button:hover .dots:after,
+    .block-button:hover .dots:before {
+        background-color: #54f408;
+    }
 
 
     .block-button.transparent-bg {
@@ -370,7 +378,7 @@
         content: '';
         width: 4px;
         height: 4px;
-        background-color: rgba(255,255,255, .2);
+        background-color: rgba(255, 255, 255, .2);
         position: absolute;
         display: block;
         left: 4px;
@@ -395,11 +403,15 @@
         margin: 0;
     }
 
-    #chatter {
+    #chatter, #email {
         margin-left: 100px;
         position: absolute;
         top: 35px;
-        z-index: 1000
+        z-index: 1000;
+        cursor: pointer;
+    }
+    #email {
+        display: none;
     }
 
     .indent {
@@ -462,7 +474,7 @@
         background-color: black;
         transition: .4s;
         border-radius: 26px;
-        background-color: rgba(100,100,100, .6);
+        background-color: rgba(100, 100, 100, .6);
 
     }
 
@@ -481,7 +493,7 @@
     }
 
     input:checked+.slider {
-        background-color: rgba(100,100,100, .6);
+        background-color: rgba(100, 100, 100, .6);
 
     }
 
