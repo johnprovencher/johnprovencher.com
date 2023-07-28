@@ -154,7 +154,7 @@
           if (videoElement) {
 
               // videoElement.play()
-              videoElement.controls = false;
+              videoElement.controls = true;
               videoElement.muted = true;
               videoElement.autoplay = true;
               setTimeout(function() {
