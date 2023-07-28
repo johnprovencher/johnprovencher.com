@@ -231,6 +231,7 @@
 
       //innit
       var slideshowx = document.getElementById('slideshow');
+      var loaderx = document.getElementById('slideshowx');
       var entry = false
       setTimeout(function() {
           slider(true, true)
@@ -238,6 +239,7 @@
           slideshowx.style.opacity = "1"
           setTimeout(function() {
               entry = true;
+              loaderx.style.display = "none"
           }, 500)
       }, 2500)
 
@@ -312,7 +314,7 @@
                   chatter.style.display = "inline-block";
                   email.style.display = "none";
                   info = true
-                  typeWrite("e-mail?")
+                  typeWrite("e-mail ...")
                   if (tClick === 0) {
                       styleThumb()
                   }
