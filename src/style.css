@@ -245,6 +245,7 @@
         vertical-align: top;
         display: inline-block;
         margin: 0px;
+        cursor: pointer;
     }
 
     #post-container img,
@@ -335,8 +336,11 @@
     }
 
     .block-button:hover {
-        filter: invert(100%);
+        color: #54f408;
     }
+
+ 
+
 
     .block-button.transparent-bg {
         background-color: transparent

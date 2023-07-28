@@ -174,19 +174,15 @@
       function next(ele) {
           var videoElement = ele.querySelector('video');
           var imageElement = ele.querySelector('img');
-
-
-          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-          ele.style.left = width + "px"
-          ele.style.display = 'none'
           if (videoElement) {
               videoElement.pause();
-              ele.style.display = 'block'
           } else {
               observer.triggerLoad(imageElement);
           }
+          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
+          ele.style.left = width * 2 + "px"
+          ele.style.display = 'none'
       }
-
 
 
 
@@ -196,17 +192,8 @@
           if (videoElement) {
               // videoElement.pause();
           }
-          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-          ele.style.left = width + "px"
-          ele.style.display = 'none'
-
       }
 
-      function rightOff(ele) {
-          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
-          //   ele.style.left = "150%"
-          ele.style.display = 'none'
-      }
 
       //slider
       function slider(toggle, resize) {
