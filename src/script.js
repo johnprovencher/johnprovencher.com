@@ -290,6 +290,8 @@
 
       var slideContainer = document.getElementById("slide-container");
       var infoContainer = document.getElementById("info-container");
+      var thumbnails = document.getElementById("thumbnails");
+
       var chatter = document.getElementById("chatter");
 
       var tClick = 0;
@@ -315,6 +317,10 @@
                   slideContainer.style.display = "none";
                   infoContainer.style.display = "block";
                   chatter.style.display = "inline-block";
+                  setTimeout(function(){
+                  thumbnails.style.opacity = "1";
+
+                },100)
                   email.style.display = "none";
                   info = true
                   typeWrite("e-mail ...")
