@@ -1,8 +1,42 @@
     @font-face {
         font-family: "Superstudio";
-        src: url("./assets/superstudio-heavy.woff") format("woff");
+        src: url("./assets/SuperstudioLLWeb-Bold.woff") format("woff");
+        src: url("./assets/SuperstudioLLWeb-Bold.woff2") format("woff2");
+
     }
 
+    @keyframes opacityAnim {
+        0% {
+            opacity: 1;
+        }
+
+        10% {
+            opacity: 1;
+        }
+
+        20% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes opacityShift {
+
+        0% {
+            opacity: 0;
+        }
+
+        50% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
 
     video::-webkit-media-controls {
         display: none !important;
@@ -88,6 +122,18 @@
 
     }
 
+    #loader {
+        color: orangered;
+        text-align: center;
+        height: 100%;
+        vertical-align: middle;
+        line-height: 90vh;
+        animation: opacityShift 1.5s infinite;
+        position: absolute;
+        width: 100%;
+
+    }
+
     #slide-container {
         width: 100%;
         height: 100%;
@@ -100,13 +146,16 @@
         overflow: hidden;
         height: 100%;
         width: 100%;
-        opacity: 1;
+        opacity: 0;
+        transition: opacity 1s ease;
     }
 
     .slide {
         position: absolute;
         text-align: center;
         display: none;
+        cursor: crosshair;
+
     }
 
 
@@ -403,13 +452,15 @@
         margin: 0;
     }
 
-    #chatter, #email {
+    #chatter,
+    #email {
         margin-left: 100px;
         position: absolute;
         top: 35px;
         z-index: 1000;
         cursor: pointer;
     }
+
     #email {
         display: none;
     }
@@ -541,6 +592,9 @@
             margin: 20px 20px;
 
         }
+
+
+
 
 
     }

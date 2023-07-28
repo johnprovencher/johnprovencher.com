@@ -76,6 +76,7 @@
       document.getElementById('counter').innerHTML = "";
       var percent = document.createElement("div");
       percent.setAttribute("id", "percent");
+      percent.innerHTML = "0%"
       document.getElementById('counter').appendChild(percent);
       for (i = 0; i < 10; i++) {
           var count = document.createElement("div");
@@ -138,6 +139,7 @@
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
           ele.style.display = 'block'
+          ele.style.opacity = '1'
 
           var imageElement = ele.querySelector('img');
           var videoElement = ele.querySelector('video');
@@ -182,6 +184,8 @@
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = width * 2 + "px"
           ele.style.display = 'none'
+          ele.style.opacity = '0'
+
       }
 
 
@@ -196,6 +200,7 @@
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = width * 2 + "px"
           ele.style.display = 'none'
+          ele.style.opacity = '0'
       }
 
 
@@ -225,8 +230,17 @@
 
 
       //innit
-      slider(true, true)
-      counter();
+      var slideshowx = document.getElementById('slideshow');
+      var entry = false
+      setTimeout(function() {
+          slider(true, true)
+          counter();
+          slideshowx.style.opacity = "1"
+          setTimeout(function() {
+              entry = true;
+          }, 500)
+      }, 2500)
+
 
       //top counter animation /  ticker
       function counter(clicker, toggle) {
@@ -309,9 +323,10 @@
           if (!isIgnoredAgainAgain) {
               if (!isIgnoredAgain) {
                   if (!isIgnored) {
-                      counter(ev.isTrusted, isLeftHalfClick);
-                      slider(isLeftHalfClick, false)
-
+                      if (entry === true) {
+                          counter(ev.isTrusted, isLeftHalfClick);
+                          slider(isLeftHalfClick, false)
+                      }
                   } else {
                       toggleThis()
                   }

@@ -4,7 +4,7 @@ layout: 'base.njk'
 ---
 <div id="meep">
     <div id="orb"></div>
-    <a class="block-button" id="chatter" target="_blank"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
+    <a class="block-button" id="chatter" target="_blank"><abbr class="dots"></abbr> <span id="type">Loading ...</span> <abbr class="dots"></abbr></a>
 
     <a class="block-button" id="email" target="_blank" href="mailto:johnprovencher@gmail.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
 </div>
@@ -127,6 +127,7 @@ layout: 'base.njk'
 <div id="slide-container">
     <div id="counter">
     </div>
+        <div id="loader">[ you've died ]</div>
     <div id="slideshow">
         {%- for post in collections.post -%}
         {% if post.data.video %}
