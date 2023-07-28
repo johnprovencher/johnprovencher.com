@@ -138,7 +138,8 @@
           ele.style.height = sizerH - (marginSize / 11) + "px"
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
-          // ele.style.display = 'block'
+         // ele.style.display = 'block'
+          
           ele.style.opacity = '1'
 
           var imageElement = ele.querySelector('img');
@@ -174,19 +175,17 @@
 
 
       function next(ele) {
-          ele.style.top = height - 50 + "px"
-          ele.style.left = width - 50 + "px"
           var videoElement = ele.querySelector('video');
           var imageElement = ele.querySelector('img');
           if (videoElement) {
-              videoElement.controls = false;
               videoElement.pause();
           } else {
-              //observer.triggerLoad(imageElement);
+              observer.triggerLoad(imageElement);
           }
-
-          // ele.style.display = 'none'
-          ele.style.opacity = '0'
+          ele.style.top = height - 50 + "px"
+          ele.style.left = width - 50 + "px"
+         // ele.style.display = 'none'
+          ele.style.opacity = '1'
 
       }
 
@@ -199,7 +198,7 @@
           if (videoElement) {
               videoElement.pause();
           } else {}
-          ele.style.top = height * 2 + "px"
+          ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = width * 2 + "px"
           ele.style.opacity = '0'
       }
@@ -223,6 +222,7 @@
           }
           center(slideDOM[slideArr[0]])
           next(slideDOM[slideArr[1]])
+          next(slideDOM[slideArr[slideDOM.length - 1]])
           for (i = 2; i < slideDOM.length; i++) {
               leftOff(slideDOM[slideArr[i]])
           }
