@@ -193,7 +193,11 @@
 
          // ele.style.display = 'none'
           ele.style.transition = 'none'
+          ele.style.opacity = '0'
+          setTimeout(function(){
+         ele.style.transition = 'opacity 1s ease'
           ele.style.opacity = '1'
+          },100)
 
       }
 
@@ -211,7 +215,11 @@
 
          // ele.style.display = 'none'
           ele.style.transition = 'none'
+          ele.style.opacity = '0'
+          setTimeout(function(){
+         ele.style.transition = 'opacity 1s ease'
           ele.style.opacity = '1'
+          },100)
 
       }
 
@@ -225,6 +233,8 @@
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = width * 2 + "px"
           ele.style.opacity = '0'
+            ele.style.transition = 'none'
+
       }
 
 
