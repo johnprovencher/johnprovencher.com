@@ -81,7 +81,7 @@
       document.getElementById('counter').innerHTML = "";
       var percent = document.createElement("div");
       percent.setAttribute("id", "percent");
-      percent.innerHTML = "( 0% )"
+      percent.innerHTML = "(&thinsp;0%&thinsp;)"
       document.getElementById('counter').appendChild(percent);
       for (i = 0; i < 10; i++) {
           var count = document.createElement("div");
@@ -286,6 +286,8 @@
 
           //var percentText = "(&thinsp;" + (t + 1) + "&thinsp;/&thinsp;" + slideDOM.length + "&thinsp;)"
           document.getElementById('percent').innerHTML = "(&thinsp;" + roundedPercent + "%&thinsp;)"
+          document.getElementById('percent').style.color = "#54f408"
+
       }
 
 

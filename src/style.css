@@ -121,7 +121,7 @@
     }
 
     #loader {
-        color: #54f408;
+        color: orangered;
         text-align: center;
         height: 100%;
         vertical-align: middle;
@@ -199,7 +199,7 @@
         margin-right: 4px;
         vertical-align: middle;
         white-space: nowrap;
-        color: #54f408;
+        color: orangered;
 
     }
 
