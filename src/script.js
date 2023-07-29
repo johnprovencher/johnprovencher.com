@@ -23,7 +23,7 @@
       const observer = lozad('.lozad', {
     rootMargin: '2500px 0px', // syntax similar to that of CSS Margin
     threshold: 0.1, // ratio of element convergence
-    enableAutoReload: false // it will reload the new image when validating attributes changes
+    enableAutoReload: true // it will reload the new image when validating attributes changes
 });
 
       observer.observe();
