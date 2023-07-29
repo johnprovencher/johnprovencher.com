@@ -292,10 +292,6 @@
         /* The first item spans both columns */
     }
 
-#linktree {
-    margin:  43px 80px;
-}
-
     .image-container p {
         display: inline-block;
         margin-right: 0px;
@@ -571,9 +567,7 @@
          line-height: calc(90vh - 80px);
 
         }
-#linktree {
-    margin:  48px 90px;
-}
+
         .info-grid {
             grid-template-columns: repeat(1, 1fr);
             margin: 10px 5px 10px 10px;
@@ -592,7 +586,7 @@
         }
 
         #info-container {
-            padding-top: 0;
+            padding-top: 15vh;
         }
 
         #chatter {
