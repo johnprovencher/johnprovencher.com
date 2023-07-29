@@ -374,6 +374,7 @@
               infoContainer.style.display = "none";
               if (width < 1200) {
                   chatter.style.display = "none";
+                  chatterM.style.display = "block";
               }
               info = false
               var targetNumber = clickedIndex;
