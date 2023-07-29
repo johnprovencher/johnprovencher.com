@@ -21,10 +21,10 @@
           return arr;
       }
       const observer = lozad('.lozad', {
-    rootMargin: '2500px 0px', // syntax similar to that of CSS Margin
-    threshold: 0.1, // ratio of element convergence
-    enableAutoReload: true // it will reload the new image when validating attributes changes
-});
+          rootMargin: '2500px 0px', // syntax similar to that of CSS Margin
+          threshold: 0.1, // ratio of element convergence
+          enableAutoReload: true // it will reload the new image when validating attributes changes
+      });
 
       observer.observe();
 
@@ -325,11 +325,11 @@
                   slideContainer.style.display = "none";
                   infoContainer.style.display = "block";
                   chatter.style.display = "inline-block";
-                  setTimeout(function(){
-                  thumbnails.style.opacity = "1";
+                  setTimeout(function() {
+                      thumbnails.style.opacity = "1";
 
 
-                },100)
+                  }, 100)
                   email.style.display = "none";
                   info = true
                   typeWrite("e-mail ...")
