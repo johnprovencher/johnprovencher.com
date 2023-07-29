@@ -27,12 +27,13 @@
       });
 
       observer.observe();
-
+      var typewriterText = document.getElementById("type");
+      var typewriterTextM = document.getElementById("chatterMobile");
       //typewriter
       function typeWrite(text) {
-
-          var typewriterText = document.getElementById("type");
           typewriterText.textContent = ""
+          typewriterTextM.textContent = ""
+
           let charIndex = 0;
           var typingSpeed = 40;
           clearTimeout(animateType)
@@ -40,6 +41,7 @@
           function typeNextCharacter() {
               if (charIndex < text.length) {
                   typewriterText.textContent += text.charAt(charIndex);
+                  typewriterTextM.textContent += text.charAt(charIndex);
                   charIndex++;
                   animateType = setTimeout(typeNextCharacter, typingSpeed);
               }
@@ -300,6 +302,7 @@
       var thumbnails = document.getElementById("thumbnails");
 
       var chatter = document.getElementById("chatter");
+      var chatterM = document.getElementById("chatterMobile");
 
       var tClick = 0;
       var imageContainers = document.querySelectorAll('.image-container');
@@ -312,11 +315,14 @@
           var email = document.getElementById("email");
 
           function toggleThis() {
+             chatterM.style.display = "none"
               if (slideContainer.style.display === "none") {
                   slideContainer.style.display = "block";
                   infoContainer.style.display = "none";
                   if (width < 1200) {
                       chatter.style.display = "none";
+                      chatterM.style.display = "none";
+
                   }
                   info = false
                   typeWrite(currentText)

@@ -136,7 +136,7 @@
     }
 
     .animate {
-               background-color: orangered;
+        background-color: orangered;
     }
 
     #slide-container {
@@ -469,6 +469,16 @@
         cursor: pointer;
     }
 
+    #chatterMobile {
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        width: 100vw;
+        padding-bottom: 20px;
+        display: none;
+
+    }
+
     #email {
         display: none;
     }
@@ -562,8 +572,12 @@
     }
 
     @media (max-width: 1200px) {
+        #chatterMobile {
+            display: block;
+        }
+
         #loader {
-         line-height: calc(90vh - 80px);
+            line-height: calc(90vh - 80px);
 
         }
 
