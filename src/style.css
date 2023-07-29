@@ -97,6 +97,10 @@
         text-transform: lowercase;
     }
 
+    .grey {
+        opacity: .55;
+    }
+
     a {
         color: white;
         margin: 0;
@@ -130,6 +134,10 @@
         position: absolute;
         width: 100%;
 
+    }
+
+    .animate {
+               background-color: orangered;
     }
 
     #slide-container {
@@ -283,6 +291,10 @@
         grid-column: 1 / span 2;
         /* The first item spans both columns */
     }
+
+#linktree {
+    margin:  43px 80px;
+}
 
     .image-container p {
         display: inline-block;
@@ -559,7 +571,9 @@
          line-height: calc(90vh - 80px);
 
         }
-
+#linktree {
+    margin:  48px 90px;
+}
         .info-grid {
             grid-template-columns: repeat(1, 1fr);
             margin: 10px 5px 10px 10px;
@@ -578,7 +592,7 @@
         }
 
         #info-container {
-            padding-top: 15vh;
+            padding-top: 0;
         }
 
         #chatter {
