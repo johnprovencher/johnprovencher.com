@@ -311,7 +311,7 @@
 
     #thumbnails {
         margin: 20px;
-        padding-top: 100px;
+        padding-top: 50px;
         opacity: 0;
         transition: opacity 1s ease;
 
