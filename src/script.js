@@ -81,7 +81,7 @@
       document.getElementById('counter').innerHTML = "";
       var percent = document.createElement("div");
       percent.setAttribute("id", "percent");
-      percent.innerHTML = "0%"
+      percent.innerHTML = "( 0% )"
       document.getElementById('counter').appendChild(percent);
       for (i = 0; i < 10; i++) {
           var count = document.createElement("div");
