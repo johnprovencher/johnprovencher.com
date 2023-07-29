@@ -21,9 +21,9 @@
           return arr;
       }
       const observer = lozad('.lozad', {
-    rootMargin: '2000px 0px', // syntax similar to that of CSS Margin
+    rootMargin: '2500px 0px', // syntax similar to that of CSS Margin
     threshold: 0.1, // ratio of element convergence
-    enableAutoReload: true // it will reload the new image when validating attributes changes
+    enableAutoReload: false // it will reload the new image when validating attributes changes
 });
 
       observer.observe();
