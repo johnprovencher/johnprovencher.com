@@ -22,8 +22,10 @@ collections:
       - {label: "Link", name: "link", widget: "string", required: false}
   - name: 'lore' # Collection name
     label: 'lore' # Label shown in Netlify CMS
-    file: "src/_data/lore.json" # File path where the data is stored
-    create: true
-    fields:
-      - { name: "title", label: "Title", widget: "string" }
-      - { name: "date", label: "Date", widget: "string" }
+    files:
+      - name: "lore" # You can customize this name
+        label: "Lore"
+        file: "src/_data/lore.json" # File path where the data is stored
+        fields:
+          - { name: "title", label: "Title", widget: "string" }
+          - { name: "date", label: "Date", widget: "string" }
