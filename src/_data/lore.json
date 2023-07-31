@@ -1,10 +1,10 @@
-[
-  {
-    "title": "x",
-    "date": "2023"
-  },
-  {
-    "title": "y",
-    "date": "2022"
-  }
-]
+{
+  "title": "x",
+  "date": "test",
+  "metadata": [
+    {
+      "key": "test 1",
+      "value": "test 2"
+    }
+  ]
+}
