@@ -22,7 +22,7 @@ collections:
       - {label: "Link", name: "link", widget: "string", required: false}
   - name: 'lore' # Collection name
     label: 'lore' # Label shown in Netlify CMS
-    folder: '_data' # Folder where the file is located
+    folder: 'src/_data' # Folder where the file is located
     create: true
     slug: '{{slug}}' # The field that will be used as the file name (e.g., filename = slug + '.json')
     fields:
