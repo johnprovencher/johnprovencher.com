@@ -206,7 +206,7 @@
 
     #percent {
         display: inline-block;
-        line-height: 1;
+        line-height: 1.1;
         height: 14px;
         margin-right: 4px;
         vertical-align: middle;
@@ -221,9 +221,10 @@
         color: #75767a;
         font-size: 19px;
         font-weight: 500;
-        margin: 0 -.4px;
+        margin: -.1px -.4px;
         display: inline-block;
         vertical-align: middle;
+        line-height: 0;
 
     }
 
@@ -617,6 +618,7 @@
         .countIn {
             display: none;
             display: inherit;
+            line-height: 0;
 
         }
 
