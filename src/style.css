@@ -400,17 +400,17 @@
     }
 
     .block-button:hover {
-        /*color: #54f408;*/
+        color: #54f408;
     }
 
     .image-container:hover {
-        /*color: #54f408;*/
+        color: #54f408;
     }
 
 
     .block-button:hover .dots:after,
     .block-button:hover .dots:before {
-        /*background-color: #54f408;*/
+        background-color: #54f408;
     }
 
 
@@ -573,10 +573,6 @@
     }
 
     @media (max-width: 1200px) {
-    #orb:hover {
-        box-shadow: 1px 1px 25px rgba(100, 100, 100, .7);
-    }
-
         #chatterMobile {
             display: block;
         }
