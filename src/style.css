@@ -48,6 +48,11 @@
         display: none !important;
     }
 
+    /* Video controls hiding (using standard ::part) */
+    video::part(controls) {
+        display: none !important;
+    }
+
 
     /* Disable text and element highlighting for all elements */
     body {
@@ -233,14 +238,14 @@
         position: fixed;
         z-index: 2147483647;
         background-color: #000;
-        opacity: .6;
+        opacity: .5;
         top: 0px;
         left: 0px;
         cursor: pointer;
         border-radius: 100%;
         transform: rotate(-20deg);
         box-shadow: 1px 1px 25px rgba(90, 90, 90, .7);
-        transition: .5s ease;
+        transition: .35s ease;
     }
 
 
