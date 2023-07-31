@@ -26,9 +26,9 @@ layout: 'base.njk'
             <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr><span class="">johnx.work</span><abbr class="dots"></abbr></a>
             <br><br>
         </div>
-        <div class="column grey">
+        <div class="column">
             {% for item in lore.cv %}
-            <a href="{{ item.link }}" target="_blank">
+            <a href="{{ item.link }}" class="row-link grey" target="_blank">
             <div class="row">
                 <span class="index-left"><span class="block-color">{{ item.title }}</span></span>
                 <span class="index-right"><span class="block-color">{{ item.date }}</span></span>
