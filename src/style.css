@@ -98,7 +98,7 @@
         -moz-osx-font-smoothing: none;
         font-size: 14px;
         letter-spacing: -.1px;
-        line-height: 1.4;
+        line-height: 1.45;
         text-transform: lowercase;
     }
 
@@ -121,7 +121,7 @@
     .small {
         font-size: 11px;
         line-height: 14.3px;
-        letter-spacing: .6px;
+        letter-spacing: .4px;
         text-transform: uppercase;
         margin-bottom: 8px;
         -webkit-font-smoothing: antialiased;
