@@ -28,10 +28,10 @@ layout: 'base.njk'
         </div>
         <div class="column grey">
             <p>cv ...</p><br>
-            {% for item in lore %}
+            {% for item in lore.metadata %}
             <div class="row">
-                <span class="index-left"><span class="block-color">{{ item.title }}</span></span>
-                <span class="index-right"><span class="block-color">{{ item.date }}</span></span>
+                <span class="index-left"><span class="block-color">{{ item.key }}</span></span>
+                <span class="index-right"><span class="block-color">{{ item.value }}</span></span>
             </div>
             {% endfor %}
             <br><br>
