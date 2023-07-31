@@ -20,6 +20,16 @@ collections:
       - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
       - {label: 'Video', name: 'video', widget: 'file', required: false}
       - {label: "Link", name: "link", widget: "string", required: false}
+  - name: "lore"
+    label: "Lore"
+    folder: "data"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }  # Add the "date" field
+      # Add more fields for "about" collection as needed
+
 
 
  

@@ -6,7 +6,6 @@ layout: 'base.njk'
     <div id="orb"></div>
     <a class="block-button" id="chatter" target="_blank"><abbr class="dots"></abbr> <span id="type">Loading ...</span> <abbr class="dots"></abbr></a>
     <p id="chatterMobile" class="grey small">Loading ...</p>
-
     <a class="block-button" id="email" target="_blank" href="mailto:johnprovencher@gmail.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
 </div>
 <div id="info-container">
@@ -14,10 +13,10 @@ layout: 'base.njk'
         <div class="column">
         </div>
         <div class="column">
-            <p class="">info ...<br><br>John Provencher (b. 1991) is an independent artist, graphic designer, educator, and programmer based in New York City. His practice explores the generative potential of software by inputing code to output both on/offline projects.
+            <p class="">info ...<br><br>John Provencher (b. 1991) is an independent artist, designer, educator, and programmer based in New York City. His practice explores the generative potential of software by outputting projects both on/offline.
             </p>
             <br>
-            <p class="">John operates independently while engaging with select collaborators, clients and partners. He frequently publishes online ...</p>
+            <p class="">John operates independently while collaberating select clients and partners. He frequently publishes online ...</p>
             <br><br>
             <p class="small">connect</p>
             <a class="block-button" target="_blank" href="https://www.instagram.com/johnprovencher/"><abbr class="dots"></abbr>instagram<abbr class="dots"></abbr></a>
@@ -29,66 +28,36 @@ layout: 'base.njk'
         </div>
         <div class="column grey">
             <p>cv ...</p><br>
+            {% for item in lore %}
             <div class="row">
-                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
-                <span class="index-right"><span class="block-color">2023</span></span>
+                <span class="index-left"><span class="block-color">item.title</span></span>
+                <span class="index-right"><span class="block-color">item.date</span></span>
             </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">circle(s), verse</span></span>
-                <span class="index-right"><span class="block-color">2023</span></span>
-            </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
-                <span class="index-right"><span class="block-color">2022</span></span>
-            </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
-                <span class="index-right"><span class="block-color">2023</span></span>
-            </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">circle(s), verse</span></span>
-                <span class="index-right"><span class="block-color">2023</span></span>
-            </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
-                <span class="index-right"><span class="block-color">2023</span></span>
-            </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
-                <span class="index-right"><span class="block-color">2022</span></span>
-            </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
-                <span class="index-right"><span class="block-color">2023</span></span>
-            </div>
-            <div class="row">
-                <span class="index-left"><span class="block-color">cage, bright moments</span></span>
-                <span class="index-right"><span class="block-color">2022</span></span>
-            </div>
+            {% endfor %}
             <br><br>
             <p>clients ...<br><br> the new york times, nike, prada, alexander wang, the atlantic, bloomberg, the new school, the baffler ...
             </p>
         </div>
     </div>
     <div id="thumbnails">
-         <p class="small grey">index ( updated 01.01.2024 )</p>
+        <p class="small grey">index ( updated 01.01.2024 )</p>
         {%- for post in collections.post -%}
         {% if post.data.video %}
         <div class="image-container">
             <video class="lozad" controls='false' muted>
-                    <source data-src="{{ post.data.video }}" type="video/mp4">
+                <source data-src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
-                <br>
-                <p class="small">{{ post.data.info }}</p>
+            <br>
+            <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
         {% if post.data.image %}
         <div class="image-container">
             <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
-                <br>
-                <p class="small">{{ post.data.info }}</p>
+            <br>
+            <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
         {%- endfor -%}
@@ -98,7 +67,7 @@ layout: 'base.njk'
 <div id="slide-container">
     <div id="counter">
     </div>
-        <div id="loader">( you've died )</div>
+    <div id="loader">( you've died )</div>
     <div id="slideshow">
         {%- for post in collections.post -%}
         {% if post.data.video %}
