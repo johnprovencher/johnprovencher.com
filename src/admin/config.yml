@@ -28,7 +28,7 @@ collections:
         file: "src/_data/lore.json" # File path where the data is stored
         fields:
           - { name: "info", label: "info", widget: "markdown" }
-          - { name: "info-2", label: "info-2", widget: "markdown" }
+          - { name: "infoCon", label: "infoCon", widget: "markdown" }
           - { name: "clients", label: "clients", widget: "string" }
           - { name: "cv", label: "cv", widget: "list", allow_add: true, fields: [
               { name: "title", label: "title", widget: "string" },
