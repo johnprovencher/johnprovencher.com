@@ -20,7 +20,6 @@ collections:
       - {label: "Tags", name: "tags", widget: "list", default: ["post"]}
       - {label: 'Video', name: 'video', widget: 'file', required: false}
       - {label: "Link", name: "link", widget: "string", required: false}
-collections:
   - name: 'lore'
     label: 'lore'
     folder: 'src/_data' # The path to the data folder
