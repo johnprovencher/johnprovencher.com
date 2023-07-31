@@ -5,7 +5,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('./src/script.js')
     eleventyConfig.addPassthroughCopy('./src/assets')
     eleventyConfig.addPassthroughCopy('./src/admin')
-    eleventyConfig.addPassthroughCopy('./src/data/lore.json')
+    eleventyConfig.addPassthroughCopy('./src/data')
     eleventyConfig.addPassthroughCopy("./src/admin/config.yml");
 
     // Custom function to load data from 'data' folder
@@ -16,7 +16,7 @@ module.exports = function(eleventyConfig) {
     // Set the data directory to 'data'
     eleventyConfig.setDataDeepMerge(true);
     eleventyConfig.setDataDir("data");
-    
+
     eleventyConfig.addFilter('postDate', (dateObj) => {
         return DateTime.fromJSDate(dateObj).toLocaleString(DateTime.DATE_MED)
     })
