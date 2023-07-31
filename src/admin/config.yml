@@ -32,5 +32,5 @@ collections:
           - { name: "cv", label: "cv", widget: "list", allow_add: true, fields: [
               { name: "title", label: "title", widget: "string" },
               { name: "date", label: "date", widget: "string" },
-              { name: "link", label: "link", widget: "string", required: false }
+              { name: "link", label: "link", widget: "string"}
             ]}
