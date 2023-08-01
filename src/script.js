@@ -434,4 +434,13 @@
       });
 
 
+    function logFocusedElement() {
+      const focusedElement = document.activeElement;
+      console.log("Currently focused element:", focusedElement);
+    }
+
+    // Attach an event listener to the document to detect focus changes
+    document.addEventListener("focusin", logFocusedElement);
+
+
   });

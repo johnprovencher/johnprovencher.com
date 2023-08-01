@@ -101,10 +101,14 @@
         line-height: 1.5;
         text-transform: lowercase;
     }
+    *:focus {
+      color: #54f408;
+      outline: none;
+    }
 
     .grey {
-        opacity: .55;
-    }
+        /* opacity: .5 */
+            }
 
     a {
         color: white;
@@ -246,11 +250,11 @@
         border-radius: 100%;
         transform: rotate(-20deg);
         box-shadow: 1px 1px 25px rgba(90, 90, 90, .7);
-        transition: .35s ease;
+        transition: opacity .35s ease;
     }
 
 
-    #orb:hover {
+    #orb:hover, #orb:focus {
         box-shadow: 1px 1px 25px rgba(90, 90, 90, .9);
     }
 
@@ -400,22 +404,20 @@
         margin-bottom: 1ch
     }
 
-    .block-button:hover {
+    .block-button:hover, .block-button:focus {
         color: #54f408;
     }
 
-    .image-container:hover {
+
+
+    .image-container:hover, .image-container:focus {
         color: #54f408;
     }
-
-    .row-link:hover {
-        opacity: 1;
-        color: #54f408;
-    }
-
 
     .block-button:hover .dots:after,
-    .block-button:hover .dots:before {
+    .block-button:hover .dots:before,
+    .block-button:focus .dots:after,
+    .block-button:focus .dots:before  {
         background-color: #54f408;
     }
 
@@ -577,6 +579,8 @@
         transform: translateX(0px);
         background-color: #75767a;
     }
+
+
 
     @media (max-width: 1200px) {
         #chatterMobile {

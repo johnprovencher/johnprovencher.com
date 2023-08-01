@@ -3,8 +3,8 @@ title: ...
 layout: 'base.njk'
 ---
 <div id="meep">
-    <div id="orb"></div>
-    <a class="block-button" id="chatter" target="_blank"><abbr class="dots"></abbr> <span id="type">Loading ...</span> <abbr class="dots"></abbr></a>
+    <div id="orb" tabindex="0"></div>
+    <a class="block-button" tabindex="0" id="chatter" target="_blank"><abbr class="dots"></abbr> <span id="type">Loading ...</span> <abbr class="dots"></abbr></a>
     <p id="chatterMobile" class="grey small">Loading ...</p>
     <a class="block-button" id="email" target="_blank" href="mailto:johnprovencher@gmail.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
 </div>
@@ -13,10 +13,10 @@ layout: 'base.njk'
         <div class="column">
         </div>
         <div class="column">
-            <p class="">{{ lore.info }}
+            <p class="" tabindex="0">{{ lore.info }}
             </p>
             <br>
-            <p class="grey">{{ lore.clients }}</p>
+            <p class="grey" tabindex="0">{{ lore.clients }}</p>
             <br><br>
             <p class="small">connect</p>
             <a class="block-button" target="_blank" href="https://www.instagram.com/johnprovencher/"><abbr class="dots"></abbr>instagram<abbr class="dots"></abbr></a>
@@ -41,14 +41,14 @@ layout: 'base.njk'
         <p class="small grey">index</p>
         {%- for post in collections.post -%}
         {% if post.data.image %}
-        <div class="image-container">
+        <div tabindex="0" class="image-container">
             <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
         {% if post.data.video %}
-        <div class="image-container">
+        <div  tabindex="0" class="image-container">
             <video class="lozad" controls='false' muted>
                 <source data-src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
@@ -62,20 +62,20 @@ layout: 'base.njk'
     </div>
     {% include 'footer.njk' %}
 </div>
-<div id="slide-container">
+<div tabindex="-1" id="slide-container">
     <div id="counter">
     </div>
     <div id="loader">( you've died )</div>
     <div id="slideshow">
         {%- for post in collections.post -%}
         {% if post.data.image %}
-        <div class="slide">
-            <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+        <div tabindex="-1" class="slide">
+            <img tabindex="-1" class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {% if post.data.video %}
-        <div class="slide" style="left:-5000px">
-            <video type="video/mp4" controls='false' preload="none" muted autoplay loop playsinline>
+        <div tabindex="-1" class="slide" style="left:-5000px">
+            <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted autoplay loop playsinline>
                 <source src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
