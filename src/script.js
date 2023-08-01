@@ -141,8 +141,8 @@
 
       //slider functions
       function center(ele) {
-          ele.style.width = sizerW - (marginSize / 11) + "px"
-          ele.style.height = sizerH - (marginSize / 11) + "px"
+          ele.style.width = sizerW - (marginSize / 15) + "px"
+          ele.style.height = sizerH - (marginSize / 15) + "px"
           ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px"
           ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px"
           // ele.style.display = 'block'
