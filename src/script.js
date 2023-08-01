@@ -297,7 +297,7 @@
 
 
       //click/touch event
-      document.addEventListener("touchStart", click, false)
+      document.addEventListener("touchStart", click, true)
       document.addEventListener("click", click, false)
 
       var slideContainer = document.getElementById("slide-container");
