@@ -239,7 +239,6 @@
         position: fixed;
         z-index: 2147483647;
         background-color: #000;
-        opacity: .5;
         top: 0px;
         left: 0px;
         cursor: pointer;
@@ -585,7 +584,6 @@
 
         #loader {
             line-height: calc(90vh - 80px);
-
         }
 
         .info-grid {
@@ -627,9 +625,6 @@
             margin: 20px 20px;
 
         }
-
-
-
 
 
     }

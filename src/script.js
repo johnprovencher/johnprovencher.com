@@ -66,7 +66,7 @@
               }
               if (video) {
                   video.style.width = pWidth + "px"
-                  //video.pause()
+                  //  video.pause()
                   video.controls = false;
               }
           }
@@ -242,14 +242,11 @@
       //innit
       var slideshowx = document.getElementById('slideshow');
       var loaderx = document.getElementById('loader');
-      var orbElement = document.getElementById('orb');
-
       var entry = false
       setTimeout(function() {
           slider(true, true)
           counter();
           slideshowx.style.opacity = "1"
-          orbElement.style.opacity = "1"
           setTimeout(function() {
               entry = true;
               loaderx.style.display = "none"
@@ -318,36 +315,34 @@
           var email = document.getElementById("email");
 
           function toggleThis() {
-              if (entry === true) {
-                  chatterM.style.display = "none"
-                  if (slideContainer.style.display === "none") {
-                      slideContainer.style.display = "block";
-                      infoContainer.style.display = "none";
-                      if (width < 1200) {
-                          chatter.style.display = "none";
-                          chatterM.style.display = "block";
+             chatterM.style.display = "none"
+              if (slideContainer.style.display === "none") {
+                  slideContainer.style.display = "block";
+                  infoContainer.style.display = "none";
+                  if (width < 1200) {
+                      chatter.style.display = "none";
+                      chatterM.style.display = "block";
 
-                      }
-                      info = false
-                      typeWrite(currentText)
-
-                  } else {
-                      slideContainer.style.display = "none";
-                      infoContainer.style.display = "block";
-                      chatter.style.display = "inline-block";
-                      setTimeout(function() {
-                          thumbnails.style.opacity = "1";
-
-
-                      }, 100)
-                      email.style.display = "none";
-                      info = true
-                      typeWrite("e-mail ...")
-                      if (tClick === 0) {
-                          styleThumb()
-                      }
-                      tClick += 1
                   }
+                  info = false
+                  typeWrite(currentText)
+
+              } else {
+                  slideContainer.style.display = "none";
+                  infoContainer.style.display = "block";
+                  chatter.style.display = "inline-block";
+                  setTimeout(function() {
+                      thumbnails.style.opacity = "1";
+
+
+                  }, 100)
+                  email.style.display = "none";
+                  info = true
+                  typeWrite("e-mail ...")
+                  if (tClick === 0) {
+                      styleThumb()
+                  }
+                  tClick += 1
               }
           }
           var isIgnoredAgain = ev.target.closest("#info-container");
