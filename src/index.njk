@@ -26,9 +26,9 @@ layout: 'base.njk'
             <a class="block-button" target="_blank" href="www.example.com"><abbr class="dots"></abbr><span class="">johnx.work</span><abbr class="dots"></abbr></a>
             <br><br>
         </div>
-        <div class="column">
+        <div class="column grey">
             {% for item in lore.cv %}
-            <a href="{{ item.link }}" class="row-link grey" target="_blank">
+            <a href="{{ item.link }}" target="_blank">
             <div class="row">
                 <span class="index-left"><span class="block-color">{{ item.title }}</span></span>
                 <span class="index-right"><span class="block-color">{{ item.date }}</span></span>
@@ -68,11 +68,6 @@ layout: 'base.njk'
     <div id="loader">( you've died )</div>
     <div id="slideshow">
         {%- for post in collections.post -%}
-        {% if post.data.image %}
-        <div class="slide">
-            <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
-        </div>
-        {% endif %}
         {% if post.data.video %}
         <div class="slide" style="left:-5000px">
             <video type="video/mp4" controls='false' preload="none" muted autoplay loop playsinline>
@@ -80,6 +75,11 @@ layout: 'base.njk'
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
+        </div>
+        {% endif %}
+        {% if post.data.image %}
+        <div class="slide">
+            <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}
