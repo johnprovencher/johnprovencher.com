@@ -2,7 +2,7 @@
 title: 'new york times, data'
 tags:
   - post
-info: 'new york times, data'
+info: 'nyt, data'
 date: '2023-08-01T14:52:42-04:00'
 image: /assets/nyt-data.jpeg
 imageAlt: 'new york times, data'
