@@ -318,7 +318,7 @@
           var email = document.getElementById("email");
 
           function toggleThis() {
-             chatterM.style.display = "none"
+              chatterM.style.display = "none"
               if (slideContainer.style.display === "none") {
                   slideContainer.style.display = "block";
                   infoContainer.style.display = "none";
@@ -434,13 +434,20 @@
       });
 
 
-    function logFocusedElement() {
-      const focusedElement = document.activeElement;
-      console.log("Currently focused element:", focusedElement);
-    }
+      function logFocusedElement() {
+          const focusedElement = document.activeElement;
+          console.log("Currently focused element:", focusedElement);
+      }
 
-    // Attach an event listener to the document to detect focus changes
-    document.addEventListener("focusin", logFocusedElement);
+      // Attach an event listener to the document to detect focus changes
+      document.addEventListener("focusin", logFocusedElement);
+
+
+      // Disable pinch-to-zoom gesture on mobile devices
+      document.addEventListener('touchmove', function(event) {
+          event.preventDefault();
+      }, { passive: false });
+
 
 
   });
