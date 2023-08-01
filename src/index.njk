@@ -59,6 +59,13 @@ layout: 'base.njk'
             <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
+        {% if post.data.imagetwo %}
+        <div tabindex="0" class="image-container">
+            <img class="lozad" data-src="{{post.data.imagetwo}}" alt="{{post.data.imageAlt}}">
+            <br>
+            <p class="small">{{ post.data.info }}</p>
+        </div>
+        {% endif %}
         {%- endfor -%}
     </div>
     {% include 'footer.njk' %}
