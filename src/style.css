@@ -254,7 +254,7 @@
     }
 
 
-    #orb:hover, #orb:focus {
+    #orb:hover {
         box-shadow: 1px 1px 25px rgba(90, 90, 90, .9);
     }
 
