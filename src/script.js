@@ -358,7 +358,7 @@
                   }
               }
           } else {
-              toggleThis()
+              //toggleThis()
           }
           // ev.preventDefault();
       }
