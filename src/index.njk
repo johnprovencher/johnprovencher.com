@@ -39,7 +39,7 @@ layout: 'base.njk'
     </div>
     <div id="thumbnails">
         <p class="small grey">index</p>
-        {%- for post in collections.post -%}
+        {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
         <div  tabindex="0" class="image-container">
             <video class="lozad" controls='false' muted>
@@ -74,7 +74,7 @@ layout: 'base.njk'
     </div>
     <div id="loader">( you've died )</div>
     <div id="slideshow">
-        {%- for post in collections.post -%}
+        {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
         <div tabindex="-1" class="slide" style="left:-5000px">
             <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted autoplay loop playsinline>
