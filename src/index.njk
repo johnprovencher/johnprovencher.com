@@ -13,10 +13,10 @@ layout: 'base.njk'
         <div class="column">
         </div>
         <div class="column">
-            <p class="">{{ lore.info }}
+            <p class="">info ...<br><br>John Provencher (b. 1991) is an independent artist, designer, educator, and programmer based in New York City. His practice explores the generative potential of software by outputting projects both on/offline.
             </p>
             <br>
-            <p class="">{{ lore.clients }}</p>
+            <p class="">John operates independently while collaberating select clients and partners. He frequently publishes online ...</p>
             <br><br>
             <p class="small">connect</p>
             <a class="block-button" target="_blank" href="https://www.instagram.com/johnprovencher/"><abbr class="dots"></abbr>instagram<abbr class="dots"></abbr></a>
@@ -27,18 +27,21 @@ layout: 'base.njk'
             <br><br>
         </div>
         <div class="column grey">
-            {% for item in lore.cv %}
-            <a href="{{ item.link }}" target="_blank">
+            <p>cv ...</p><br>
+            {% for item in about.items %}
             <div class="row">
-                <span class="index-left"><span class="block-color">{{ item.title }}</span></span>
-                <span class="index-right"><span class="block-color">{{ item.date }}</span></span>
+                <span class="index-left"><span class="block-color">new inc, new museum</span></span>
+                <span class="index-right"><span class="block-color">2023</span></span>
             </div>
-        </a>
-            {% endfor %}
+    {% endfor %}
+
+            <br><br>
+            <p>clients ...<br><br> the new york times, nike, prada, alexander wang, the atlantic, bloomberg, the new school, the baffler ...
+            </p>
         </div>
     </div>
     <div id="thumbnails">
-        <p class="small grey">index</p>
+        <p class="small grey">index ( updated 01.01.2024 )</p>
         {%- for post in collections.post -%}
         {% if post.data.video %}
         <div class="image-container">
