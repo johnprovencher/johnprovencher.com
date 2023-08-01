@@ -322,6 +322,10 @@
               if (slideContainer.style.display === "none") {
                   slideContainer.style.display = "block";
                   infoContainer.style.display = "none";
+                  // Disable pinch-to-zoom gesture on mobile devices
+                  document.addEventListener('touchmove', function(event) {
+                      event.preventDefault();
+                  }, { passive: false });
                   if (width < 1200) {
                       chatter.style.display = "none";
                       chatterM.style.display = "block";
@@ -331,6 +335,7 @@
                   typeWrite(currentText)
 
               } else {
+                  document.removeEventListener('touchmove', preventZoom);
                   slideContainer.style.display = "none";
                   infoContainer.style.display = "block";
                   chatter.style.display = "inline-block";
@@ -443,10 +448,7 @@
       document.addEventListener("focusin", logFocusedElement);
 
 
-      // Disable pinch-to-zoom gesture on mobile devices
-      document.addEventListener('touchmove', function(event) {
-          event.preventDefault();
-      }, { passive: false });
+
 
 
 
