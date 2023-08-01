@@ -600,6 +600,8 @@
         .info-grid {
             grid-template-columns: repeat(1, 1fr);
             margin: 10px 5px 10px 10px;
+        gap: 15px;
+
         }
 
         #post-container .info-grid {
