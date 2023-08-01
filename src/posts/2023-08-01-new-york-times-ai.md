@@ -1,10 +1,10 @@
 ---
-title: 'new york times, ai'
+title: 'new york times, a.i.'
 tags:
   - post
-info: 'new york times, a.i.'
+info: 'nyt, a.i.'
 date: '2022-10-01T14:51:07-04:00'
-imageAlt: 'nyt, a.i.'
+imageAlt: 'new york times, a.i.'
 video: /assets/nyt-ai.mp4
 ---
 
