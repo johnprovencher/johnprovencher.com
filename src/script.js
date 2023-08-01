@@ -27,14 +27,6 @@
       });
 
       observer.observe();
-
-
-    document.addEventListener('touchmove', preventZoom, { passive: false });
-    // Function to prevent default touchmove behavior
-    function preventZoom(event) {
-      event.preventDefault();
-    }
-
       var typewriterText = document.getElementById("type");
       var typewriterTextM = document.getElementById("chatterMobile");
       //typewriter
@@ -333,12 +325,12 @@
                   if (width < 1200) {
                       chatter.style.display = "none";
                       chatterM.style.display = "block";
+
                   }
                   info = false
                   typeWrite(currentText)
 
               } else {
-                  document.removeEventListener('touchmove', preventZoom);
                   slideContainer.style.display = "none";
                   infoContainer.style.display = "block";
                   chatter.style.display = "inline-block";
@@ -451,10 +443,12 @@
       document.addEventListener("focusin", logFocusedElement);
 
 
-      // Disable pinch-to-zoom gesture on mobile devices
-      document.addEventListener('touchmove', function(event) {
+      let preventZoom = function(event) {
           event.preventDefault();
-      }, { passive: false });
+      };
+
+      // Add the event listener to #slideshow
+      document.getElementById('slideshow').addEventListener('touchmove', preventZoom, { passive: false });
 
 
 
