@@ -242,11 +242,14 @@
       //innit
       var slideshowx = document.getElementById('slideshow');
       var loaderx = document.getElementById('loader');
+      var orbElement = document.getElementById('orb');
+
       var entry = false
       setTimeout(function() {
           slider(true, true)
           counter();
           slideshowx.style.opacity = "1"
+          orbElement.style.opacity = "1"
           setTimeout(function() {
               entry = true;
               loaderx.style.display = "none"
