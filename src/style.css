@@ -239,7 +239,7 @@
         position: fixed;
         z-index: 2147483647;
         background-color: #000;
-        opacity: .5;
+        opacity: 1;
         top: 0px;
         left: 0px;
         cursor: pointer;
