@@ -181,8 +181,8 @@
 
 
       function next(ele) {
-          ele.style.width = sizerW - (marginSize / 11) + "px"
-          ele.style.height = sizerH - (marginSize / 11) + "px"
+          ele.style.width = sizerW - (marginSize / 15) + "px"
+          ele.style.height = sizerH - (marginSize / 15) + "px"
           var videoElement = ele.querySelector('video');
           var imageElement = ele.querySelector('img');
           if (videoElement) {
