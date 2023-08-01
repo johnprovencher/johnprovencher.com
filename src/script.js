@@ -66,7 +66,6 @@
               }
               if (video) {
                   video.style.width = pWidth + "px"
-                  video.pause()
                   video.controls = false;
               }
           }
@@ -162,7 +161,6 @@
               // videoElement.play()
               videoElement.controls = false;
               videoElement.play()
-              videoElement.currentTime = 0;
 
 
               videoElement.addEventListener('loadeddata', (e) => {
