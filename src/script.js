@@ -27,6 +27,14 @@
       });
 
       observer.observe();
+
+
+    document.addEventListener('touchmove', preventZoom, { passive: false });
+    // Function to prevent default touchmove behavior
+    function preventZoom(event) {
+      event.preventDefault();
+    }
+
       var typewriterText = document.getElementById("type");
       var typewriterTextM = document.getElementById("chatterMobile");
       //typewriter
@@ -322,14 +330,9 @@
               if (slideContainer.style.display === "none") {
                   slideContainer.style.display = "block";
                   infoContainer.style.display = "none";
-                  // Disable pinch-to-zoom gesture on mobile devices
-                  document.addEventListener('touchmove', function(event) {
-                      event.preventDefault();
-                  }, { passive: false });
                   if (width < 1200) {
                       chatter.style.display = "none";
                       chatterM.style.display = "block";
-
                   }
                   info = false
                   typeWrite(currentText)
@@ -448,7 +451,10 @@
       document.addEventListener("focusin", logFocusedElement);
 
 
-
+      // Disable pinch-to-zoom gesture on mobile devices
+      document.addEventListener('touchmove', function(event) {
+          event.preventDefault();
+      }, { passive: false });
 
 
 
