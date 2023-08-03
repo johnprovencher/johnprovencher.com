@@ -75,7 +75,7 @@ layout: 'base.njk'
     <div id="loader">( you've died )</div>
     <div id="slideshow">
         <div tabindex="-1" class="slide">
-            <img tabindex="-1" class="" data-src="assets/1.png" alt="welcome...">
+            <img tabindex="-1" class="" src="assets/1.png" alt="welcome...">
         </div>
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
