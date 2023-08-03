@@ -38,7 +38,9 @@ layout: 'base.njk'
         </div>
     </div>
     <div id="thumbnails">
-        <p class="small grey">index</p>
+        <div tabindex="0" class="image-container">
+            <img tabindex="-1" class="" src="assets/1.png" alt="welcome...">
+        </div>
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
         <div  tabindex="0" class="image-container">
