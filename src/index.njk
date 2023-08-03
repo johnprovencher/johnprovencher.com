@@ -6,7 +6,7 @@ layout: 'base.njk'
     <div id="orb" tabindex="-1"></div>
     <a class="block-button" tabindex="0" id="chatter" target="_blank"><abbr class="dots"></abbr> <span id="type">Loading ...</span> <abbr class="dots"></abbr></a>
     <p id="chatterMobile" class="grey small">Loading ...</p>
-    <a class="block-button" id="email" target="_blank" href="mailto:johnprovencher@gmail.com"><abbr class="dots"></abbr> <span id="type"></span> <abbr class="dots"></abbr></a>
+    <a class="block-button" id="email" target="_blank" href="mailto:johnprovencher@gmail.com"><abbr class="dots"></abbr> <span id="typeEmail"></span> <abbr class="dots"></abbr></a>
 </div>
 <div id="info-container">
     <div class="info-grid">
@@ -79,7 +79,7 @@ layout: 'base.njk'
     <div id="loader">( you've died )</div>
     <div id="slideshow">
         <div tabindex="-1" class="slide">
-            <img tabindex="-1" class="" src="assets/1.png" alt="welcome...">
+            <img tabindex="-1" class="" src="assets/1.jpeg" alt="welcome...">
         </div>
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}

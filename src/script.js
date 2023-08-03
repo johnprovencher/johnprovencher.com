@@ -28,12 +28,13 @@
 
       observer.observe();
       var typewriterText = document.getElementById("type");
+      var typewriterEmail = document.getElementById("typeEmail");
       var typewriterTextM = document.getElementById("chatterMobile");
       //typewriter
       function typeWrite(text) {
           typewriterText.textContent = ""
           typewriterTextM.textContent = ""
-
+          typewriterEmail.textContent = ""
           let charIndex = 0;
           var typingSpeed = 40;
           clearTimeout(animateType)
