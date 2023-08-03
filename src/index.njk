@@ -74,6 +74,13 @@ layout: 'base.njk'
     </div>
     <div id="loader">( you've died )</div>
     <div id="slideshow">
+        <div tabindex="-1" class="slide">
+            <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted autoplay loop playsinline>
+                <source src="assets/moonshot-x.mp4" type="video/mp4">
+                <track label="welcome..." label="English" default>
+                Your browser does not support the video tag.
+            </video>
+        </div>
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
         <div tabindex="-1" class="slide" style="left:-5000px">
@@ -86,12 +93,12 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.image %}
         <div tabindex="-1" class="slide">
-            <img tabindex="-1" class="lozad loadForce" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+            <img tabindex="-1" class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {% if post.data.imagetwo %}
         <div tabindex="-1" class="slide">
-            <img tabindex="-1" class="lozad loadForce" data-src="{{post.data.imagetwo}}" alt="{{post.data.imageAlt}}">
+            <img tabindex="-1" class="lozad" data-src="{{post.data.imagetwo}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}
