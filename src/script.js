@@ -434,22 +434,11 @@
       });
 
 
-      function logFocusedElement() {
-          const focusedElement = document.activeElement;
-          console.log("Currently focused element:", focusedElement);
-      }
-
-      // Attach an event listener to the document to detect focus changes
-      document.addEventListener("focusin", logFocusedElement);
-
 
       let preventZoom = function(event) {
           event.preventDefault();
       };
-
-      // Add the event listener to #slideshow
       document.getElementById('slideshow').addEventListener('touchmove', preventZoom, { passive: false });
-
 
 
   });

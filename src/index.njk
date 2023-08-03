@@ -86,12 +86,12 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.image %}
         <div tabindex="-1" class="slide">
-            <img tabindex="-1" class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
+            <img tabindex="-1" class="lozad loadForce" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {% if post.data.imagetwo %}
         <div tabindex="-1" class="slide">
-            <img tabindex="-1" class="lozad" data-src="{{post.data.imagetwo}}" alt="{{post.data.imageAlt}}">
+            <img tabindex="-1" class="lozad loadForce" data-src="{{post.data.imagetwo}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}
