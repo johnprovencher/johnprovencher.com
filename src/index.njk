@@ -40,10 +40,12 @@ layout: 'base.njk'
     <div id="thumbnails">
         <div tabindex="0" class="image-container">
             <img tabindex="-1" class="" src="assets/1.png" alt="welcome...">
+            <br>
+            <p class="small">welcome...</p>
         </div>
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
-        <div  tabindex="0" class="image-container">
+        <div tabindex="0" class="image-container">
             <video class="lozad" controls='false' muted>
                 <source data-src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
