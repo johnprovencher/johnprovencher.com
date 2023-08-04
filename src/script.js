@@ -443,10 +443,10 @@
 
 
 
-      let preventZoom = function(event) {
-          event.preventDefault();
-      };
-      document.getElementById('slideshow').addEventListener('touchmove', preventZoom, { passive: false });
+      // let preventZoom = function(event) {
+      //     event.preventDefault();
+      // };
+      // document.getElementById('slideshow').addEventListener('touchmove', preventZoom, { passive: false });
 
 
   });
