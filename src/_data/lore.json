@@ -3,14 +3,39 @@
   "clients": "clients ... the new york times, nike, prada, alexander wang, the atlantic, bloomberg, the new school, the baffler and more.",
   "cv": [
     {
-      "title": "test 1",
+      "title": "circles, verse",
       "date": "2023",
-      "link": "https://www.google.com/"
+      "link": "https://verse.works/exhibitions/ocircles(s)-imperfections"
     },
     {
-      "title": "test 2",
+      "title": "cage, bright moments",
+      "date": "2023",
+      "link": "https://app.brightmoments.io/collections/0x0a1bbd57033f57e7b6743621b79fcb9eb2ce3676/35"
+    },
+    {
+      "title": "new inc, new museum ",
+      "date": "2023",
+      "link": "https://www.newinc.org/year-9-members/john-provencher"
+    },
+    {
+      "title": "Maps, artblocks",
+      "date": "2022",
+      "link": "https://www.artblocks.io/collections/presents/projects/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/241"
+    },
+    {
+      "title": "spawn, artblocks",
       "date": "2021",
-      "link": "https://www.google.com/"
+      "link": "https://www.artblocks.io/collections/presents/projects/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/161"
+    },
+    {
+      "title": "fruitful school",
+      "date": "2020",
+      "link": "https://fruitful.school/"
+    },
+    {
+      "title": "a-generative-web",
+      "date": "2020-2023",
+      "link": "https://a-generative-web.com/"
     }
   ]
 }
