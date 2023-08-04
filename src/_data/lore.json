@@ -68,6 +68,11 @@
       "link": "https://left.gallery/work/orbit"
     },
     {
+      "title": "haha.services",
+      "date": "2019",
+      "link": "https://haha.services/"
+    },
+    {
       "title": "toseethewaveasaslidingdoor.com",
       "date": "2019",
       "link": "https://toseethewaveasaslidingdoor.com"
@@ -81,11 +86,6 @@
       "title": "waitingforjune.com",
       "date": "2018",
       "link": "https://waitingforjune.com/"
-    },
-    {
-      "title": "haha.services",
-      "date": "2019",
-      "link": "https://haha.services/"
     }
   ]
 }
