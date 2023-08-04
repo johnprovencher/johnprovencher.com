@@ -443,10 +443,15 @@
 
 
 
-      // let preventZoom = function(event) {
-      //     event.preventDefault();
-      // };
-      // document.getElementById('slideshow').addEventListener('touchmove', preventZoom, { passive: false });
+      let preventZoom = function(event) {
+          event.preventDefault();
+      };
+      document.getElementById('slideshow').addEventListener('touchmove', preventZoom, { passive: false });
 
+      document.getElementById('slideshow').addEventListener("touchend", function(event) {
+          if (event.touches.length > 1) {
+              event.preventDefault();
+          }
+      });
 
   });
