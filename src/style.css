@@ -338,13 +338,13 @@
     }
 
     .index-left {
-        width: 90%;
+        width: 85%;
         float: left;
         position: relative;
     }
 
     .index-right {
-        width: 10%;
+        width: 15%;
         text-align: right
     }
 
