@@ -275,6 +275,11 @@
 
     }
 
+    .lore a:hover {
+        color: #54f408;
+        cursor: pointer;
+    }
+
 
 
     #info-container {
