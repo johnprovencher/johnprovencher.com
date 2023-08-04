@@ -33,9 +33,34 @@
       "link": "https://fruitful.school/"
     },
     {
+      "title": "outland, conversation",
+      "date": "2021",
+      "link": "https://outland.art/john-provencher-travess-smalley/"
+    },
+    {
       "title": "a-generative-web",
       "date": "2020-2023",
       "link": "https://a-generative-web.com/"
+    },
+    {
+      "title": "cd lecture series",
+      "date": "2020",
+      "link": "https://www.youtube.com/watch?v=pdnffPag3L4&t=2458s"
+    },
+    {
+      "title": "toseethewaveasaslidingdoor.com",
+      "date": "2019",
+      "link": "https://toseethewaveasaslidingdoor.com"
+    },
+    {
+      "title": "waitingforjune.com",
+      "date": "2018",
+      "link": "https://waitingforjune.com/"
+    },
+    {
+      "title": "weathergradient.com",
+      "date": "2019",
+      "link": "https://weathergradient.com/"
     }
   ]
 }
