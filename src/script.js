@@ -30,11 +30,16 @@
       var typewriterText = document.getElementById("type");
       var typewriterEmail = document.getElementById("typeEmail");
       var typewriterTextM = document.getElementById("chatterMobile");
+      var mType = false
       //typewriter
       function typeWrite(text) {
-          typewriterText.textContent = ""
-          typewriterTextM.textContent = ""
-          typewriterEmail.textContent = ""
+
+          if (mType === true) {
+              typewriterEmail.textContent = ""
+          } else {
+              typewriterText.textContent = ""
+              typewriterTextM.textContent = ""
+          }
           let charIndex = 0;
           var typingSpeed = 40;
           clearTimeout(animateType)
@@ -321,6 +326,7 @@
           function toggleThis() {
               chatterM.style.display = "none"
               if (slideContainer.style.display === "none") {
+                  mType = false;
                   slideContainer.style.display = "block";
                   infoContainer.style.display = "none";
                   if (width < 1200) {
@@ -332,6 +338,7 @@
                   typeWrite(currentText)
 
               } else {
+                  mType = false;
                   slideContainer.style.display = "none";
                   infoContainer.style.display = "block";
                   chatter.style.display = "inline-block";
