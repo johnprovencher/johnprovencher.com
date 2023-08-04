@@ -148,6 +148,13 @@
         width: 100%;
     }
 
+    #loader img {
+        vertical-align: middle;
+        height: 100%;
+        width: 100vw;
+
+    }
+
     .animate {
         background-color: orangered;
     }
