@@ -48,6 +48,10 @@ layout: 'base.njk'
             </video>
             <br>
             <p class="small">{{ post.data.info }}</p>
+                {% if post.data.credit %}
+                <br>
+                <span style="opacity: .6">{{ post.data.credit }}</span>
+                {% endif %}
         </div>
         {% endif %}
         {% if post.data.image %}
@@ -57,7 +61,7 @@ layout: 'base.njk'
             <p class="small">{{ post.data.info }}
                 {% if post.data.credit %}
                 <br>
-                {{ post.data.credit }}
+                <span style="opacity: .6">{{ post.data.credit }}</span>
                 {% endif %}
             </p>
         </div>
