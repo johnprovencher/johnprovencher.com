@@ -54,7 +54,12 @@ layout: 'base.njk'
         <div tabindex="0" class="image-container">
             <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
             <br>
-            <p class="small">{{ post.data.info }}</p>
+            <p class="small">{{ post.data.info }}
+                {% if post.data.credit %}
+                <br>
+                {{ post.data.credit }}
+                {% endif %}
+            </p>
         </div>
         {% endif %}
         {% if post.data.imagetwo %}
