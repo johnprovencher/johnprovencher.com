@@ -47,11 +47,12 @@ layout: 'base.njk'
                 Your browser does not support the video tag.
             </video>
             <br>
-            <p class="small">{{ post.data.info }}</p>
+            <p class="small">{{ post.data.info }}
                 {% if post.data.credit %}
                 <br>
-                <span style="opacity: .6">{{ post.data.credit }}</span>
+                <span style="opacity: .5" class="small">{{ post.data.credit }}</span>
                 {% endif %}
+                 </p>
         </div>
         {% endif %}
         {% if post.data.image %}
@@ -61,7 +62,7 @@ layout: 'base.njk'
             <p class="small">{{ post.data.info }}
                 {% if post.data.credit %}
                 <br>
-                <span style="opacity: .6">{{ post.data.credit }}</span>
+                <span style="opacity: .6" class="small">{{ post.data.credit }}</span>
                 {% endif %}
             </p>
         </div>
