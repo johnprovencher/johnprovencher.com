@@ -606,7 +606,7 @@
         }
 
         #loader {
-            line-height: calc(90vh - 80px);
+            line-height: calc(90vh - 100px);
         }
 
         .info-grid {
