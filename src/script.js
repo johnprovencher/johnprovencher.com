@@ -260,7 +260,7 @@
               entry = true;
               loaderx.style.display = "none"
           }, 500)
-      }, 3500)
+      }, 2500)
 
 
       //top counter animation /  ticker

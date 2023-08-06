@@ -150,9 +150,9 @@
 
     #loader img {
         vertical-align: middle;
-        height: 100%;
+        height: calc(100% - 50px);
         width: 100vw;
-        max-width: 800px;
+        max-width: 500px;
 
     }
 
