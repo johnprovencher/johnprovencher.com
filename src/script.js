@@ -261,7 +261,6 @@
           }
           setTimeout(function() {
               entry = true;
-
               loaderx.style.display = "none"
           }, 500)
       }, 2500)
