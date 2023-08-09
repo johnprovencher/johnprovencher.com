@@ -323,6 +323,7 @@
       function click(ev) {
           var isLeftHalfClick = (ev.clientX) < width / 2;
           var isIgnored = ev.target.closest("#orb");
+          var isIgnoredAgain = ev.target.closest("#info-container");
           var isIgnoredAgainAgain = ev.target.closest("#chatter");
           var email = document.getElementById("email");
 
@@ -352,14 +353,13 @@
                   }, 100)
                   email.style.display = "none";
                   info = true
-                  typeWrite("hello ...")
+                  typeWrite("works ...")
                   if (tClick === 0) {
                       styleThumb()
                   }
                   tClick += 1
               }
           }
-          var isIgnoredAgain = ev.target.closest("#info-container");
           if (!isIgnoredAgainAgain) {
               if (!isIgnoredAgain) {
                   if (!isIgnored) {
