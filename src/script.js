@@ -349,7 +349,7 @@
                   }, 100)
                   email.style.display = "none";
                   info = true
-                  typeWrite("e-mail ...")
+                  typeWrite("hello ...")
                   if (tClick === 0) {
                       styleThumb()
                   }
@@ -442,6 +442,26 @@
       });
 
 
+const appendCurrentTimeAndDate = () => {
+  const now = new Date();
+  const options = {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit'
+  };
+
+  const formattedTimeAndDate = now.toLocaleString(undefined, options);
+  const timexElement = document.getElementById('timex');
+
+  if (timexElement) {
+    timexElement.textContent = formattedTimeAndDate;
+  }
+};
+
+// Call the function to append the current time and date to the 'timex' element
+appendCurrentTimeAndDate();
 
       let preventZoom = function(event) {
           event.preventDefault();
