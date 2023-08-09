@@ -17,6 +17,7 @@ collections:
       - {label: "Info", name: "info", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime"}
       - {label: "Credit", name: "credit", widget: "string", required: false}
+      - {label: "Credit Two", name: "credittwo", widget: "string", required: false}
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Image Two", name: "imagetwo", widget: "image", required: false}
       - {label: 'Video', name: 'video', widget: 'file', required: false}

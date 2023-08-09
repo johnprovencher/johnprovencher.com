@@ -51,10 +51,13 @@ layout: 'base.njk'
             </video>
             <br>
             <p class="small">{{ post.data.info }}
-                {% if post.data.credit %}
+            {% if post.data.credit %}
                 <br>
-                <span style="opacity: .5" class="small">{{ post.data.credit }}</span>
+                <span style="opacity: .6" class="small">{{ post.data.credit }}</span>
+                {% if post.data.credittwo %}
+                <span style="opacity: .6" class="small">{{ post.data.credittwo }}</span>
                 {% endif %}
+            {% endif %}
             </p>
         </div>
         {% endif %}
@@ -63,10 +66,13 @@ layout: 'base.njk'
             <img class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}
-                {% if post.data.credit %}
+            {% if post.data.credit %}
                 <br>
                 <span style="opacity: .6" class="small">{{ post.data.credit }}</span>
+                {% if post.data.credittwo %}
+                <span style="opacity: .6" class="small">{{ post.data.credittwo }}</span>
                 {% endif %}
+            {% endif %}
             </p>
         </div>
         {% endif %}
