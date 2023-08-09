@@ -257,8 +257,12 @@
           counter();
           slideshowx.style.opacity = "1"
           orbElement.style.opacity = "1"
+          if(width < 1200){
+            orbElement.click();
+          }
           setTimeout(function() {
               entry = true;
+
               loaderx.style.display = "none"
           }, 500)
       }, 2500)
