@@ -259,13 +259,11 @@
           if(width < 1200){
             orbElement.click();
           }
-          else{
           setTimeout(function() {
               entry = true;
 
               loaderx.style.display = "none"
           }, 500)
-          }
       }, 2500)
 
 
