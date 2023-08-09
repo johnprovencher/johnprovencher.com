@@ -252,7 +252,6 @@
 
       var entry = false
       setTimeout(function() {
-          getSize()
           slider(true, true)
           counter();
           slideshowx.style.opacity = "1"
