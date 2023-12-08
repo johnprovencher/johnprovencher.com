@@ -1,6 +1,9 @@
     @font-face {
         font-family: "Superstudio";
         src: url("./assets/superstudio-heavy.woff") format("woff");
+                src: url("./assets/superstudio-heavy.woff2") format("woff2");
+  font-display: swap;
+
     }
 
     @keyframes opacityAnim {
