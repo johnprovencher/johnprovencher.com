@@ -3,6 +3,16 @@
   "clients": "past ... the new york times, nike, prada, alexander wang, the atlantic, bloomberg, the new school, the baffler, total luxury spa, hidden nyc, sci-fi fantasy ...",
   "cv": [
     {
+      "title": "Lore",
+      "date": "2023",
+      "link": "https://foundation.app/blog/forever-john-provencher-lore"
+    },
+    {
+      "title": "haha, over-time",
+      "date": "2023",
+      "link": "https://verse.works/exhibitions/haha-over-time"
+    },
+    {
       "title": "its nice that",
       "date": "2023",
       "link": "https://www.itsnicethat.com/articles/john-provencher-graphic-design-discover-050923"
@@ -91,16 +101,6 @@
       "title": "waitingforjune.com",
       "date": "2018",
       "link": "https://waitingforjune.com/"
-    },
-    {
-      "title": "Lore",
-      "date": "2023",
-      "link": "https://foundation.app/blog/forever-john-provencher-lore"
-    },
-    {
-      "title": "haha, over-time",
-      "date": "2023",
-      "link": "https://verse.works/exhibitions/haha-over-time"
     }
   ]
 }
