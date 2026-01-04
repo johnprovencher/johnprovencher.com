@@ -4,7 +4,8 @@
   "cv": [
     {
       "title": "[ lecture ] mutek japan",
-      "date": "2025"
+      "date": "2025",
+      "link": "https://tokyo.mutek.org/en/shows/2025/pro-conference-2025-day1"
     },
     {
       "title": "[ lecture ] new ways of seeing ",
@@ -15,6 +16,11 @@
       "title": "[ lecture ] iterations",
       "date": "2024",
       "link": "https://iterations.online/"
+    },
+    {
+      "title": "[ teaching ] npc artist",
+      "date": "2024",
+      "link": "https://fruitful.school/workshops/npc/index.html"
     },
     {
       "title": "[ text ] lore ",
@@ -63,7 +69,7 @@
     },
     {
       "title": "[ teaching ] fruitful school ",
-      "date": "2020–2023",
+      "date": "2020",
       "link": "https://fruitful.school/"
     },
     {
