@@ -3,102 +3,82 @@
   "clients": "select clients ... on, google, coinbase, bon iver, the new york times, nike, prada, alexander wang, the atlantic, bloomberg businessweek, the new school, the baffler, needles, sci-fi fantasy ...",
   "cv": [
     {
-      "title": "Lore",
+      "title": "new ways of seeing ( lecture )",
+      "date": "2025",
+      "link": "https://www.newwaysofseeing.com/"
+    },
+    {
+      "title": "Lore ( text )",
       "date": "2023",
       "link": "https://foundation.app/blog/forever-john-provencher-lore"
     },
     {
-      "title": "haha, over-time",
+      "title": "haha, over-time ( show )",
       "date": "2023",
       "link": "https://verse.works/exhibitions/haha-over-time"
     },
     {
-      "title": "its nice that",
+      "title": "its nice that ( text )",
       "date": "2023",
       "link": "https://www.itsnicethat.com/articles/john-provencher-graphic-design-discover-050923"
     },
     {
-      "title": "circles, verse",
+      "title": "circles, verse ( show )",
       "date": "2023",
       "link": "https://verse.works/exhibitions/ocircles(s)-imperfections"
     },
     {
-      "title": "new inc, new museum ",
+      "title": "new inc, new museum ( incubator )",
       "date": "2023",
       "link": "https://www.newinc.org/year-9-members/john-provencher"
     },
     {
-      "title": "interactions, bundeskunsthalle",
+      "title": "interactions, bundeskunsthalle ( show )",
       "date": "2023",
       "link": "https://www.bundeskunsthalle.de/en/interactions.html"
     },
     {
-      "title": "cage, bright moments",
+      "title": "cage, bright moments ( show )",
       "date": "2023",
       "link": "https://app.brightmoments.io/collections/0x0a1bbd57033f57e7b6743621b79fcb9eb2ce3676/35"
     },
     {
-      "title": "a-generative-web",
+      "title": "a-generative-web ( teaching )",
       "date": "2023",
       "link": "https://a-generative-web.com/"
     },
     {
-      "title": "the baffler",
+      "title": "the baffler ( publish )",
       "date": "2022",
       "link": "https://thebaffler.com/odds-and-ends/message-incoming-provencher"
     },
     {
-      "title": "Maps, artblocks",
-      "date": "2022",
-      "link": "https://www.artblocks.io/collections/presents/projects/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/241"
-    },
-    {
-      "title": "spawn, artblocks",
-      "date": "2021",
-      "link": "https://www.artblocks.io/collections/presents/projects/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/161"
-    },
-    {
-      "title": "outland, conversation",
+      "title": "outland, conversation ( text )",
       "date": "2021",
       "link": "https://outland.art/john-provencher-travess-smalley/"
     },
     {
-      "title": "fruitful school",
-      "date": "2020",
+      "title": "fruitful school ( teaching )",
+      "date": "2020–2023",
       "link": "https://fruitful.school/"
     },
     {
-      "title": "cd lecture series",
+      "title": "cd lecture series ( lecture )",
       "date": "2020",
       "link": "https://www.youtube.com/watch?v=pdnffPag3L4&t=2458s"
     },
     {
-      "title": "left.gallery, new-sun",
-      "date": "2020",
-      "link": "https://left.gallery/work/new-sun"
-    },
-    {
-      "title": "left.gallery, orbit",
-      "date": "2020",
-      "link": "https://left.gallery/work/orbit"
-    },
-    {
-      "title": "haha.services",
-      "date": "2019",
-      "link": "https://haha.services/"
-    },
-    {
-      "title": "toseethewaveasaslidingdoor.com",
+      "title": "toseethewaveasaslidingdoor.com ( net-art )",
       "date": "2019",
       "link": "https://toseethewaveasaslidingdoor.com"
     },
     {
-      "title": "weathergradient.com",
+      "title": "weathergradient.com ( net-art )",
       "date": "2019",
       "link": "https://weathergradient.com/"
     },
     {
-      "title": "waitingforjune.com",
+      "title": "waitingforjune.com ( net-art )",
       "date": "2018",
       "link": "https://waitingforjune.com/"
     }
