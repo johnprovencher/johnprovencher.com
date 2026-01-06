@@ -44,7 +44,7 @@ layout: 'base.njk'
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
         <div tabindex="0" class="image-container">
-            <img class="lozad" data-src="{{post.data.videothumb}}" alt="{{post.data.imageAlt}}">
+            <img class="lozad" loading="eager" data-src="{{post.data.videothumb}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}
             {% if post.data.credit %}
@@ -59,7 +59,7 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.image %}
         <div tabindex="0" class="image-container">
-            <img class="lozad" data-src="{{post.data.imagethumb}}" alt="{{post.data.imageAlt}}">
+            <img class="lozad" loading="eager" data-src="{{post.data.imagethumb}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}
             {% if post.data.credit %}
@@ -74,7 +74,7 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.imagetwo %}
         <div tabindex="0" class="image-container">
-            <img class="lozad" data-src="{{post.data.imagetwothumb}}" alt="{{post.data.imageAlt}}">
+            <img class="lozad" loading="eager" data-src="{{post.data.imagetwothumb}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}</p>
         </div>
