@@ -4,7 +4,8 @@ tags:
   - post
 info: 'bloomberg, climate'
 date: '2026-01-04T16:22:01-05:00'
-video: /assets/data-gifs.gif
+image: /assets/data-gifs.gif
+video: ''
 imageAlt: 'bloomberg, climate'
 ---
 
