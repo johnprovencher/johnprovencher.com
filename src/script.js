@@ -156,8 +156,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function center(ele) {
         ele.style.width = sizerW - (marginSize / 0) + "px";
         ele.style.height = sizerH - (marginSize / 0) + "px";
-        ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px";
-        ele.style.left = Math.max(0, (width - parseFloat(ele.style.width, 10)) / 2) + "px";
+        ele.style.top = Math.max(0, (height) / 2) + "px";
+        ele.style.left = Math.max(0, (width) / 2) + "px";
         ele.style.opacity = '1';
 
         var imageElement = ele.querySelector('img');
