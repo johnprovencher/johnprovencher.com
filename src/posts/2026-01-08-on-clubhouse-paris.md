@@ -4,9 +4,10 @@ tags:
   - post
 info: 'on, clubhouse paris'
 date: '2026-01-08T12:19:19-05:00'
-imagethumb: /assets/paris.png
-imagetwothumb: ''
-image: /assets/paris.png
+imagethumb: /assets/t-p-2-min.png
+imagetwothumb: /assets/t-04-min.png
+image: /assets/p2-min.png
+imagetwo: /assets/04-min.png
 imageAlt: 'on, clubhouse paris'
 ---
 
