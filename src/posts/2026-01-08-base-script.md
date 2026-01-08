@@ -5,11 +5,11 @@ tags:
 info: 'base, script'
 date: '2025-04-02T14:18:58-04:00'
 imagethumb: /assets/t-04-flower-min.png
-imagetwothumb: /assets/t-09-butterfly-01-min.png
-videothumb: /assets/t-03-www-min.png
+imagetwothumb: /assets/t-08-man-never-steps-in-the-same-river-twice-min-1-.png
+videothumb: ''
 image: /assets/04-flower-min.png
-imagetwo: /assets/09-butterfly-01-min.png
-video: /assets/03-www222.mp4
+imagetwo: /assets/08-man-never-steps-in-the-same-river-twice.gif
+video: ''
 imageAlt: 'base, script'
 ---
 
