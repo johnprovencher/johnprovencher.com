@@ -44,7 +44,7 @@ layout: 'base.njk'
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
         <div tabindex="0" class="image-container">
-            <img class="lozad" loading="eager" data-src="{{post.data.videothumb}}" alt="{{post.data.imageAlt}}">
+            <img class="lozad" data-src="{{post.data.videothumb}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}
             {% if post.data.credit %}
@@ -59,7 +59,7 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.image %}
         <div tabindex="0" class="image-container">
-            <img class="lozad" loading="eager" data-src="{{post.data.imagethumb}}" alt="{{post.data.imageAlt}}">
+            <img class="lozad" data-src="{{post.data.imagethumb}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}
             {% if post.data.credit %}
@@ -74,7 +74,14 @@ layout: 'base.njk'
         {% endif %}
         {% if post.data.imagetwo %}
         <div tabindex="0" class="image-container">
-            <img class="lozad" loading="eager" data-src="{{post.data.imagetwothumb}}" alt="{{post.data.imageAlt}}">
+            <img class="lozad" data-src="{{post.data.imagetwothumb}}" alt="{{post.data.imageAlt}}">
+            <br>
+            <p class="small">{{ post.data.info }}</p>
+        </div>
+        {% endif %}
+        {% if post.data.imagethree %}
+        <div tabindex="0" class="image-container">
+            <img class="lozad" data-src="{{post.data.imagethreethumb}}" alt="{{post.data.imageAlt}}">
             <br>
             <p class="small">{{ post.data.info }}</p>
         </div>
@@ -106,6 +113,11 @@ layout: 'base.njk'
         {% if post.data.imagetwo %}
         <div tabindex="-1" class="slide">
             <img tabindex="-1" class="lozad" data-src="{{post.data.imagetwo}}" alt="{{post.data.imageAlt}}">
+        </div>
+        {% endif %}
+        {% if post.data.imagethree %}
+        <div tabindex="-1" class="slide">
+            <img tabindex="-1" class="lozad" data-src="{{post.data.imagethree}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}

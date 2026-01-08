@@ -20,11 +20,11 @@ collections:
       - {label: "Credit Two", name: "credittwo", widget: "string", required: false}
       - {label: "Image Thumb", name: "imagethumb", widget: "image", required: false}
       - {label: "Image Two Thumb", name: "imagetwothumb", widget: "image", required: false}
-      - {label: "Image Three Thumb", name: "imagetwothumb", widget: "image", required: false}
+      - {label: "Image Three Thumb", name: "imagethreethumb", widget: "image", required: false}
       - {label: "Video Thumb", name: "videothumb", widget: "image", required: false}
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Image Two", name: "imagetwo", widget: "image", required: false}
-      - {label: "Image Three", name: "imagetwo", widget: "image", required: false}
+      - {label: "Image Three", name: "imagethree", widget: "image", required: false}
       - {label: 'Video', name: 'video', widget: 'file', required: false}
       - {label: "Image Alt", name: "imageAlt", widget: "string", required: false}
       - {label: "Link", name: "link", widget: "string", required: false}
