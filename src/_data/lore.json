@@ -3,77 +3,82 @@
   "clients": "select clients ... on, google, coinbase, bon iver, the new york times, nike, prada, alexander wang, the atlantic, bloomberg businessweek, the new school, the baffler, needles, sci-fi fantasy ...",
   "cv": [
     {
-      "title": "[ lecture ] mutek japan",
+      "title": "nyt best illustration 2025",
+      "date": "2025",
+      "link": "https://www.nytimes.com/2025/12/26/arts/year-in-illustration.html"
+    },
+    {
+      "title": "mutek japan panel",
       "date": "2025",
       "link": "https://tokyo.mutek.org/en/shows/2025/pro-conference-2025-day1"
     },
     {
-      "title": "[ lecture ] new ways of seeing ",
+      "title": "new ways of seeing",
       "date": "2025",
       "link": "https://www.newwaysofseeing.com/"
     },
     {
-      "title": "[ lecture ] iterations",
+      "title": "iterations lecture",
       "date": "2024",
       "link": "https://iterations.online/"
     },
     {
-      "title": "[ teaching ] npc artist",
+      "title": "npc artist workshop",
       "date": "2024",
       "link": "https://fruitful.school/workshops/npc/index.html"
     },
     {
-      "title": "[ text ] lore ",
+      "title": "lore",
       "date": "2023",
       "link": "https://foundation.app/blog/forever-john-provencher-lore"
     },
     {
-      "title": "[ show ] haha, over-time",
+      "title": "haha, over-time exhibition",
       "date": "2023",
       "link": "https://verse.works/exhibitions/haha-over-time"
     },
     {
-      "title": "[ text ] its nice that",
+      "title": "its nice that feature",
       "date": "2023",
       "link": "https://www.itsnicethat.com/articles/john-provencher-graphic-design-discover-050923"
     },
     {
-      "title": "[ show ] circles, verse",
+      "title": "circles, verse exhibition",
       "date": "2023",
       "link": "https://verse.works/exhibitions/ocircles(s)-imperfections"
     },
     {
-      "title": "[ incubator ] new inc, new museum",
+      "title": "new inc, new museum",
       "date": "2023",
       "link": "https://www.newinc.org/year-9-members/john-provencher"
     },
     {
-      "title": "[ show ] bundeskunsthalle",
+      "title": "bundeskunsthalle exhibition",
       "date": "2023",
       "link": "https://www.bundeskunsthalle.de/en/interactions.html"
     },
     {
-      "title": "[ teaching ] a-generative-web ",
+      "title": "a-generative-web class",
       "date": "2023",
       "link": "https://a-generative-web.com/"
     },
     {
-      "title": "[ image ] the baffler",
+      "title": "the baffler feature",
       "date": "2022",
       "link": "https://thebaffler.com/odds-and-ends/message-incoming-provencher"
     },
     {
-      "title": "[ text ] outland, conversation",
+      "title": "outland feature",
       "date": "2021",
       "link": "https://outland.art/john-provencher-travess-smalley/"
     },
     {
-      "title": "[ teaching ] fruitful school ",
+      "title": "fruitful school ",
       "date": "2020",
       "link": "https://fruitful.school/"
     },
     {
-      "title": "[ lecture ] cd lecture series",
+      "title": "cd lecture series",
       "date": "2020",
       "link": "https://www.youtube.com/watch?v=pdnffPag3L4&t=2458s"
     },
