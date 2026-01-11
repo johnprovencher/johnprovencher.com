@@ -1,5 +1,5 @@
 ---
-title: 'new york times, microchips'
+title: 'nyt, microchips'
 tags:
   - post
 info: 'nyt, microchip'
@@ -8,6 +8,6 @@ imagethumb: /assets/thumb-31-min.png
 videothumb: /assets/thumb-32-min.png
 image: /assets/nyt-microchip.png
 video: /assets/nyt-microchip.mp4
-imageAlt: 'new york times, microchips'
+imageAlt: 'nyt, microchips'
 ---
 
