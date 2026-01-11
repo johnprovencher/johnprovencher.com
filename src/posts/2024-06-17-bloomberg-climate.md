@@ -1,15 +1,17 @@
 ---
-title: 'bloomberg, eco'
+title: 'bloomberg, weather'
 tags:
   - post
-info: 'bloomberg, eco'
+info: 'bloomberg, weather'
 date: '2024-03-08T14:21:33-05:00'
-imagethumb: /assets/thumb-03.png
-imagetwothumb: /assets/thumb-16.png
+imagethumb: /assets/tearth-large-03.png
+imagetwothumb: /assets/animation-weather.png
+imagethreethumb: /assets/thumb-16.png
 videothumb: ''
-image: /assets/untitled-1.png
-imagetwo: /assets/animation-firefighter.gif
+image: /assets/earth-large-03.png
+imagetwo: /assets/animation-weatherx.gif
+imagethree: /assets/animation-firefighter.gif
 video: ''
-imageAlt: 'bloomberg, eco'
+imageAlt: 'bloomberg, weather'
 ---
 
