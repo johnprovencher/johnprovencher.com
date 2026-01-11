@@ -1,5 +1,5 @@
 ---
-title: 'new york times, crypto'
+title: 'nyt, crypto'
 tags:
   - post
 info: 'nyt, crypto'
