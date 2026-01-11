@@ -296,6 +296,8 @@
     #info-container {
         display: none;
         z-index: 0;
+        overscroll-behavior: none;
+
     }
 
     .info-grid {
