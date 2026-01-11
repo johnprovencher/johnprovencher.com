@@ -54,7 +54,9 @@
     video::part(controls) {
         display: none !important;
     }
-
+    body, html {
+        overscroll-behavior: none;
+    }
 
     /* Disable text and element highlighting for all elements */
     body {
