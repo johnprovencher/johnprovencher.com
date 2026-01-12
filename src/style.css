@@ -55,7 +55,7 @@
         display: none !important;
     }
     body, html {
-        overscroll-behavior: none;
+       /* overscroll-behavior: none;*/
     }
 
     /* Disable text and element highlighting for all elements */
