@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
         return arr;
     }
 
-    // lozad
+    // lozad (DELAY OBSERVING UNTIL AFTER FIRST slider() POSITIONS THE SLIDES)
     const observer = lozad('.lozad', {
-        rootMargin: '0px 0px',
+        rootMargin: '0px 0px', // was '2500px 0px' (too eager on load)
         threshold: 0.1,
         enableAutoReload: true
     });
@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var typewriterTextM = document.getElementById("chatterMobile");
     var mType = false;
 
+    // typewriter
     function typeWrite(text) {
         if (mType === true) {
             typewriterEmail.textContent = "";
@@ -65,6 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
         typeNextCharacter();
     }
 
+    // p tag = image width
     function styleThumb() {
         var containers = document.getElementsByClassName("image-container");
         for (let container of containers) {
@@ -76,18 +78,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 pWidth = paragraph.offsetWidth;
             }
 
-            if (image) image.style.width = pWidth + "px";
+            if (image) {
+                image.style.width = pWidth + "px";
+            }
             if (video) {
                 video.style.width = pWidth + "px";
+                // video.pause()
                 video.controls = false;
             }
         }
     }
 
+    // slide map
     for (i = 0; i < slideDOM.length; i++) {
         slideArr.push(i);
     }
 
+    // generate counter functions
     document.getElementById('counter').innerHTML = "";
     var percent = document.createElement("div");
     percent.setAttribute("id", "percent");
@@ -104,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('counter').appendChild(count);
     }
 
+    // layout sizing
     var marginSize = height;
     var sizerW = width;
     var sizerH = height;
@@ -135,11 +143,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // reset slideshow when browser is resized
+    addEventListener("resize", (event) => {});
     onresize = (event) => {
         getSize();
         slider(true, true);
     };
 
+    const slides = document.querySelectorAll('.slide');
+
+    // slider functions
     function center(ele) {
         ele.style.width = sizerW - (marginSize / 15) + "px";
         ele.style.height = sizerH - (marginSize / 15) + "px";
@@ -151,19 +164,30 @@ document.addEventListener('DOMContentLoaded', function() {
         var videoElement = ele.querySelector('video');
 
         if (imageElement) {
+            // ✅ load the centered image immediately (sequencing)
             observer.triggerLoad(imageElement);
+
             var imageAltText = imageElement.getAttribute('alt');
             currentText = imageAltText;
-            if (info === false) typeWrite(currentText);
+            if (info === false) {
+                typeWrite(currentText);
+            }
         }
 
         if (videoElement) {
             videoElement.controls = false;
             videoElement.play();
+
+            videoElement.addEventListener('loadeddata', (e) => {
+                // videoElement.play()
+            });
+
             var textTracks = videoElement.textTracks;
             var videoAltText = textTracks[0].label;
             currentText = videoAltText;
-            if (info === false) typeWrite(currentText);
+            if (info === false) {
+                typeWrite(currentText);
+            }
         }
     }
 
@@ -172,8 +196,14 @@ document.addEventListener('DOMContentLoaded', function() {
         ele.style.height = sizerH - (marginSize / 15) + "px";
         var videoElement = ele.querySelector('video');
         var imageElement = ele.querySelector('img');
-        if (videoElement) videoElement.pause();
-        else if (imageElement) observer.triggerLoad(imageElement);
+
+        if (videoElement) {
+            videoElement.pause();
+        } else if (imageElement) {
+            // ✅ preload next image only (sequenced)
+            observer.triggerLoad(imageElement);
+        }
+
         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px";
         ele.style.left = width * 2 + "px";
         ele.style.opacity = '0';
@@ -183,23 +213,39 @@ document.addEventListener('DOMContentLoaded', function() {
         ele.style.width = sizerW - (marginSize / 15) + "px";
         ele.style.height = sizerH - (marginSize / 15) + "px";
         var videoElement = ele.querySelector('video');
-        if (videoElement) videoElement.pause();
+        var imageElement = ele.querySelector('img');
+        if (videoElement) {
+            videoElement.pause();
+        } else {}
         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px";
         ele.style.left = width * 2 + "px";
         ele.style.opacity = '0';
     }
 
+    // slider
     function slider(toggle, resize) {
         if (resize === false) {
-            if (toggle === true) slideArr.unshift(slideArr.pop());
-            else slideArr.push(slideArr.shift());
+            if (toggle === true) {
+                slideArr.unshift(slideArr.pop());
+            } else {
+                slideArr.push(slideArr.shift());
+            }
         }
+
+        for (i = 0; i < slideDOM.length; i++) {
+            // slideDOM[i].style.width = "50px"
+            // slideDOM[i].style.height = sHeight + "px"
+        }
+
         center(slideDOM[slideArr[0]]);
         next(slideDOM[slideArr[1]]);
         next(slideDOM[slideArr[slideDOM.length - 1]]);
-        for (i = 2; i < slideDOM.length; i++) leftOff(slideDOM[slideArr[i]]);
+        for (i = 2; i < slideDOM.length; i++) {
+            leftOff(slideDOM[slideArr[i]]);
+        }
     }
 
+    // innit
     var slideshowx = document.getElementById('slideshow');
     var loaderx = document.getElementById('loader');
     var orbElement = document.getElementById('orb');
@@ -207,33 +253,55 @@ document.addEventListener('DOMContentLoaded', function() {
     var entry = false;
     setTimeout(function() {
         slider(true, true);
+
+        // ✅ start observing only after slides are positioned
         startObservingOnce();
+
         counter();
         slideshowx.style.opacity = "1";
         orbElement.style.opacity = "1";
-        if (width < 1200) orbElement.click();
+        if (width < 1200) {
+            orbElement.click();
+        }
         setTimeout(function() {
             entry = true;
             loaderx.style.display = "none";
         }, 500);
     }, 2500);
 
+    // top counter animation / ticker
     function counter(clicker, toggle) {
-        if (toggle === true) t -= 1;
-        else t += 1;
+        if (toggle === true) {
+            t -= 1;
+        } else {
+            t += 1;
+        }
 
-        if (t >= slideDOM.length) t = 0;
-        if (t <= -1) t = slideDOM.length - 1;
+        if (t >= slideDOM.length) {
+            t = 0;
+            for (i = 0; i < slideDOM.length; i++) {}
+        }
+
+        if (t <= -1) {
+            t = slideDOM.length - 1;
+        }
 
         var percentage = ((t + 1) / (slideDOM.length)) * 100;
         var scale = (percentage / 100) * 10;
-        for (i = 0; i < 10; i++) countDOM[i].style.color = "rgba(255,255,255, .4)";
-        for (i = 0; i < scale; i++) countDOM[i].style.color = "#54f408";
+
+        for (i = 0; i < 10; i++) {
+            countDOM[i].style.color = "rgba(255,255,255, .4)";
+        }
+        for (i = 0; i < scale; i++) {
+            countDOM[i].style.color = "#54f408";
+        }
+
         var roundedPercent = Math.floor(percentage);
         document.getElementById('percent').innerHTML = "(&thinsp;" + roundedPercent + "%&thinsp;)";
         document.getElementById('percent').style.color = "#54f408";
     }
 
+    // click/touch event
     document.addEventListener("touchStart", click, false);
     document.addEventListener("click", click, false);
 
@@ -271,100 +339,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 slideContainer.style.display = "none";
                 infoContainer.style.display = "block";
                 chatter.style.display = "inline-block";
-                setTimeout(() => thumbnails.style.opacity = "1", 100);
+                setTimeout(function() {
+                    thumbnails.style.opacity = "1";
+                }, 100);
                 email.style.display = "none";
                 info = true;
                 typeWrite("works ...");
-                if (tClick === 0) styleThumb();
+                if (tClick === 0) {
+                    styleThumb();
+                }
                 tClick += 1;
             }
         }
 
-        if (!isIgnoredAgainAgain && !isIgnoredAgain && !isIgnored) {
-            if (entry === true) {
-                counter(ev.isTrusted, isLeftHalfClick);
-                slider(isLeftHalfClick, false);
+        if (!isIgnoredAgainAgain) {
+            if (!isIgnoredAgain) {
+                if (!isIgnored) {
+                    if (entry === true) {
+                        counter(ev.isTrusted, isLeftHalfClick);
+                        slider(isLeftHalfClick, false);
+                    }
+                } else {
+                    toggleThis();
+                }
             }
-        } else if (isIgnored || isIgnoredAgainAgain) {
+        } else {
             toggleThis();
         }
+        // ev.preventDefault();
     }
 
-    // === preload + decode additions ===
-    function waitForImage(img) {
-        return new Promise((resolve) => {
-            if (!img) return resolve();
-            if (img.complete && img.naturalWidth > 0) return resolve();
-            img.addEventListener("load", resolve, { once: true });
-            img.addEventListener("error", resolve, { once: true });
-        });
-    }
-
-    async function ensureSlideMediaReady(slideEl) {
-        const img = slideEl.querySelector("img");
-        const vid = slideEl.querySelector("video");
-
-        if (img) {
-            if (typeof observer !== "undefined" && observer.triggerLoad) {
-                observer.triggerLoad(img);
-            } else if (img.dataset && img.dataset.src && !img.src) {
-                img.src = img.dataset.src;
-            }
-            if (img.decode) {
-                try { await img.decode(); return; } catch (e) {}
-            }
-            await waitForImage(img);
-            return;
-        }
-
-        if (vid) {
-            if (vid.readyState >= 2) return;
-            await new Promise((res) => vid.addEventListener("loadeddata", res, { once: true }));
-        }
-    }
-
-    const preloadPromises = new Map();
-    function preloadSlideByIndex(i) {
-        if (preloadPromises.has(i)) return preloadPromises.get(i);
-        const p = ensureSlideMediaReady(slideDOM[i]);
-        preloadPromises.set(i, p);
-        return p;
-    }
-
-    imageContainers.forEach((container, i) => {
-        container.addEventListener("touchstart", () => preloadSlideByIndex(i), { passive: true });
-        container.addEventListener("pointerenter", () => preloadSlideByIndex(i));
-    });
-
-    // updated click handler
+    // Add a click event listener to each element with class 'image-container'
     imageContainers.forEach(function(container, index) {
-        container.addEventListener("click", async function() {
+        container.addEventListener('click', function() {
+            // Get the index of the clicked element among all elements with the class 'image-container'
             var clickedIndex = Array.from(imageContainers).indexOf(container);
-            var targetNumber = clickedIndex;
-
             slideContainer.style.display = "block";
             infoContainer.style.display = "none";
-            slideshowx.style.opacity = "0";
-            loaderx.style.display = "block";
-
             if (width < 1200) {
                 chatter.style.display = "none";
                 chatterM.style.display = "block";
             }
             info = false;
+            var targetNumber = clickedIndex;
 
-            slideArr = shiftArrayToNumber(slideArr, targetNumber);
+            var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
+            slideArr = shiftedArray;
             t = targetNumber - 1;
-
-            const targetSlide = slideDOM[slideArr[0]];
-            await ensureSlideMediaReady(targetSlide);
-
-            getSize();
             slider(true, true);
             counter();
-
-            loaderx.style.display = "none";
-            slideshowx.style.opacity = "1";
         });
     });
 
@@ -374,25 +397,40 @@ document.addEventListener('DOMContentLoaded', function() {
     var blockColor = document.getElementsByClassName("block-color");
     var anchorTags = document.querySelectorAll('a:not(.block-button)');
 
+    // Function to enable dark mode
     function enableDarkMode() {
         document.body.classList.add("toggle-dark");
         toggleOrb.classList.add("toggle-orb");
-        anchorTags.forEach((a) => a.classList.add('toggle-dark'));
-        for (i = 0; i < blockColor.length; i++) blockColor[i].classList.add("block-color-toggle");
+        anchorTags.forEach(function(anchor) {
+            anchor.classList.add('toggle-dark');
+        });
+        for (i = 0; i < blockColor.length; i++) {
+            blockColor[i].classList.add("block-color-toggle");
+        }
     }
 
+    // Function to disable dark mode
     function disableDarkMode() {
         document.body.classList.remove("toggle-dark");
         toggleOrb.classList.remove("toggle-orb");
-        anchorTags.forEach((a) => a.classList.remove('toggle-dark'));
-        for (i = 0; i < blockButton.length; i++) blockButton[i].classList.remove("block-button-toggle");
-        for (i = 0; i < blockColor.length; i++) blockColor[i].classList.remove("block-color-toggle");
+        anchorTags.forEach(function(anchor) {
+            anchor.classList.remove('toggle-dark');
+        });
+        for (i = 0; i < blockButton.length; i++) {
+            blockButton[i].classList.remove("block-button-toggle");
+        }
+        for (i = 0; i < blockColor.length; i++) {
+            blockColor[i].classList.remove("block-color-toggle");
+        }
     }
 
     var darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('change', () => {
-        if (darkModeToggle.checked) enableDarkMode();
-        else disableDarkMode();
+        if (darkModeToggle.checked) {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
     });
 
     const appendCurrentTimeAndDate = () => {
@@ -404,15 +442,26 @@ document.addEventListener('DOMContentLoaded', function() {
             hour: 'numeric',
             minute: '2-digit'
         };
+
         const formattedTimeAndDate = now.toLocaleString(undefined, options);
         const timexElement = document.getElementById('timex');
-        if (timexElement) timexElement.textContent = formattedTimeAndDate;
+
+        if (timexElement) {
+            timexElement.textContent = formattedTimeAndDate;
+        }
     };
+
+    // Call the function to append the current time and date to the 'timex' element
     appendCurrentTimeAndDate();
 
-    let preventZoom = function(event) { event.preventDefault(); };
+    let preventZoom = function(event) {
+        event.preventDefault();
+    };
     document.getElementById('slideshow').addEventListener('touchmove', preventZoom, { passive: false });
+
     document.getElementById('slideshow').addEventListener("touchend", function(event) {
-        if (event.touches.length > 1) event.preventDefault();
+        if (event.touches.length > 1) {
+            event.preventDefault();
+        }
     });
 });
