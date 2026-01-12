@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let didObserve = false;
-
     function startObservingOnce() {
         if (didObserve) return;
         didObserve = true;
@@ -126,15 +125,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getSize() {
         w = window,
-            d = document,
-            e = d.documentElement,
-            g = d.getElementsByTagName('body')[0],
-            width = w.innerWidth || e.clientWidth || g.clientWidth,
-            height = w.innerHeight || e.clientHeight || g.clientHeight,
-            sizerW = width,
-            sizerH = height,
-            sHeight = 50,
-            offset = 0;
+        d = document,
+        e = d.documentElement,
+        g = d.getElementsByTagName('body')[0],
+        width = w.innerWidth || e.clientWidth || g.clientWidth,
+        height = w.innerHeight || e.clientHeight || g.clientHeight,
+        sizerW = width,
+        sizerH = height,
+        sHeight = 50,
+        offset = 0;
 
         if (height > width) {
             sizerW = width;
@@ -387,14 +386,8 @@ document.addEventListener('DOMContentLoaded', function() {
             var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
             slideArr = shiftedArray;
             t = targetNumber - 1;
-            getSize()
             slider(true, true);
             counter();
-            requestAnimationFrame(() => {
-                getSize();
-                slider(true, true);
-                counter();
-            });
         });
     });
 
