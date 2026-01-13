@@ -611,6 +611,7 @@
     @media (max-width: 1200px) {
         #chatterMobile {
             display: block;
+            z-index: 1000;
         }
 
         #loader {
