@@ -6,8 +6,10 @@ info: 'on, clubhouse paris'
 date: '2026-01-01T12:19:19-05:00'
 imagethumb: /assets/t-p-2-min.png
 imagetwothumb: /assets/t-04-min.png
+imagethreethumb: /assets/on-paris-t.jpg
 image: /assets/p2-min.png
 imagetwo: /assets/04-min.png
+imagethree: /assets/on-paris.jpg
 imageAlt: 'on, clubhouse paris'
 ---
 
