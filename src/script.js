@@ -451,9 +451,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Call the function to append the current time and date to the 'timex' element
-    appendCurrentTimeAndDate();
-
+   setInterval(function() {
+       appendCurrentTimeAndDate();
+   }, 1000)
+   
     let preventZoom = function(event) {
         event.preventDefault();
     };
