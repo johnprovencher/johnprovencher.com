@@ -412,6 +412,20 @@ document.addEventListener('DOMContentLoaded', function() {
             info = false;
             var targetNumber = clickedIndex;
 
+            // Force load the target slide's media before switching
+            var targetSlide = slideDOM[targetNumber];
+            if (targetSlide) {
+                var img = targetSlide.querySelector('img');
+                var video = targetSlide.querySelector('video');
+                if (img && img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+                if (video) {
+                    video.preload = 'auto';
+                    video.load();
+                }
+            }
+
             var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
             slideArr = shiftedArray;
             t = targetNumber - 1;
