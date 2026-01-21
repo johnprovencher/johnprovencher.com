@@ -340,6 +340,10 @@
         cursor: pointer;
     }
 
+    .image-container img.lozad:not([src]) {
+        visibility: hidden;
+    }
+
     #post-container img,
     #post-container video {
         max-width: 100%;
