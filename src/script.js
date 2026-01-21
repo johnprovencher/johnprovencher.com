@@ -37,6 +37,40 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe();
     }
 
+    // Preload thumbnails + first few slides early (during SVG animation)
+    function preloadEarly() {
+        // Thumbnails
+        var thumbnailImages = document.querySelectorAll('#thumbnails .lozad');
+        thumbnailImages.forEach(function(img) {
+            if (img.dataset.src) {
+                var preload = new Image();
+                preload.src = img.dataset.src;
+            }
+        });
+
+        // First 3 slideshow images (current, next, previous)
+        var slideImages = document.querySelectorAll('.slide .lozad');
+        var toPreload = [0, 1, slideImages.length - 1]; // first, second, last
+        toPreload.forEach(function(index) {
+            if (slideImages[index] && slideImages[index].dataset.src) {
+                var preload = new Image();
+                preload.src = slideImages[index].dataset.src;
+            }
+        });
+
+        // Preload first video if exists
+        var firstVideo = document.querySelector('.slide video source');
+        if (firstVideo && firstVideo.src) {
+            var video = firstVideo.closest('video');
+            if (video) {
+                video.preload = 'auto';
+            }
+        }
+    }
+
+    // Start preloading immediately
+    setTimeout(preloadEarly, 100);
+
     var typewriterText = document.getElementById("type");
     var typewriterEmail = document.getElementById("typeEmail");
     var typewriterTextM = document.getElementById("chatterMobile");
