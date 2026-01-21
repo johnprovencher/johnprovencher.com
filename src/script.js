@@ -37,34 +37,23 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe();
     }
 
-    // Preload thumbnails + first few slides early (during SVG animation)
+    // Preload above-the-fold thumbnails + first slide early (during SVG animation)
     function preloadEarly() {
-        // Thumbnails
+        // Only first ~6 thumbnails (above the fold)
         var thumbnailImages = document.querySelectorAll('#thumbnails .lozad');
-        thumbnailImages.forEach(function(img) {
-            if (img.dataset.src) {
+        var aboveFold = Math.min(6, thumbnailImages.length);
+        for (var i = 0; i < aboveFold; i++) {
+            if (thumbnailImages[i] && thumbnailImages[i].dataset.src) {
                 var preload = new Image();
-                preload.src = img.dataset.src;
+                preload.src = thumbnailImages[i].dataset.src;
             }
-        });
+        }
 
-        // First 3 slideshow images (current, next, previous)
-        var slideImages = document.querySelectorAll('.slide .lozad');
-        var toPreload = [0, 1, slideImages.length - 1]; // first, second, last
-        toPreload.forEach(function(index) {
-            if (slideImages[index] && slideImages[index].dataset.src) {
-                var preload = new Image();
-                preload.src = slideImages[index].dataset.src;
-            }
-        });
-
-        // Preload first video if exists
-        var firstVideo = document.querySelector('.slide video source');
-        if (firstVideo && firstVideo.src) {
-            var video = firstVideo.closest('video');
-            if (video) {
-                video.preload = 'auto';
-            }
+        // First slideshow image only
+        var firstSlideImg = document.querySelector('.slide .lozad');
+        if (firstSlideImg && firstSlideImg.dataset.src) {
+            var preload = new Image();
+            preload.src = firstSlideImg.dataset.src;
         }
     }
 
@@ -411,20 +400,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             info = false;
             var targetNumber = clickedIndex;
-
-            // Force load the target slide's media before switching
-            var targetSlide = slideDOM[targetNumber];
-            if (targetSlide) {
-                var img = targetSlide.querySelector('img');
-                var video = targetSlide.querySelector('video');
-                if (img && img.dataset.src) {
-                    img.src = img.dataset.src;
-                }
-                if (video) {
-                    video.preload = 'auto';
-                    video.load();
-                }
-            }
 
             var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
             slideArr = shiftedArray;
