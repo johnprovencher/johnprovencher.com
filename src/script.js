@@ -408,20 +408,25 @@ document.addEventListener('DOMContentLoaded', function() {
         container.addEventListener('click', function() {
             // Get the index of the clicked element among all elements with the class 'image-container'
             var clickedIndex = Array.from(imageContainers).indexOf(container);
-            slideContainer.style.display = "block";
-            infoContainer.style.display = "none";
-            if (width < 1200) {
-                chatter.style.display = "none";
-                chatterM.style.display = "block";
-            }
+
             info = false;
             var targetNumber = clickedIndex;
 
             var shiftedArray = shiftArrayToNumber(slideArr, targetNumber);
             slideArr = shiftedArray;
             t = targetNumber - 1;
+
+            // Position slides BEFORE showing container (prevents layout shift on mobile)
             slider(true, true);
             counter();
+
+            // Show container after slides are positioned
+            slideContainer.style.display = "block";
+            infoContainer.style.display = "none";
+            if (width < 1200) {
+                chatter.style.display = "none";
+                chatterM.style.display = "block";
+            }
         });
     });
 

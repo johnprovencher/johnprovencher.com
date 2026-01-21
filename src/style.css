@@ -185,7 +185,8 @@
         cursor: crosshair;
         opacity: 0;
         transition: opacity 1s ease;
-
+        left: 200vw;
+        will-change: transform, opacity;
     }
 
 
