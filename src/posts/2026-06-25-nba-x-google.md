@@ -11,7 +11,7 @@ videothumb: /assets/2xxxtt.jpg
 image: /assets/1x.jpg
 imagetwo: /assets/3.jpg
 imagethree: /assets/bs_04342.jpg
-video: /assets/03-www222.mp4
+video: /assets/2xxx.mp4
 imageAlt: nba x google
 ---
 
