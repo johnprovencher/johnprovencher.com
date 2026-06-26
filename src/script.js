@@ -55,6 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
             var preload = new Image();
             preload.src = firstSlideImg.dataset.src;
         }
+
+        // First slideshow video — start buffering during intro animation
+        var firstSlideVideo = document.querySelector('.slide video');
+        if (firstSlideVideo) {
+            firstSlideVideo.preload = 'auto';
+            firstSlideVideo.load();
+        }
     }
 
     // Start preloading immediately
@@ -199,7 +206,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (videoElement) {
             videoElement.controls = false;
-            videoElement.play();
+            videoElement.preload = 'auto';
+            var playPromise = videoElement.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function() {
+                    videoElement.muted = true;
+                    videoElement.play().catch(function() {});
+                });
+            }
 
             videoElement.addEventListener('loadeddata', (e) => {
                 // videoElement.play()
@@ -222,6 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (videoElement) {
             videoElement.pause();
+            videoElement.preload = 'none';
         } else if (imageElement) {
             // ✅ preload next image only (sequenced)
             observer.triggerLoad(imageElement);
@@ -239,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var imageElement = ele.querySelector('img');
         if (videoElement) {
             videoElement.pause();
+            videoElement.preload = 'none';
         } else {}
         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px";
         ele.style.left = width * 2 + "px";
