@@ -9,5 +9,6 @@ videothumb: /assets/b-iver-vtx.png
 image: /assets/b-iver-h.gif
 video: /assets/b-iver-vsmall.mp4
 imageAlt: 'bon iver, au revoir'
+videofeatured: true
 ---
 
