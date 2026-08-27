@@ -9,5 +9,6 @@ imagetwothumb: /assets/thumb-41-min.png
 image: /assets/b2.jpeg
 imagetwo: /assets/b1.jpeg
 imageAlt: 'the baffler, art'
+imagetwofeatured: true
 ---
 
