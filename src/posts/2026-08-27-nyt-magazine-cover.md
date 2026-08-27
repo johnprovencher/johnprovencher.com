@@ -11,5 +11,7 @@ image: /assets/nyt-cover-cover.jpg
 imagetwo: /assets/nyt-cover-spreadx.jpg
 video: /assets/ig-comp.mp4
 imageAlt: NYT Magazine cover
+videoafter: true
+imagefeatured: true
 ---
 
