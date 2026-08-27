@@ -42,7 +42,7 @@ layout: 'base.njk'
     </div>
     <div id="thumbnails">
         {%- for post in collections.post | reverse -%}
-        {% if post.data.video %}
+        {% if post.data.video and not post.data.videoafter %}
         <div tabindex="0" class="image-container">
             <img class="lozad" data-src="{{post.data.videothumb}}" alt="{{post.data.imageAlt}}">
             <br>
@@ -55,6 +55,13 @@ layout: 'base.njk'
                 {% endif %}
             {% endif %}
             </p>
+        </div>
+        {% endif %}
+        {% if post.data.videotwo and not post.data.videotwoafter %}
+        <div tabindex="0" class="image-container">
+            <img class="lozad" data-src="{{post.data.videotwothumb}}" alt="{{post.data.imageAlt}}">
+            <br>
+            <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
         {% if post.data.image %}
@@ -93,6 +100,28 @@ layout: 'base.njk'
             <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
+        {% if post.data.video and post.data.videoafter %}
+        <div tabindex="0" class="image-container">
+            <img class="lozad" data-src="{{post.data.videothumb}}" alt="{{post.data.imageAlt}}">
+            <br>
+            <p class="small">{{ post.data.info }}
+            {% if post.data.credit %}
+                <br>
+                <span style="opacity: .6" class="small">{{ post.data.credit }}</span><br>
+                {% if post.data.credittwo %}
+                <span style="opacity: .6" class="small">{{ post.data.credittwo }}</span>
+                {% endif %}
+            {% endif %}
+            </p>
+        </div>
+        {% endif %}
+        {% if post.data.videotwo and post.data.videotwoafter %}
+        <div tabindex="0" class="image-container">
+            <img class="lozad" data-src="{{post.data.videotwothumb}}" alt="{{post.data.imageAlt}}">
+            <br>
+            <p class="small">{{ post.data.info }}</p>
+        </div>
+        {% endif %}
         {%- endfor -%}
     </div>
     {% include 'footer.njk' %}
@@ -103,10 +132,19 @@ layout: 'base.njk'
     <div id="loader"><img src="assets/dead.svg"></div>
     <div id="slideshow">
         {%- for post in collections.post | reverse -%}
-        {% if post.data.video %}
+        {% if post.data.video and not post.data.videoafter %}
         <div tabindex="-1" class="slide"{% if post.data.videofeatured %} data-featured="true"{% endif %} style="left:-5000px">
             <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted loop playsinline poster="{{ post.data.videothumb }}">
                 <source src="{{ post.data.video }}" type="video/mp4">
+                <track label="{{post.data.imageAlt}}" label="English" default>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+        {% if post.data.videotwo and not post.data.videotwoafter %}
+        <div tabindex="-1" class="slide"{% if post.data.videotwofeatured %} data-featured="true"{% endif %} style="left:-5000px">
+            <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted loop playsinline poster="{{ post.data.videotwothumb }}">
+                <source src="{{ post.data.videotwo }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
                 Your browser does not support the video tag.
             </video>
@@ -130,6 +168,24 @@ layout: 'base.njk'
         {% if post.data.imagefour %}
         <div tabindex="-1" class="slide"{% if post.data.imagefourfeatured %} data-featured="true"{% endif %}>
             <img tabindex="-1" class="lozad" data-src="{{post.data.imagefour}}" alt="{{post.data.imageAlt}}">
+        </div>
+        {% endif %}
+        {% if post.data.video and post.data.videoafter %}
+        <div tabindex="-1" class="slide"{% if post.data.videofeatured %} data-featured="true"{% endif %} style="left:-5000px">
+            <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted loop playsinline poster="{{ post.data.videothumb }}">
+                <source src="{{ post.data.video }}" type="video/mp4">
+                <track label="{{post.data.imageAlt}}" label="English" default>
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endif %}
+        {% if post.data.videotwo and post.data.videotwoafter %}
+        <div tabindex="-1" class="slide"{% if post.data.videotwofeatured %} data-featured="true"{% endif %} style="left:-5000px">
+            <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted loop playsinline poster="{{ post.data.videotwothumb }}">
+                <source src="{{ post.data.videotwo }}" type="video/mp4">
+                <track label="{{post.data.imageAlt}}" label="English" default>
+                Your browser does not support the video tag.
+            </video>
         </div>
         {% endif %}
         {%- endfor -%}

@@ -23,18 +23,23 @@ collections:
       - {label: "Image Three Thumb", name: "imagethreethumb", widget: "image", required: false}
       - {label: "Image Four Thumb", name: "imagefourthumb", widget: "image", required: false}
       - {label: "Video Thumb", name: "videothumb", widget: "image", required: false}
+      - {label: "Video Two Thumb", name: "videotwothumb", widget: "image", required: false}
       - {label: "Image", name: "image", widget: "image", required: false}
       - {label: "Image Two", name: "imagetwo", widget: "image", required: false}
       - {label: "Image Three", name: "imagethree", widget: "image", required: false}
       - {label: "Image Four", name: "imagefour", widget: "image", required: false}
       - {label: 'Video', name: 'video', widget: 'file', required: false}
+      - {label: 'Video Two', name: 'videotwo', widget: 'file', required: false}
       - {label: "Image Alt", name: "imageAlt", widget: "string", required: false}
       - {label: "Link", name: "link", widget: "string", required: false}
+      - {label: "Video After Images", name: "videoafter", widget: "boolean", required: false, default: false}
+      - {label: "Video Two After Images", name: "videotwoafter", widget: "boolean", required: false, default: false}
       - {label: "Image Featured", name: "imagefeatured", widget: "boolean", required: false, default: false}
       - {label: "Image Two Featured", name: "imagetwofeatured", widget: "boolean", required: false, default: false}
       - {label: "Image Three Featured", name: "imagethreefeatured", widget: "boolean", required: false, default: false}
       - {label: "Image Four Featured", name: "imagefourfeatured", widget: "boolean", required: false, default: false}
       - {label: "Video Featured", name: "videofeatured", widget: "boolean", required: false, default: false}
+      - {label: "Video Two Featured", name: "videotwofeatured", widget: "boolean", required: false, default: false}
   - name: 'lore' # Collection name
     label: 'lore' # Label shown in Netlify CMS
     files:
