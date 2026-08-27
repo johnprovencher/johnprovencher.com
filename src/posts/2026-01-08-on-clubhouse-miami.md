@@ -11,5 +11,6 @@ image: /assets/h-seq2-min.jpg
 imagetwo: /assets/h-p1-min.jpg
 imagethree: /assets/shirt.png
 imageAlt: 'on, clubhouse miami'
+imagetwofeatured: true
 ---
 
