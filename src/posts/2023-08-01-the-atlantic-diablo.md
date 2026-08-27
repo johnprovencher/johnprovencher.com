@@ -8,5 +8,6 @@ imagethumb: /assets/thumb-20-min.png
 image: /assets/diablo-print.jpeg
 imagetwo: ''
 imageAlt: 'the atlantic, diablo'
+imagefeatured: true
 ---
 
