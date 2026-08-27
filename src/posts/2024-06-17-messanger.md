@@ -8,5 +8,6 @@ imagethumb: /assets/thumb-18.png
 image: /assets/2.jpg
 imagetwo: ''
 imageAlt: messenger
+imagefeatured: true
 ---
 
