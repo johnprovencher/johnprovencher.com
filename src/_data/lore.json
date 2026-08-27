@@ -1,4 +1,5 @@
 {
+  "featuredon": false,
   "info": "John Provencher (b. 1991) is an independent artist based in New York City. His practice explores the generative nature of software as a tool to output works both on/offline.",
   "clients": "select clients ... on, google, a24, coinbase, the new york times, nike, prada, alexander wang, the atlantic, bloomberg businessweek, bon iver, the new school, the baffler, needles, sci-fi fantasy ...",
   "cv": [

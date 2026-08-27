@@ -130,7 +130,7 @@ layout: 'base.njk'
     <div id="counter">
     </div>
     <div id="loader"><img src="assets/dead.svg"></div>
-    <div id="slideshow">
+    <div id="slideshow"{% if lore.featuredon %} data-featured-on="true"{% endif %}>
         {%- for post in collections.post | reverse -%}
         {% if post.data.video and not post.data.videoafter %}
         <div tabindex="-1" class="slide"{% if post.data.videofeatured %} data-featured="true"{% endif %} style="left:-5000px">

@@ -168,10 +168,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // featured slides (flagged per media item in the CMS → data-featured on the slide)
+    // site-wide switch lives in lore → "featured slideshow on"
+    var featuredEnabled = !!document.getElementById('slideshow').dataset.featuredOn;
     var featuredArr = [];
-    for (i = 0; i < slideDOM.length; i++) {
-        if (slideDOM[i].dataset.featured) {
-            featuredArr.push(i);
+    if (featuredEnabled) {
+        for (i = 0; i < slideDOM.length; i++) {
+            if (slideDOM[i].dataset.featured) {
+                featuredArr.push(i);
+            }
         }
     }
     var featuredMode = featuredArr.length > 0;
