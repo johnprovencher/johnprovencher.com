@@ -9,5 +9,6 @@ imagetwothumb: /assets/rdfga.jpg
 image: /assets/ssadq.jpg
 imagetwo: /assets/dfga.jpg
 imageAlt: sci-fi fantasy
+imagefeatured: true
 ---
 
