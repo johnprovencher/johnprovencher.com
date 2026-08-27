@@ -9,5 +9,7 @@ videothumb: /assets/thumb-43-min.png
 image: /assets/ransomware.jpeg
 video: /assets/ransom-newx.mp4
 imageAlt: 'bloomberg, ransomware'
+videoafter: true
+imagefeatured: true
 ---
 
