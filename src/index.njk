@@ -86,6 +86,13 @@ layout: 'base.njk'
             <p class="small">{{ post.data.info }}</p>
         </div>
         {% endif %}
+        {% if post.data.imagefour %}
+        <div tabindex="0" class="image-container">
+            <img class="lozad" data-src="{{post.data.imagefourthumb}}" alt="{{post.data.imageAlt}}">
+            <br>
+            <p class="small">{{ post.data.info }}</p>
+        </div>
+        {% endif %}
         {%- endfor -%}
     </div>
     {% include 'footer.njk' %}
@@ -118,6 +125,11 @@ layout: 'base.njk'
         {% if post.data.imagethree %}
         <div tabindex="-1" class="slide"{% if post.data.imagethreefeatured %} data-featured="true"{% endif %}>
             <img tabindex="-1" class="lozad" data-src="{{post.data.imagethree}}" alt="{{post.data.imageAlt}}">
+        </div>
+        {% endif %}
+        {% if post.data.imagefour %}
+        <div tabindex="-1" class="slide"{% if post.data.imagefourfeatured %} data-featured="true"{% endif %}>
+            <img tabindex="-1" class="lozad" data-src="{{post.data.imagefour}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {%- endfor -%}
