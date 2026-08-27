@@ -11,5 +11,6 @@ image: /assets/h2-min.png
 imagetwo: /assets/hidden1-min.png
 imagethree: /assets/h1-min.png
 imageAlt: 'hidden, needles'
+imagefeatured: true
 ---
 
