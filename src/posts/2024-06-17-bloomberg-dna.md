@@ -9,5 +9,6 @@ videothumb: /assets/thumb-17.png
 image: /assets/scaned.jpg
 video: /assets/animation.mp4
 imageAlt: 'bloomberg, dna'
+imagefeatured: true
 ---
 
