@@ -9,5 +9,6 @@ imagetwothumb: /assets/t-poker-2.png
 image: /assets/poker-1.png
 imagetwo: /assets/poker-2.gif
 imageAlt: 'bloomberg, poker'
+imagefeatured: true
 ---
 
