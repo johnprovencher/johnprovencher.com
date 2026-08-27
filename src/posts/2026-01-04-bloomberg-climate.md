@@ -8,5 +8,6 @@ imagethumb: /assets/thumb-15.png
 image: /assets/data-gifs.gif
 video: ''
 imageAlt: 'bloomberg, climate'
+videofeatured: true
 ---
 
