@@ -182,6 +182,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const slides = document.querySelectorAll('.slide');
 
+    // only the centered video is ever allowed to play
+    var activeVideo = null;
+
+    function playVideo(videoElement) {
+        // WKWebView (Instagram/iOS in-app browser) only allows play() when the
+        // muted property is set — the HTML attribute alone isn't reliable
+        videoElement.muted = true;
+        activeVideo = videoElement;
+        var playPromise = videoElement.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(function() {
+                // retry only if this video is still the centered one —
+                // otherwise a fast-advance pause() rejection would resurrect
+                // an off-screen video and exhaust iOS's decoder pool
+                if (videoElement === activeVideo) {
+                    videoElement.muted = true;
+                    videoElement.play().catch(function() {});
+                }
+            });
+        }
+    }
+
+    function pauseVideo(videoElement) {
+        if (videoElement === activeVideo) {
+            activeVideo = null;
+        }
+        videoElement.pause();
+        videoElement.preload = 'none';
+    }
+
     // slider functions
     function center(ele) {
         ele.style.width = sizerW - (marginSize / 15) + "px";
@@ -207,17 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (videoElement) {
             videoElement.controls = false;
             videoElement.preload = 'auto';
-            var playPromise = videoElement.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(function() {
-                    videoElement.muted = true;
-                    videoElement.play().catch(function() {});
-                });
-            }
-
-            videoElement.addEventListener('loadeddata', (e) => {
-                // videoElement.play()
-            });
+            playVideo(videoElement);
 
             var textTracks = videoElement.textTracks;
             var videoAltText = textTracks[0].label;
@@ -235,8 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var imageElement = ele.querySelector('img');
 
         if (videoElement) {
-            videoElement.pause();
-            videoElement.preload = 'none';
+            pauseVideo(videoElement);
         } else if (imageElement) {
             // ✅ preload next image only (sequenced)
             observer.triggerLoad(imageElement);
@@ -253,8 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var videoElement = ele.querySelector('video');
         var imageElement = ele.querySelector('img');
         if (videoElement) {
-            videoElement.pause();
-            videoElement.preload = 'none';
+            pauseVideo(videoElement);
         } else {}
         ele.style.top = Math.max(0, (height - parseFloat(ele.style.height, 10)) / 2) + "px";
         ele.style.left = width * 2 + "px";
