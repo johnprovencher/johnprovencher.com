@@ -11,5 +11,6 @@ image: /assets/ig6-min.jpg
 imagetwo: /assets/ig10-min.jpg
 imagethree: /assets/onnyc.jpg
 imageAlt: 'on, clubhouse nyc'
+imagethreefeatured: true
 ---
 
