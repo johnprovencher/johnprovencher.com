@@ -10,6 +10,7 @@ videothumb: /assets/dungeoneer.png
 image: /assets/thumbnail.png
 imagetwo: /assets/dungeoneer22.png
 video: /assets/untitledxxsmall.mp4
+videofeatured: true
 imageAlt: dungeoneer
 ---
 

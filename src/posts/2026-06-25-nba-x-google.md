@@ -9,6 +9,7 @@ imagetwothumb: /assets/3tt.jpg
 imagethreethumb: /assets/bs_04342-tt.jpg
 videothumb: /assets/2xxxtt.jpg
 image: /assets/1x.jpg
+imagefeatured: true
 imagetwo: /assets/3.jpg
 imagethree: /assets/bs_04342.jpg
 video: /assets/2xxx.mp4

@@ -97,7 +97,7 @@ layout: 'base.njk'
     <div id="slideshow">
         {%- for post in collections.post | reverse -%}
         {% if post.data.video %}
-        <div tabindex="-1" class="slide" style="left:-5000px">
+        <div tabindex="-1" class="slide"{% if post.data.videofeatured %} data-featured="true"{% endif %} style="left:-5000px">
             <video tabindex="-1" type="video/mp4" controls='false' preload="none" muted loop playsinline poster="{{ post.data.videothumb }}">
                 <source src="{{ post.data.video }}" type="video/mp4">
                 <track label="{{post.data.imageAlt}}" label="English" default>
@@ -106,17 +106,17 @@ layout: 'base.njk'
         </div>
         {% endif %}
         {% if post.data.image %}
-        <div tabindex="-1" class="slide">
+        <div tabindex="-1" class="slide"{% if post.data.imagefeatured %} data-featured="true"{% endif %}>
             <img tabindex="-1" class="lozad" data-src="{{post.data.image}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {% if post.data.imagetwo %}
-        <div tabindex="-1" class="slide">
+        <div tabindex="-1" class="slide"{% if post.data.imagetwofeatured %} data-featured="true"{% endif %}>
             <img tabindex="-1" class="lozad" data-src="{{post.data.imagetwo}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}
         {% if post.data.imagethree %}
-        <div tabindex="-1" class="slide">
+        <div tabindex="-1" class="slide"{% if post.data.imagethreefeatured %} data-featured="true"{% endif %}>
             <img tabindex="-1" class="lozad" data-src="{{post.data.imagethree}}" alt="{{post.data.imageAlt}}">
         </div>
         {% endif %}

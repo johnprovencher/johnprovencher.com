@@ -224,7 +224,8 @@
 
     }
 
-    #percent {
+    #percent,
+    .percent {
         display: inline-block;
         line-height: 1.1;
         height: 14px;
@@ -233,6 +234,24 @@
         white-space: nowrap;
         color: orangered;
 
+    }
+
+    .health-row {
+        display: block;
+        text-align: right;
+        white-space: nowrap;
+        cursor: pointer;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .health-row + .health-row {
+        margin-top: 0px;
+    }
+
+    .health-row .percent {
+        min-width: 3.6em;
+        text-align: right;
     }
 
     .countIn,

@@ -49,23 +49,66 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
-        // First slideshow image only
-        var firstSlideImg = document.querySelector('.slide .lozad');
-        if (firstSlideImg && firstSlideImg.dataset.src) {
-            var preload = new Image();
-            preload.src = firstSlideImg.dataset.src;
-        }
+        // First shown slide only (first featured slide when featured mode starts on)
+        var firstSlide = slideDOM[featuredArr.length > 0 ? featuredArr[0] : 0];
+        if (firstSlide) {
+            var firstSlideImg = firstSlide.querySelector('.lozad');
+            if (firstSlideImg && firstSlideImg.dataset.src) {
+                var preload = new Image();
+                preload.src = firstSlideImg.dataset.src;
+            }
 
-        // First slideshow video — start buffering during intro animation
-        var firstSlideVideo = document.querySelector('.slide video');
-        if (firstSlideVideo) {
-            firstSlideVideo.preload = 'auto';
-            firstSlideVideo.load();
+            // start buffering a first-slide video during intro animation
+            var firstSlideVideo = firstSlide.querySelector('video');
+            if (firstSlideVideo) {
+                firstSlideVideo.preload = 'auto';
+                firstSlideVideo.load();
+            }
         }
     }
 
     // Start preloading immediately
     setTimeout(preloadEarly, 100);
+
+    // once the first in-view thumbnails load, force the rest (no scroll cascade)
+    var thumbsForced = false;
+    function loadAllThumbnails() {
+        if (thumbsForced) return;
+        thumbsForced = true;
+
+        var thumbs = Array.prototype.slice.call(document.querySelectorAll('#thumbnails .lozad'));
+        if (thumbs.length === 0) return;
+        var firstBatch = thumbs.slice(0, 6);
+        var rest = thumbs.slice(6);
+        var pending = firstBatch.length;
+        var restLoaded = false;
+
+        function loadRest() {
+            if (restLoaded) return;
+            restLoaded = true;
+            rest.forEach(function(img) {
+                observer.triggerLoad(img);
+            });
+        }
+
+        function done() {
+            pending -= 1;
+            if (pending <= 0) loadRest();
+        }
+
+        firstBatch.forEach(function(img) {
+            observer.triggerLoad(img);
+            if (img.complete && img.naturalWidth > 0) {
+                done();
+            } else {
+                img.addEventListener('load', done, { once: true });
+                img.addEventListener('error', done, { once: true });
+            }
+        });
+
+        // safety net if a first-batch image never fires
+        setTimeout(loadRest, 4000);
+    }
 
     var typewriterText = document.getElementById("type");
     var typewriterEmail = document.getElementById("typeEmail");
@@ -124,22 +167,67 @@ document.addEventListener('DOMContentLoaded', function() {
         slideArr.push(i);
     }
 
-    // generate counter functions
-    document.getElementById('counter').innerHTML = "";
-    var percent = document.createElement("div");
-    percent.setAttribute("id", "percent");
-    percent.innerHTML = "(&thinsp;0%&thinsp;)";
-    document.getElementById('counter').appendChild(percent);
-    for (i = 0; i < 10; i++) {
-        var count = document.createElement("div");
-        count.classList.add("count");
-        var countIn = document.createElement("div");
-        var txt = document.createTextNode('⠿');
-        countIn.appendChild(txt);
-        countIn.classList.add("countIn");
-        count.appendChild(countIn);
-        document.getElementById('counter').appendChild(count);
+    // featured slides (flagged per media item in the CMS → data-featured on the slide)
+    var featuredArr = [];
+    for (i = 0; i < slideDOM.length; i++) {
+        if (slideDOM[i].dataset.featured) {
+            featuredArr.push(i);
+        }
     }
+    var featuredMode = featuredArr.length > 0;
+
+    // each bar keeps its own position — browsing one mode never moves the other bar
+    var featuredPos = 0;
+    var allPos = 0;
+
+    // generate counter functions — two stacked health bars:
+    // top = featured set, bottom = all items; the lit one is the active mode
+    var counterEl = document.getElementById('counter');
+    counterEl.innerHTML = "";
+
+    function buildHealthBar(id) {
+        var row = document.createElement("div");
+        row.classList.add("health-row");
+        row.setAttribute("id", id);
+        var pct = document.createElement("div");
+        pct.classList.add("percent");
+        pct.innerHTML = "(&thinsp;0%&thinsp;)";
+        row.appendChild(pct);
+        var dots = [];
+        for (var j = 0; j < 10; j++) {
+            var count = document.createElement("div");
+            count.classList.add("count");
+            var countIn = document.createElement("div");
+            var txt = document.createTextNode('⠿');
+            countIn.appendChild(txt);
+            countIn.classList.add("countIn");
+            count.appendChild(countIn);
+            row.appendChild(count);
+            dots.push(countIn);
+        }
+        counterEl.appendChild(row);
+        return { row: row, pct: pct, dots: dots };
+    }
+
+    var featuredBar = buildHealthBar("featured-bar");
+    var allBar = buildHealthBar("all-bar");
+    if (featuredArr.length === 0) {
+        featuredBar.row.style.display = "none";
+    }
+
+    // hovering a bar shows its name instead of the percent
+    featuredBar.label = "select";
+    allBar.label = "all";
+    [featuredBar, allBar].forEach(function(bar) {
+        bar.row.addEventListener('mouseenter', function() {
+            bar.hover = true;
+            bar.pct.innerHTML = "(&thinsp;" + bar.label + "&thinsp;)";
+        });
+        bar.row.addEventListener('mouseleave', function() {
+            bar.hover = false;
+            renderCounter();
+        });
+    });
 
     // layout sizing
     var marginSize = height;
@@ -309,12 +397,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var entry = false;
     setTimeout(function() {
-        slider(true, true);
+        if (featuredMode) {
+            // open on the first featured slide
+            slideArr = shiftArrayToNumber(slideArr, featuredArr[0]);
+            t = featuredArr[0];
+            slider(true, true);
+            renderCounter();
+        } else {
+            slider(true, true);
+            counter();
+        }
 
         // ✅ start observing only after slides are positioned
         startObservingOnce();
-
-        counter();
         slideshowx.style.opacity = "1";
         orbElement.style.opacity = "1";
         if (width < 1200) {
@@ -336,27 +431,98 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (t >= slideDOM.length) {
             t = 0;
-            for (i = 0; i < slideDOM.length; i++) {}
         }
 
         if (t <= -1) {
             t = slideDOM.length - 1;
         }
 
-        var percentage = ((t + 1) / (slideDOM.length)) * 100;
-        var scale = (percentage / 100) * 10;
-
-        for (i = 0; i < 10; i++) {
-            countDOM[i].style.color = "rgba(255,255,255, .4)";
-        }
-        for (i = 0; i < scale; i++) {
-            countDOM[i].style.color = "#54f408";
-        }
-
-        var roundedPercent = Math.floor(percentage);
-        document.getElementById('percent').innerHTML = "(&thinsp;" + roundedPercent + "%&thinsp;)";
-        document.getElementById('percent').style.color = "#54f408";
+        renderCounter();
     }
+
+    function renderBar(bar, current, total, active) {
+        var percentage = total > 0 ? (current / total) * 100 : 0;
+        var scale = (percentage / 100) * 10;
+        var fill = active ? "#54f408" : "rgba(84, 244, 8, .35)";
+        for (var j = 0; j < 10; j++) {
+            bar.dots[j].style.color = j < scale ? fill : "rgba(255,255,255, .4)";
+        }
+        bar.pct.innerHTML = "(&thinsp;" + (bar.hover ? bar.label : Math.floor(percentage) + "%") + "&thinsp;)";
+        bar.pct.style.color = fill;
+    }
+
+    function renderCounter() {
+        if (featuredMode) {
+            var fPos = featuredArr.indexOf(t);
+            if (fPos !== -1) {
+                featuredPos = fPos;
+            }
+        } else {
+            allPos = t;
+        }
+        renderBar(featuredBar, featuredPos + 1, featuredArr.length, featuredMode);
+        renderBar(allBar, allPos + 1, slideDOM.length, !featuredMode);
+    }
+
+    function setFeaturedMode(on) {
+        featuredMode = on && featuredArr.length > 0;
+    }
+
+    function jumpToSlide(index) {
+        slideArr = shiftArrayToNumber(slideArr, index);
+        t = index;
+        slider(true, true);
+        renderCounter();
+    }
+
+    function advance(isLeftHalfClick) {
+        if (featuredMode && featuredArr.length > 0) {
+            var pos = featuredArr.indexOf(slideArr[0]);
+            if (pos === -1) {
+                jumpToSlide(featuredArr[0]);
+                return;
+            }
+            if (isLeftHalfClick) {
+                // backward loops within the featured set
+                jumpToSlide(featuredArr[pos === 0 ? featuredArr.length - 1 : pos - 1]);
+            } else if (pos === featuredArr.length - 1) {
+                // featured done — switch off, start from the first item of all,
+                // and reset featured so a re-toggle starts it fresh
+                featuredPos = 0;
+                setFeaturedMode(false);
+                jumpToSlide(0);
+            } else {
+                jumpToSlide(featuredArr[pos + 1]);
+            }
+        } else {
+            counter(true, isLeftHalfClick);
+            slider(isLeftHalfClick, false);
+        }
+    }
+
+    featuredBar.row.addEventListener('click', function(ev) {
+        ev.stopPropagation();
+        if (entry !== true) {
+            return;
+        }
+        if (!featuredMode && featuredArr.length > 0) {
+            // resume where you left off in the featured set
+            setFeaturedMode(true);
+            jumpToSlide(featuredArr[featuredPos]);
+        }
+    });
+
+    allBar.row.addEventListener('click', function(ev) {
+        ev.stopPropagation();
+        if (entry !== true) {
+            return;
+        }
+        if (featuredMode) {
+            // switching to the all bar resumes where you left off in the full slideshow
+            setFeaturedMode(false);
+            jumpToSlide(allPos);
+        }
+    });
 
     // click/touch event
     document.addEventListener("touchStart", click, false);
@@ -406,6 +572,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     styleThumb();
                 }
                 tClick += 1;
+                loadAllThumbnails();
             }
         }
 
@@ -413,8 +580,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!isIgnoredAgain) {
                 if (!isIgnored) {
                     if (entry === true) {
-                        counter(ev.isTrusted, isLeftHalfClick);
-                        slider(isLeftHalfClick, false);
+                        advance(isLeftHalfClick);
                     }
                 } else {
                     toggleThis();
@@ -431,6 +597,9 @@ document.addEventListener('DOMContentLoaded', function() {
         container.addEventListener('click', function() {
             // Get the index of the clicked element among all elements with the class 'image-container'
             var clickedIndex = Array.from(imageContainers).indexOf(container);
+
+            // clicking any thumbnail exits featured mode
+            setFeaturedMode(false);
 
             info = false;
             var targetNumber = clickedIndex;

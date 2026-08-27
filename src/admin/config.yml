@@ -23,9 +23,13 @@ collections:
       - {label: "Image Three Thumb", name: "imagethreethumb", widget: "image", required: false}
       - {label: "Video Thumb", name: "videothumb", widget: "image", required: false}
       - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Image Featured", name: "imagefeatured", widget: "boolean", required: false, default: false}
       - {label: "Image Two", name: "imagetwo", widget: "image", required: false}
+      - {label: "Image Two Featured", name: "imagetwofeatured", widget: "boolean", required: false, default: false}
       - {label: "Image Three", name: "imagethree", widget: "image", required: false}
+      - {label: "Image Three Featured", name: "imagethreefeatured", widget: "boolean", required: false, default: false}
       - {label: 'Video', name: 'video', widget: 'file', required: false}
+      - {label: "Video Featured", name: "videofeatured", widget: "boolean", required: false, default: false}
       - {label: "Image Alt", name: "imageAlt", widget: "string", required: false}
       - {label: "Link", name: "link", widget: "string", required: false}
   - name: 'lore' # Collection name
